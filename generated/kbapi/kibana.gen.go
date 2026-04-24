@@ -207,21 +207,6 @@ func (e CasesActions) Valid() bool {
 	}
 }
 
-// Defines values for CasesActionsCommentResponsePropertiesType.
-const (
-	Actions CasesActionsCommentResponsePropertiesType = "actions"
-)
-
-// Valid indicates whether the value is a known member of the CasesActionsCommentResponsePropertiesType enum.
-func (e CasesActionsCommentResponsePropertiesType) Valid() bool {
-	switch e {
-	case Actions:
-		return true
-	default:
-		return false
-	}
-}
-
 // Defines values for CasesAddAlertCommentRequestPropertiesType.
 const (
 	CasesAddAlertCommentRequestPropertiesTypeAlert CasesAddAlertCommentRequestPropertiesType = "alert"
@@ -740,17 +725,22 @@ func (e CasesUpdateUserCommentRequestPropertiesType) Valid() bool {
 
 // Defines values for CasesUserActionsFindResponsePropertiesType.
 const (
-	CasesUserActionsFindResponsePropertiesTypeAssignees   CasesUserActionsFindResponsePropertiesType = "assignees"
-	CasesUserActionsFindResponsePropertiesTypeComment     CasesUserActionsFindResponsePropertiesType = "comment"
-	CasesUserActionsFindResponsePropertiesTypeConnector   CasesUserActionsFindResponsePropertiesType = "connector"
-	CasesUserActionsFindResponsePropertiesTypeCreateCase  CasesUserActionsFindResponsePropertiesType = "create_case"
-	CasesUserActionsFindResponsePropertiesTypeDescription CasesUserActionsFindResponsePropertiesType = "description"
-	CasesUserActionsFindResponsePropertiesTypePushed      CasesUserActionsFindResponsePropertiesType = "pushed"
-	CasesUserActionsFindResponsePropertiesTypeSettings    CasesUserActionsFindResponsePropertiesType = "settings"
-	CasesUserActionsFindResponsePropertiesTypeSeverity    CasesUserActionsFindResponsePropertiesType = "severity"
-	CasesUserActionsFindResponsePropertiesTypeStatus      CasesUserActionsFindResponsePropertiesType = "status"
-	CasesUserActionsFindResponsePropertiesTypeTags        CasesUserActionsFindResponsePropertiesType = "tags"
-	CasesUserActionsFindResponsePropertiesTypeTitle       CasesUserActionsFindResponsePropertiesType = "title"
+	CasesUserActionsFindResponsePropertiesTypeAssignees      CasesUserActionsFindResponsePropertiesType = "assignees"
+	CasesUserActionsFindResponsePropertiesTypeCategory       CasesUserActionsFindResponsePropertiesType = "category"
+	CasesUserActionsFindResponsePropertiesTypeComment        CasesUserActionsFindResponsePropertiesType = "comment"
+	CasesUserActionsFindResponsePropertiesTypeConnector      CasesUserActionsFindResponsePropertiesType = "connector"
+	CasesUserActionsFindResponsePropertiesTypeCreateCase     CasesUserActionsFindResponsePropertiesType = "create_case"
+	CasesUserActionsFindResponsePropertiesTypeCustomFields   CasesUserActionsFindResponsePropertiesType = "customFields"
+	CasesUserActionsFindResponsePropertiesTypeDeleteCase     CasesUserActionsFindResponsePropertiesType = "delete_case"
+	CasesUserActionsFindResponsePropertiesTypeDescription    CasesUserActionsFindResponsePropertiesType = "description"
+	CasesUserActionsFindResponsePropertiesTypeExtendedFields CasesUserActionsFindResponsePropertiesType = "extended_fields"
+	CasesUserActionsFindResponsePropertiesTypeObservables    CasesUserActionsFindResponsePropertiesType = "observables"
+	CasesUserActionsFindResponsePropertiesTypePushed         CasesUserActionsFindResponsePropertiesType = "pushed"
+	CasesUserActionsFindResponsePropertiesTypeSettings       CasesUserActionsFindResponsePropertiesType = "settings"
+	CasesUserActionsFindResponsePropertiesTypeSeverity       CasesUserActionsFindResponsePropertiesType = "severity"
+	CasesUserActionsFindResponsePropertiesTypeStatus         CasesUserActionsFindResponsePropertiesType = "status"
+	CasesUserActionsFindResponsePropertiesTypeTags           CasesUserActionsFindResponsePropertiesType = "tags"
+	CasesUserActionsFindResponsePropertiesTypeTitle          CasesUserActionsFindResponsePropertiesType = "title"
 )
 
 // Valid indicates whether the value is a known member of the CasesUserActionsFindResponsePropertiesType enum.
@@ -758,13 +748,23 @@ func (e CasesUserActionsFindResponsePropertiesType) Valid() bool {
 	switch e {
 	case CasesUserActionsFindResponsePropertiesTypeAssignees:
 		return true
+	case CasesUserActionsFindResponsePropertiesTypeCategory:
+		return true
 	case CasesUserActionsFindResponsePropertiesTypeComment:
 		return true
 	case CasesUserActionsFindResponsePropertiesTypeConnector:
 		return true
 	case CasesUserActionsFindResponsePropertiesTypeCreateCase:
 		return true
+	case CasesUserActionsFindResponsePropertiesTypeCustomFields:
+		return true
+	case CasesUserActionsFindResponsePropertiesTypeDeleteCase:
+		return true
 	case CasesUserActionsFindResponsePropertiesTypeDescription:
+		return true
+	case CasesUserActionsFindResponsePropertiesTypeExtendedFields:
+		return true
+	case CasesUserActionsFindResponsePropertiesTypeObservables:
 		return true
 	case CasesUserActionsFindResponsePropertiesTypePushed:
 		return true
@@ -23126,16 +23126,16 @@ func (e PutAlertingRuleIdJSONBodyNotifyWhen) Valid() bool {
 
 // Defines values for GetAlertingRulesFindParamsDefaultSearchOperator.
 const (
-	AND GetAlertingRulesFindParamsDefaultSearchOperator = "AND"
-	OR  GetAlertingRulesFindParamsDefaultSearchOperator = "OR"
+	GetAlertingRulesFindParamsDefaultSearchOperatorAND GetAlertingRulesFindParamsDefaultSearchOperator = "AND"
+	GetAlertingRulesFindParamsDefaultSearchOperatorOR  GetAlertingRulesFindParamsDefaultSearchOperator = "OR"
 )
 
 // Valid indicates whether the value is a known member of the GetAlertingRulesFindParamsDefaultSearchOperator enum.
 func (e GetAlertingRulesFindParamsDefaultSearchOperator) Valid() bool {
 	switch e {
-	case AND:
+	case GetAlertingRulesFindParamsDefaultSearchOperatorAND:
 		return true
-	case OR:
+	case GetAlertingRulesFindParamsDefaultSearchOperatorOR:
 		return true
 	default:
 		return false
@@ -24795,6 +24795,60 @@ func (e ConfigureRiskEngineSavedObjectJSONBodyFiltersEntityTypes) Valid() bool {
 	case ConfigureRiskEngineSavedObjectJSONBodyFiltersEntityTypesService:
 		return true
 	case ConfigureRiskEngineSavedObjectJSONBodyFiltersEntityTypesUser:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetSavedObjectsFindParamsDefaultSearchOperator.
+const (
+	GetSavedObjectsFindParamsDefaultSearchOperatorAND GetSavedObjectsFindParamsDefaultSearchOperator = "AND"
+	GetSavedObjectsFindParamsDefaultSearchOperatorOR  GetSavedObjectsFindParamsDefaultSearchOperator = "OR"
+)
+
+// Valid indicates whether the value is a known member of the GetSavedObjectsFindParamsDefaultSearchOperator enum.
+func (e GetSavedObjectsFindParamsDefaultSearchOperator) Valid() bool {
+	switch e {
+	case GetSavedObjectsFindParamsDefaultSearchOperatorAND:
+		return true
+	case GetSavedObjectsFindParamsDefaultSearchOperatorOR:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetSavedObjectsFindParamsHasReferenceOperator.
+const (
+	GetSavedObjectsFindParamsHasReferenceOperatorAND GetSavedObjectsFindParamsHasReferenceOperator = "AND"
+	GetSavedObjectsFindParamsHasReferenceOperatorOR  GetSavedObjectsFindParamsHasReferenceOperator = "OR"
+)
+
+// Valid indicates whether the value is a known member of the GetSavedObjectsFindParamsHasReferenceOperator enum.
+func (e GetSavedObjectsFindParamsHasReferenceOperator) Valid() bool {
+	switch e {
+	case GetSavedObjectsFindParamsHasReferenceOperatorAND:
+		return true
+	case GetSavedObjectsFindParamsHasReferenceOperatorOR:
+		return true
+	default:
+		return false
+	}
+}
+
+// Defines values for GetSavedObjectsFindParamsHasNoReferenceOperator.
+const (
+	GetSavedObjectsFindParamsHasNoReferenceOperatorAND GetSavedObjectsFindParamsHasNoReferenceOperator = "AND"
+	GetSavedObjectsFindParamsHasNoReferenceOperatorOR  GetSavedObjectsFindParamsHasNoReferenceOperator = "OR"
+)
+
+// Valid indicates whether the value is a known member of the GetSavedObjectsFindParamsHasNoReferenceOperator enum.
+func (e GetSavedObjectsFindParamsHasNoReferenceOperator) Valid() bool {
+	switch e {
+	case GetSavedObjectsFindParamsHasNoReferenceOperatorAND:
+		return true
+	case GetSavedObjectsFindParamsHasNoReferenceOperatorOR:
 		return true
 	default:
 		return false
@@ -27342,8 +27396,8 @@ type AlertingRuleAPIBodyGeneric struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store AlertingRuleAPIBodyGenericActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -27386,7 +27440,7 @@ type AlertingRuleAPIBodyGeneric struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -27470,7 +27524,7 @@ type AlertingRuleAPIBodyUnion struct {
 }
 
 // AlertingRuleAPIParams The parameters for the rule.
-type AlertingRuleAPIParams map[string]interface{}
+type AlertingRuleAPIParams map[string]*interface{}
 
 // AlertingFieldmapProperties defines model for Alerting_fieldmap_properties.
 type AlertingFieldmapProperties struct {
@@ -27510,33 +27564,6 @@ type AlertingFieldmapProperties struct {
 
 // CasesActions defines model for Cases_actions.
 type CasesActions string
-
-// CasesActionsCommentResponseProperties defines model for Cases_actions_comment_response_properties.
-type CasesActionsCommentResponseProperties struct {
-	Actions *struct {
-		Targets *[]struct {
-			EndpointId *string `json:"endpointId,omitempty"`
-			Hostname   *string `json:"hostname,omitempty"`
-		} `json:"targets,omitempty"`
-		Type *string `json:"type,omitempty"`
-	} `json:"actions,omitempty"`
-	Comment   *string                               `json:"comment,omitempty"`
-	CreatedAt *time.Time                            `json:"created_at,omitempty"`
-	CreatedBy *CasesCaseResponseCreatedByProperties `json:"created_by,omitempty"`
-	Id        *string                               `json:"id,omitempty"`
-
-	// Owner The application that owns the cases: Stack Management, Observability, or Elastic Security.
-	Owner     *CasesOwner                               `json:"owner,omitempty"`
-	PushedAt  *time.Time                                `json:"pushed_at,omitempty"`
-	PushedBy  *CasesCaseResponsePushedByProperties      `json:"pushed_by,omitempty"`
-	Type      CasesActionsCommentResponsePropertiesType `json:"type"`
-	UpdatedAt *time.Time                                `json:"updated_at,omitempty"`
-	UpdatedBy *CasesCaseResponseUpdatedByProperties     `json:"updated_by,omitempty"`
-	Version   *string                                   `json:"version,omitempty"`
-}
-
-// CasesActionsCommentResponsePropertiesType defines model for CasesActionsCommentResponseProperties.Type.
-type CasesActionsCommentResponsePropertiesType string
 
 // CasesAddAlertCommentRequestProperties Defines properties for case comment requests when type is alert.
 type CasesAddAlertCommentRequestProperties struct {
@@ -27770,6 +27797,9 @@ type CasesCaseResponseGetCase struct {
 	ExternalService *CasesExternalService `json:"external_service,omitempty"`
 	Id              string                `json:"id"`
 
+	// IncrementalId A monotonically increasing number assigned to each case, unique per space. This value is generated asynchronously after the case is created and may not be present immediately in the response.
+	IncrementalId *int `json:"incremental_id,omitempty"`
+
 	// Observables Observables attached to the case.
 	Observables []CasesCaseObservable `json:"observables"`
 
@@ -27853,6 +27883,9 @@ type CasesCaseResponseProperties struct {
 	Duration        *int                  `json:"duration,omitempty"`
 	ExternalService *CasesExternalService `json:"external_service,omitempty"`
 	Id              string                `json:"id"`
+
+	// IncrementalId A monotonically increasing number assigned to each case, unique per space. This value is generated asynchronously after the case is created and may not be present immediately in the response.
+	IncrementalId *int `json:"incremental_id,omitempty"`
 
 	// Observables Observables attached to the case.
 	Observables []CasesCaseObservable `json:"observables"`
@@ -30684,8 +30717,8 @@ type KibanaHTTPAPIsApmAnomalyCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsApmAnomalyCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -30728,7 +30761,7 @@ type KibanaHTTPAPIsApmAnomalyCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -30849,8 +30882,8 @@ type KibanaHTTPAPIsApmErrorRateCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsApmErrorRateCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -30893,7 +30926,7 @@ type KibanaHTTPAPIsApmErrorRateCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -31001,7 +31034,7 @@ type KibanaHTTPAPIsApmErrorRateCreateRuleBodyAlertingNotifyWhen string
 type KibanaHTTPAPIsApmErrorRateCreateRuleBodyAlertingParamsSearchConfigurationQueryQuery0 = string
 
 // KibanaHTTPAPIsApmErrorRateCreateRuleBodyAlertingParamsSearchConfigurationQueryQuery1 defines model for .
-type KibanaHTTPAPIsApmErrorRateCreateRuleBodyAlertingParamsSearchConfigurationQueryQuery1 map[string]interface{}
+type KibanaHTTPAPIsApmErrorRateCreateRuleBodyAlertingParamsSearchConfigurationQueryQuery1 map[string]*interface{}
 
 // KibanaHTTPAPIsApmErrorRateCreateRuleBodyAlerting_Params_SearchConfiguration_Query_Query defines model for KibanaHTTPAPIsApmErrorRateCreateRuleBodyAlerting.Params.SearchConfiguration.Query.Query.
 type KibanaHTTPAPIsApmErrorRateCreateRuleBodyAlerting_Params_SearchConfiguration_Query_Query struct {
@@ -31026,8 +31059,8 @@ type KibanaHTTPAPIsApmTransactionDurationCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsApmTransactionDurationCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -31070,7 +31103,7 @@ type KibanaHTTPAPIsApmTransactionDurationCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -31187,7 +31220,7 @@ type KibanaHTTPAPIsApmTransactionDurationCreateRuleBodyAlertingParamsAggregation
 type KibanaHTTPAPIsApmTransactionDurationCreateRuleBodyAlertingParamsSearchConfigurationQueryQuery0 = string
 
 // KibanaHTTPAPIsApmTransactionDurationCreateRuleBodyAlertingParamsSearchConfigurationQueryQuery1 defines model for .
-type KibanaHTTPAPIsApmTransactionDurationCreateRuleBodyAlertingParamsSearchConfigurationQueryQuery1 map[string]interface{}
+type KibanaHTTPAPIsApmTransactionDurationCreateRuleBodyAlertingParamsSearchConfigurationQueryQuery1 map[string]*interface{}
 
 // KibanaHTTPAPIsApmTransactionDurationCreateRuleBodyAlerting_Params_SearchConfiguration_Query_Query defines model for KibanaHTTPAPIsApmTransactionDurationCreateRuleBodyAlerting.Params.SearchConfiguration.Query.Query.
 type KibanaHTTPAPIsApmTransactionDurationCreateRuleBodyAlerting_Params_SearchConfiguration_Query_Query struct {
@@ -31212,8 +31245,8 @@ type KibanaHTTPAPIsApmTransactionErrorRateCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsApmTransactionErrorRateCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -31256,7 +31289,7 @@ type KibanaHTTPAPIsApmTransactionErrorRateCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -31352,7 +31385,7 @@ type KibanaHTTPAPIsApmTransactionErrorRateCreateRuleBodyAlertingNotifyWhen strin
 type KibanaHTTPAPIsApmTransactionErrorRateCreateRuleBodyAlertingParamsSearchConfigurationQueryQuery0 = string
 
 // KibanaHTTPAPIsApmTransactionErrorRateCreateRuleBodyAlertingParamsSearchConfigurationQueryQuery1 defines model for .
-type KibanaHTTPAPIsApmTransactionErrorRateCreateRuleBodyAlertingParamsSearchConfigurationQueryQuery1 map[string]interface{}
+type KibanaHTTPAPIsApmTransactionErrorRateCreateRuleBodyAlertingParamsSearchConfigurationQueryQuery1 map[string]*interface{}
 
 // KibanaHTTPAPIsApmTransactionErrorRateCreateRuleBodyAlerting_Params_SearchConfiguration_Query_Query defines model for KibanaHTTPAPIsApmTransactionErrorRateCreateRuleBodyAlerting.Params.SearchConfiguration.Query.Query.
 type KibanaHTTPAPIsApmTransactionErrorRateCreateRuleBodyAlerting_Params_SearchConfiguration_Query_Query struct {
@@ -31414,7 +31447,7 @@ type KibanaHTTPAPIsCoreStatusResponse struct {
 				Level KibanaHTTPAPIsCoreStatusResponseStatusCoreElasticsearchLevel `json:"level"`
 
 				// Meta An unstructured set of extra metadata about this service.
-				Meta map[string]interface{} `json:"meta"`
+				Meta map[string]*interface{} `json:"meta"`
 
 				// Summary A human readable summary of the service status.
 				Summary string `json:"summary"`
@@ -31430,7 +31463,7 @@ type KibanaHTTPAPIsCoreStatusResponse struct {
 				Level KibanaHTTPAPIsCoreStatusResponseStatusCoreHttpLevel `json:"level"`
 
 				// Meta An unstructured set of extra metadata about this service.
-				Meta map[string]interface{} `json:"meta"`
+				Meta map[string]*interface{} `json:"meta"`
 
 				// Summary A human readable summary of the service status.
 				Summary string `json:"summary"`
@@ -31446,7 +31479,7 @@ type KibanaHTTPAPIsCoreStatusResponse struct {
 				Level KibanaHTTPAPIsCoreStatusResponseStatusCoreSavedObjectsLevel `json:"level"`
 
 				// Meta An unstructured set of extra metadata about this service.
-				Meta map[string]interface{} `json:"meta"`
+				Meta map[string]*interface{} `json:"meta"`
 
 				// Summary A human readable summary of the service status.
 				Summary string `json:"summary"`
@@ -31463,7 +31496,7 @@ type KibanaHTTPAPIsCoreStatusResponse struct {
 			Level KibanaHTTPAPIsCoreStatusResponseStatusOverallLevel `json:"level"`
 
 			// Meta An unstructured set of extra metadata about this service.
-			Meta map[string]interface{} `json:"meta"`
+			Meta map[string]*interface{} `json:"meta"`
 
 			// Summary A human readable summary of the service status.
 			Summary string `json:"summary"`
@@ -31481,7 +31514,7 @@ type KibanaHTTPAPIsCoreStatusResponse struct {
 			Level KibanaHTTPAPIsCoreStatusResponseStatusPluginsLevel `json:"level"`
 
 			// Meta An unstructured set of extra metadata about this service.
-			Meta map[string]interface{} `json:"meta"`
+			Meta map[string]*interface{} `json:"meta"`
 
 			// Summary A human readable summary of the service status.
 			Summary string `json:"summary"`
@@ -31544,8 +31577,8 @@ type KibanaHTTPAPIsDatasetqualityDegradeddocsCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsDatasetqualityDegradeddocsCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -31588,7 +31621,7 @@ type KibanaHTTPAPIsDatasetqualityDegradeddocsCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -31691,8 +31724,8 @@ type KibanaHTTPAPIsEsQueryCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsEsQueryCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -31735,7 +31768,7 @@ type KibanaHTTPAPIsEsQueryCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -31956,8 +31989,8 @@ type KibanaHTTPAPIsGeoContainmentCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsGeoContainmentCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -32000,7 +32033,7 @@ type KibanaHTTPAPIsGeoContainmentCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -32051,7 +32084,7 @@ type KibanaHTTPAPIsGeoContainmentCreateRuleBodyAlerting struct {
 	Params struct {
 		BoundaryGeoField   string      `json:"boundaryGeoField"`
 		BoundaryIndexId    string      `json:"boundaryIndexId"`
-		BoundaryIndexQuery interface{} `json:"boundaryIndexQuery"`
+		BoundaryIndexQuery interface{} `json:"boundaryIndexQuery,omitempty"`
 		BoundaryIndexTitle string      `json:"boundaryIndexTitle"`
 		BoundaryNameField  *string     `json:"boundaryNameField,omitempty"`
 		BoundaryType       string      `json:"boundaryType"`
@@ -32060,7 +32093,7 @@ type KibanaHTTPAPIsGeoContainmentCreateRuleBodyAlerting struct {
 		GeoField           string      `json:"geoField"`
 		Index              string      `json:"index"`
 		IndexId            string      `json:"indexId"`
-		IndexQuery         interface{} `json:"indexQuery"`
+		IndexQuery         interface{} `json:"indexQuery,omitempty"`
 	} `json:"params"`
 	RuleTypeId KibanaHTTPAPIsGeoContainmentCreateRuleBodyAlertingRuleTypeId `json:"rule_type_id"`
 
@@ -32107,8 +32140,8 @@ type KibanaHTTPAPIsIndexThresholdCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsIndexThresholdCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -32151,7 +32184,7 @@ type KibanaHTTPAPIsIndexThresholdCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -32293,8 +32326,8 @@ type KibanaHTTPAPIsLogsAlertDocumentCountCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsLogsAlertDocumentCountCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -32337,7 +32370,7 @@ type KibanaHTTPAPIsLogsAlertDocumentCountCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -32522,8 +32555,8 @@ type KibanaHTTPAPIsMetricsAlertInventoryThresholdCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMetricsAlertInventoryThresholdCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -32566,7 +32599,7 @@ type KibanaHTTPAPIsMetricsAlertInventoryThresholdCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -32689,8 +32722,8 @@ type KibanaHTTPAPIsMetricsAlertThresholdCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMetricsAlertThresholdCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -32733,7 +32766,7 @@ type KibanaHTTPAPIsMetricsAlertThresholdCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -32944,8 +32977,8 @@ type KibanaHTTPAPIsMonitoringAlertClusterHealthCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMonitoringAlertClusterHealthCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -32988,7 +33021,7 @@ type KibanaHTTPAPIsMonitoringAlertClusterHealthCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -33092,8 +33125,8 @@ type KibanaHTTPAPIsMonitoringAlertCpuUsageCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMonitoringAlertCpuUsageCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -33136,7 +33169,7 @@ type KibanaHTTPAPIsMonitoringAlertCpuUsageCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -33240,8 +33273,8 @@ type KibanaHTTPAPIsMonitoringAlertDiskUsageCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMonitoringAlertDiskUsageCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -33284,7 +33317,7 @@ type KibanaHTTPAPIsMonitoringAlertDiskUsageCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -33388,8 +33421,8 @@ type KibanaHTTPAPIsMonitoringAlertElasticsearchVersionMismatchCreateRuleBodyAler
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMonitoringAlertElasticsearchVersionMismatchCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -33432,7 +33465,7 @@ type KibanaHTTPAPIsMonitoringAlertElasticsearchVersionMismatchCreateRuleBodyAler
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -33536,8 +33569,8 @@ type KibanaHTTPAPIsMonitoringAlertJvmMemoryUsageCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMonitoringAlertJvmMemoryUsageCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -33580,7 +33613,7 @@ type KibanaHTTPAPIsMonitoringAlertJvmMemoryUsageCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -33684,8 +33717,8 @@ type KibanaHTTPAPIsMonitoringAlertKibanaVersionMismatchCreateRuleBodyAlerting st
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMonitoringAlertKibanaVersionMismatchCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -33728,7 +33761,7 @@ type KibanaHTTPAPIsMonitoringAlertKibanaVersionMismatchCreateRuleBodyAlerting st
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -33832,8 +33865,8 @@ type KibanaHTTPAPIsMonitoringAlertLicenseExpirationCreateRuleBodyAlerting struct
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMonitoringAlertLicenseExpirationCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -33876,7 +33909,7 @@ type KibanaHTTPAPIsMonitoringAlertLicenseExpirationCreateRuleBodyAlerting struct
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -33980,8 +34013,8 @@ type KibanaHTTPAPIsMonitoringAlertLogstashVersionMismatchCreateRuleBodyAlerting 
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMonitoringAlertLogstashVersionMismatchCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -34024,7 +34057,7 @@ type KibanaHTTPAPIsMonitoringAlertLogstashVersionMismatchCreateRuleBodyAlerting 
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -34128,8 +34161,8 @@ type KibanaHTTPAPIsMonitoringAlertMissingMonitoringDataCreateRuleBodyAlerting st
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMonitoringAlertMissingMonitoringDataCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -34172,7 +34205,7 @@ type KibanaHTTPAPIsMonitoringAlertMissingMonitoringDataCreateRuleBodyAlerting st
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -34276,8 +34309,8 @@ type KibanaHTTPAPIsMonitoringAlertNodesChangedCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMonitoringAlertNodesChangedCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -34320,7 +34353,7 @@ type KibanaHTTPAPIsMonitoringAlertNodesChangedCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -34424,8 +34457,8 @@ type KibanaHTTPAPIsMonitoringAlertThreadPoolSearchRejectionsCreateRuleBodyAlerti
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMonitoringAlertThreadPoolSearchRejectionsCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -34468,7 +34501,7 @@ type KibanaHTTPAPIsMonitoringAlertThreadPoolSearchRejectionsCreateRuleBodyAlerti
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -34567,8 +34600,8 @@ type KibanaHTTPAPIsMonitoringAlertThreadPoolWriteRejectionsCreateRuleBodyAlertin
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMonitoringAlertThreadPoolWriteRejectionsCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -34611,7 +34644,7 @@ type KibanaHTTPAPIsMonitoringAlertThreadPoolWriteRejectionsCreateRuleBodyAlertin
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -34710,8 +34743,8 @@ type KibanaHTTPAPIsMonitoringCcrReadExceptionsCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMonitoringCcrReadExceptionsCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -34754,7 +34787,7 @@ type KibanaHTTPAPIsMonitoringCcrReadExceptionsCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -34858,8 +34891,8 @@ type KibanaHTTPAPIsMonitoringShardSizeCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsMonitoringShardSizeCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -34902,7 +34935,7 @@ type KibanaHTTPAPIsMonitoringShardSizeCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -35273,8 +35306,8 @@ type KibanaHTTPAPIsObservabilityRulesCustomThresholdCreateRuleBodyAlerting struc
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsObservabilityRulesCustomThresholdCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -35317,7 +35350,7 @@ type KibanaHTTPAPIsObservabilityRulesCustomThresholdCreateRuleBodyAlerting struc
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -35447,7 +35480,7 @@ type KibanaHTTPAPIsObservabilityRulesCustomThresholdCreateRuleBodyAlertingParams
 	} `json:"fieldAttrs,omitempty"`
 	FieldFormats *map[string]struct {
 		Id     *string     `json:"id,omitempty"`
-		Params interface{} `json:"params"`
+		Params interface{} `json:"params,omitempty"`
 	} `json:"fieldFormats,omitempty"`
 	Fields *map[string]struct {
 		Aggregatable      *bool     `json:"aggregatable,omitempty"`
@@ -35457,7 +35490,7 @@ type KibanaHTTPAPIsObservabilityRulesCustomThresholdCreateRuleBodyAlertingParams
 		EsTypes           *[]string `json:"esTypes,omitempty"`
 		Format            *struct {
 			Id     *string     `json:"id,omitempty"`
-			Params interface{} `json:"params"`
+			Params interface{} `json:"params,omitempty"`
 		} `json:"format,omitempty"`
 		Name              string                                                                                                                        `json:"name"`
 		ReadFromDocValues *bool                                                                                                                         `json:"readFromDocValues,omitempty"`
@@ -35498,7 +35531,7 @@ type KibanaHTTPAPIsObservabilityRulesCustomThresholdCreateRuleBodyAlertingParams
 	CustomLabel       *string `json:"customLabel,omitempty"`
 	Format            *struct {
 		Id     *string     `json:"id,omitempty"`
-		Params interface{} `json:"params"`
+		Params interface{} `json:"params,omitempty"`
 	} `json:"format,omitempty"`
 	Popularity *float32 `json:"popularity,omitempty"`
 	Script     *struct {
@@ -35517,7 +35550,7 @@ type KibanaHTTPAPIsObservabilityRulesCustomThresholdCreateRuleBodyAlertingParams
 		CustomLabel       *string `json:"customLabel,omitempty"`
 		Format            *struct {
 			Id     *string     `json:"id,omitempty"`
-			Params interface{} `json:"params"`
+			Params interface{} `json:"params,omitempty"`
 		} `json:"format,omitempty"`
 		Popularity *float32                                                                                                                          `json:"popularity,omitempty"`
 		Type       KibanaHTTPAPIsObservabilityRulesCustomThresholdCreateRuleBodyAlertingParamsSearchConfigurationIndex1FieldsRuntimeField1FieldsType `json:"type"`
@@ -35545,7 +35578,7 @@ type KibanaHTTPAPIsObservabilityRulesCustomThresholdCreateRuleBodyAlertingParams
 	CustomLabel       *string `json:"customLabel,omitempty"`
 	Format            *struct {
 		Id     *string     `json:"id,omitempty"`
-		Params interface{} `json:"params"`
+		Params interface{} `json:"params,omitempty"`
 	} `json:"format,omitempty"`
 	Popularity *float32 `json:"popularity,omitempty"`
 	Script     *struct {
@@ -35564,7 +35597,7 @@ type KibanaHTTPAPIsObservabilityRulesCustomThresholdCreateRuleBodyAlertingParams
 		CustomLabel       *string `json:"customLabel,omitempty"`
 		Format            *struct {
 			Id     *string     `json:"id,omitempty"`
-			Params interface{} `json:"params"`
+			Params interface{} `json:"params,omitempty"`
 		} `json:"format,omitempty"`
 		Popularity *float32                                                                                                                       `json:"popularity,omitempty"`
 		Type       KibanaHTTPAPIsObservabilityRulesCustomThresholdCreateRuleBodyAlertingParamsSearchConfigurationIndex1RuntimeFieldMap1FieldsType `json:"type"`
@@ -35620,8 +35653,8 @@ type KibanaHTTPAPIsObservabilityRulesCustomThresholdCreateRuleBodyAlerting_Param
 	NoDataBehavior      *KibanaHTTPAPIsObservabilityRulesCustomThresholdCreateRuleBodyAlertingParamsNoDataBehavior `json:"noDataBehavior,omitempty"`
 	SearchConfiguration struct {
 		Filter *[]struct {
-			Meta  map[string]interface{}  `json:"meta"`
-			Query *map[string]interface{} `json:"query,omitempty"`
+			Meta  map[string]*interface{}  `json:"meta"`
+			Query *map[string]*interface{} `json:"query,omitempty"`
 		} `json:"filter,omitempty"`
 		Index KibanaHTTPAPIsObservabilityRulesCustomThresholdCreateRuleBodyAlerting_Params_SearchConfiguration_Index `json:"index"`
 		Query struct {
@@ -36005,8 +36038,8 @@ type KibanaHTTPAPIsSloRulesBurnrateCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsSloRulesBurnrateCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -36049,7 +36082,7 @@ type KibanaHTTPAPIsSloRulesBurnrateCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -36163,8 +36196,8 @@ type KibanaHTTPAPIsTransformHealthCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsTransformHealthCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -36207,7 +36240,7 @@ type KibanaHTTPAPIsTransformHealthCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -36581,8 +36614,8 @@ type KibanaHTTPAPIsXpackMlAnomalyDetectionAlertCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsXpackMlAnomalyDetectionAlertCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -36625,7 +36658,7 @@ type KibanaHTTPAPIsXpackMlAnomalyDetectionAlertCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -36733,8 +36766,8 @@ type KibanaHTTPAPIsXpackMlAnomalyDetectionJobsHealthCreateRuleBodyAlerting struc
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsXpackMlAnomalyDetectionJobsHealthCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -36777,7 +36810,7 @@ type KibanaHTTPAPIsXpackMlAnomalyDetectionJobsHealthCreateRuleBodyAlerting struc
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -36900,8 +36933,8 @@ type KibanaHTTPAPIsXpackSyntheticsAlertsMonitorstatusCreateRuleBodyAlerting stru
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsXpackSyntheticsAlertsMonitorstatusCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -36944,7 +36977,7 @@ type KibanaHTTPAPIsXpackSyntheticsAlertsMonitorstatusCreateRuleBodyAlerting stru
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -37078,8 +37111,8 @@ type KibanaHTTPAPIsXpackSyntheticsAlertsTlsCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsXpackSyntheticsAlertsTlsCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -37122,7 +37155,7 @@ type KibanaHTTPAPIsXpackSyntheticsAlertsTlsCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -37226,8 +37259,8 @@ type KibanaHTTPAPIsXpackUptimeAlertsDurationanomalyCreateRuleBodyAlerting struct
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsXpackUptimeAlertsDurationanomalyCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -37270,7 +37303,7 @@ type KibanaHTTPAPIsXpackUptimeAlertsDurationanomalyCreateRuleBodyAlerting struct
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -37368,8 +37401,8 @@ type KibanaHTTPAPIsXpackUptimeAlertsMonitorstatusCreateRuleBodyAlerting struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsXpackUptimeAlertsMonitorstatusCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -37412,7 +37445,7 @@ type KibanaHTTPAPIsXpackUptimeAlertsMonitorstatusCreateRuleBodyAlerting struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -37543,8 +37576,8 @@ type KibanaHTTPAPIsXpackUptimeAlertsTlscertificateCreateRuleBodyAlerting struct 
 						// Store A filter can be either specific to an application context or applied globally.
 						Store KibanaHTTPAPIsXpackUptimeAlertsTlscertificateCreateRuleBodyAlertingActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -37587,7 +37620,7 @@ type KibanaHTTPAPIsXpackUptimeAlertsTlscertificateCreateRuleBodyAlerting struct 
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -38697,15 +38730,6 @@ type SavedObjects400ResponseError string
 
 // SavedObjects400ResponseStatusCode defines model for SavedObjects400Response.StatusCode.
 type SavedObjects400ResponseStatusCode int
-
-// SavedObjectsAttributes The data that you want to create. WARNING: Attributes may be validated depending on the saved object type. Supplying malformed data can cause errors or break Kibana. When creating or persisting raw saved objects outside of Kibana, preserve `coreMigrationVersion` and `typeMigrationVersion` (and related migration metadata) to retain forward compatibility across Kibana versions.
-type SavedObjectsAttributes = map[string]interface{}
-
-// SavedObjectsInitialNamespaces Identifiers for the spaces in which this object is created. If this is provided, the object is created only in the explicitly defined spaces. If this is not provided, the object is created in the current space (default behavior). For shareable object types (registered with `namespaceType: 'multiple'`), this option can be used to specify one or more spaces, including the "All spaces" identifier ('*'). For isolated object types (registered with `namespaceType: 'single'` or `namespaceType: 'multiple-isolated'`), this option can only be used to specify a single space, and the "All spaces" identifier ('*') is not allowed. For global object types (`registered with `namespaceType: agnostic`), this option cannot be used.
-type SavedObjectsInitialNamespaces = []interface{}
-
-// SavedObjectsReferences Objects with `name`, `id`, and `type` properties that describe the other saved objects that this object references. Use `name` in attributes to refer to the other saved object, but never the `id`, which can update automatically during migrations or import and export.
-type SavedObjectsReferences = []interface{}
 
 // SecurityAIAssistantAPIAnonymizationFieldCreateProps defines model for Security_AI_Assistant_API_AnonymizationFieldCreateProps.
 type SecurityAIAssistantAPIAnonymizationFieldCreateProps struct {
@@ -40495,7 +40519,7 @@ type SecurityAttackDiscoveryAPIAttackDiscoveryGenerationConfig struct {
 // SecurityAttackDiscoveryAPIAttackDiscoveryGenerationConfigSubAction defines model for SecurityAttackDiscoveryAPIAttackDiscoveryGenerationConfig.SubAction.
 type SecurityAttackDiscoveryAPIAttackDiscoveryGenerationConfigSubAction string
 
-// SecurityAttackDiscoveryAPIAttackDiscoveryGenericError Generic error response for Attack Discovery schedule operations
+// SecurityAttackDiscoveryAPIAttackDiscoveryGenericError Error response for Attack discovery schedule operations when the request is rejected. Uses `status_code` (snake_case), `error`, and `message` to match the implementation.
 type SecurityAttackDiscoveryAPIAttackDiscoveryGenericError struct {
 	// Error Error type
 	Error *string `json:"error,omitempty"`
@@ -57615,7 +57639,7 @@ type AgentPolicy struct {
 	Namespace              string  `json:"namespace"`
 
 	// Overrides Override settings that are defined in the agent policy. Input settings cannot be overridden. The override option should be used only in unusual circumstances and not as a routine procedure.
-	Overrides                     *map[string]interface{} `json:"overrides,omitempty"`
+	Overrides                     *map[string]*interface{} `json:"overrides,omitempty"`
 	PackageAgentVersionConditions *[]struct {
 		Name             string `json:"name"`
 		Title            string `json:"title"`
@@ -57687,7 +57711,7 @@ type AgentPolicyPackagePolicies1 = []struct {
 
 	// Overrides Override settings that are defined in the package policy. The override option should be used only in unusual circumstances and not as a routine procedure.
 	Overrides *struct {
-		Inputs *map[string]interface{} `json:"inputs,omitempty"`
+		Inputs *map[string]*interface{} `json:"inputs,omitempty"`
 	} `json:"overrides,omitempty"`
 	Package *struct {
 		ExperimentalDataStreamFeatures *[]struct {
@@ -57755,13 +57779,13 @@ type AgentPolicy_PackagePolicies_1_Elasticsearch struct {
 
 // AgentPolicyPackagePolicies1Inputs0 defines model for .
 type AgentPolicyPackagePolicies1Inputs0 = []struct {
-	CompiledInput interface{} `json:"compiled_input"`
+	CompiledInput interface{} `json:"compiled_input,omitempty"`
 
 	// Config Package variable (see integration documentation for more information)
 	Config *map[string]struct {
 		Frozen *bool       `json:"frozen,omitempty"`
 		Type   *string     `json:"type,omitempty"`
-		Value  interface{} `json:"value"`
+		Value  interface{} `json:"value,omitempty"`
 	} `json:"config,omitempty"`
 	Deprecated *struct {
 		Description string             `json:"description"`
@@ -57775,13 +57799,13 @@ type AgentPolicyPackagePolicies1Inputs0 = []struct {
 	Name           *string `json:"name,omitempty"`
 	PolicyTemplate *string `json:"policy_template,omitempty"`
 	Streams        []struct {
-		CompiledStream interface{} `json:"compiled_stream"`
+		CompiledStream interface{} `json:"compiled_stream,omitempty"`
 
 		// Config Package variable (see integration documentation for more information)
 		Config *map[string]struct {
 			Frozen *bool       `json:"frozen,omitempty"`
 			Type   *string     `json:"type,omitempty"`
-			Value  interface{} `json:"value"`
+			Value  interface{} `json:"value,omitempty"`
 		} `json:"config,omitempty"`
 		DataStream struct {
 			Dataset       string `json:"dataset"`
@@ -57812,7 +57836,7 @@ type AgentPolicyPackagePolicies1Inputs0 = []struct {
 		Vars *map[string]struct {
 			Frozen *bool       `json:"frozen,omitempty"`
 			Type   *string     `json:"type,omitempty"`
-			Value  interface{} `json:"value"`
+			Value  interface{} `json:"value,omitempty"`
 		} `json:"vars,omitempty"`
 	} `json:"streams"`
 	Type string `json:"type"`
@@ -57824,7 +57848,7 @@ type AgentPolicyPackagePolicies1Inputs0 = []struct {
 	Vars *map[string]struct {
 		Frozen *bool       `json:"frozen,omitempty"`
 		Type   *string     `json:"type,omitempty"`
-		Value  interface{} `json:"value"`
+		Value  interface{} `json:"value,omitempty"`
 	} `json:"vars,omitempty"`
 }
 
@@ -57925,7 +57949,7 @@ type AgentPolicy_PackagePolicies_1_Inputs struct {
 type AgentPolicyPackagePolicies1Vars0 map[string]struct {
 	Frozen *bool       `json:"frozen,omitempty"`
 	Type   *string     `json:"type,omitempty"`
-	Value  interface{} `json:"value"`
+	Value  interface{} `json:"value,omitempty"`
 }
 
 // AgentPolicyPackagePolicies1Vars1 Input/stream level variable. Refer to the integration documentation for more information.
@@ -58254,7 +58278,7 @@ type ColorCodeType string
 type ConnectorResponse struct {
 	// AuthMode The authentication mode used for the connector.
 	AuthMode *ConnectorResponseAuthMode `json:"auth_mode,omitempty"`
-	Config   *map[string]interface{}    `json:"config,omitempty"`
+	Config   *map[string]*interface{}   `json:"config,omitempty"`
 
 	// ConnectorTypeId The connector type identifier.
 	ConnectorTypeId string `json:"connector_type_id"`
@@ -62752,15 +62776,15 @@ type PackageInfo struct {
 		AssetTypes *[]string `json:"asset_types,omitempty"`
 		Text       string    `json:"text"`
 	} `json:"asset_tags,omitempty"`
-	Assets               map[string]interface{}        `json:"assets"`
+	Assets               map[string]*interface{}       `json:"assets"`
 	Categories           *[]string                     `json:"categories,omitempty"`
 	Conditions           *PackageInfo_Conditions       `json:"conditions,omitempty"`
-	DataStreams          *[]map[string]interface{}     `json:"data_streams,omitempty"`
+	DataStreams          *[]map[string]*interface{}    `json:"data_streams,omitempty"`
 	Deprecated           *PackageInfo_Deprecated       `json:"deprecated,omitempty"`
 	Description          *string                       `json:"description,omitempty"`
 	Discovery            *PackageInfo_Discovery        `json:"discovery,omitempty"`
 	Download             *string                       `json:"download,omitempty"`
-	Elasticsearch        *map[string]interface{}       `json:"elasticsearch,omitempty"`
+	Elasticsearch        *map[string]*interface{}      `json:"elasticsearch,omitempty"`
 	FormatVersion        *string                       `json:"format_version,omitempty"`
 	Icons                *[]PackageInfo_Icons_Item     `json:"icons,omitempty"`
 	InstallationInfo     *PackageInfo_InstallationInfo `json:"installationInfo,omitempty"`
@@ -62773,7 +62797,7 @@ type PackageInfo struct {
 	Notice               *string                       `json:"notice,omitempty"`
 	Owner                *PackageInfo_Owner            `json:"owner,omitempty"`
 	Path                 *string                       `json:"path,omitempty"`
-	PolicyTemplates      *[]map[string]interface{}     `json:"policy_templates,omitempty"`
+	PolicyTemplates      *[]map[string]*interface{}    `json:"policy_templates,omitempty"`
 	Readme               *string                       `json:"readme,omitempty"`
 	Release              *PackageInfoRelease           `json:"release,omitempty"`
 	Screenshots          *[]struct {
@@ -62790,7 +62814,7 @@ type PackageInfo struct {
 	Title                string                        `json:"title"`
 	Type                 *PackageInfo_Type             `json:"type,omitempty"`
 	VarGroups            *[]PackageInfo_VarGroups_Item `json:"var_groups,omitempty"`
-	Vars                 *[]map[string]interface{}     `json:"vars,omitempty"`
+	Vars                 *[]map[string]*interface{}    `json:"vars,omitempty"`
 	Version              string                        `json:"version"`
 	AdditionalProperties map[string]interface{}        `json:"-"`
 }
@@ -63052,7 +63076,7 @@ type PackageInfo_VarGroups_Item struct {
 type PackageListItem struct {
 	Categories           *[]string                         `json:"categories,omitempty"`
 	Conditions           *PackageListItem_Conditions       `json:"conditions,omitempty"`
-	DataStreams          *[]map[string]interface{}         `json:"data_streams,omitempty"`
+	DataStreams          *[]map[string]*interface{}        `json:"data_streams,omitempty"`
 	Deprecated           *PackageListItem_Deprecated       `json:"deprecated,omitempty"`
 	Description          *string                           `json:"description,omitempty"`
 	Discovery            *PackageListItem_Discovery        `json:"discovery,omitempty"`
@@ -63067,7 +63091,7 @@ type PackageListItem struct {
 	Name                 string                            `json:"name"`
 	Owner                *PackageListItem_Owner            `json:"owner,omitempty"`
 	Path                 *string                           `json:"path,omitempty"`
-	PolicyTemplates      *[]map[string]interface{}         `json:"policy_templates,omitempty"`
+	PolicyTemplates      *[]map[string]*interface{}        `json:"policy_templates,omitempty"`
 	Readme               *string                           `json:"readme,omitempty"`
 	Release              *PackageListItemRelease           `json:"release,omitempty"`
 	SignaturePath        *string                           `json:"signature_path,omitempty"`
@@ -63076,7 +63100,7 @@ type PackageListItem struct {
 	Title                string                            `json:"title"`
 	Type                 *PackageListItem_Type             `json:"type,omitempty"`
 	VarGroups            *[]PackageListItem_VarGroups_Item `json:"var_groups,omitempty"`
-	Vars                 *[]map[string]interface{}         `json:"vars,omitempty"`
+	Vars                 *[]map[string]*interface{}        `json:"vars,omitempty"`
 	Version              string                            `json:"version"`
 	AdditionalProperties map[string]interface{}            `json:"-"`
 }
@@ -63369,7 +63393,7 @@ type PackagePolicy struct {
 
 	// Overrides Override settings that are defined in the package policy. The override option should be used only in unusual circumstances and not as a routine procedure.
 	Overrides *struct {
-		Inputs *map[string]interface{} `json:"inputs,omitempty"`
+		Inputs *map[string]*interface{} `json:"inputs,omitempty"`
 	} `json:"overrides,omitempty"`
 	Package *struct {
 		ExperimentalDataStreamFeatures *[]struct {
@@ -63595,7 +63619,7 @@ type PackagePolicyRequestTypedInput struct {
 
 // PackagePolicyRequestTypedInputStream defines model for package_policy_request_typed_input_stream.
 type PackagePolicyRequestTypedInputStream struct {
-	CompiledStream interface{}             `json:"compiled_stream"`
+	CompiledStream interface{}             `json:"compiled_stream,omitempty"`
 	Config         *map[string]interface{} `json:"config,omitempty"`
 	DataStream     struct {
 		Dataset       string `json:"dataset"`
@@ -63652,7 +63676,7 @@ type PackagePolicyRequestTypedInputs struct {
 
 	// Overrides Override settings that are defined in the package policy. The override option should be used only in unusual circumstances and not as a routine procedure.
 	Overrides *struct {
-		Inputs *map[string]interface{} `json:"inputs,omitempty"`
+		Inputs *map[string]*interface{} `json:"inputs,omitempty"`
 	} `json:"overrides,omitempty"`
 	Package                      *PackagePolicyRequestPackage `json:"package,omitempty"`
 	PackageAgentVersionCondition *string                      `json:"package_agent_version_condition,omitempty"`
@@ -63682,13 +63706,13 @@ type PackagePolicySecretRef struct {
 
 // PackagePolicyTypedInput defines model for package_policy_typed_input.
 type PackagePolicyTypedInput struct {
-	CompiledInput interface{} `json:"compiled_input"`
+	CompiledInput interface{} `json:"compiled_input,omitempty"`
 
 	// Config Package variable (see integration documentation for more information)
 	Config *map[string]struct {
 		Frozen *bool       `json:"frozen,omitempty"`
 		Type   *string     `json:"type,omitempty"`
-		Value  interface{} `json:"value"`
+		Value  interface{} `json:"value,omitempty"`
 	} `json:"config,omitempty"`
 	Deprecated *struct {
 		Description string             `json:"description"`
@@ -63711,13 +63735,13 @@ type PackagePolicyTypedInput struct {
 
 // PackagePolicyTypedInputStream defines model for package_policy_typed_input_stream.
 type PackagePolicyTypedInputStream struct {
-	CompiledStream interface{} `json:"compiled_stream"`
+	CompiledStream interface{} `json:"compiled_stream,omitempty"`
 
 	// Config Package variable (see integration documentation for more information)
 	Config *map[string]struct {
 		Frozen *bool       `json:"frozen,omitempty"`
 		Type   *string     `json:"type,omitempty"`
-		Value  interface{} `json:"value"`
+		Value  interface{} `json:"value,omitempty"`
 	} `json:"config,omitempty"`
 	DataStream struct {
 		Dataset       string `json:"dataset"`
@@ -67873,12 +67897,6 @@ type SLOsSloId = string
 // SLOsSpaceId defines model for SLOs_space_id.
 type SLOsSpaceId = string
 
-// SavedObjectsSavedObjectId defines model for Saved_objects_saved_object_id.
-type SavedObjectsSavedObjectId = string
-
-// SavedObjectsSavedObjectType defines model for Saved_objects_saved_object_type.
-type SavedObjectsSavedObjectType = string
-
 // ShortURLAPIsIdParam defines model for Short_URL_APIs_idParam.
 type ShortURLAPIsIdParam = string
 
@@ -67979,7 +67997,7 @@ type PostAgentBuilderAgentsAgentIdConsumptionJSONBody struct {
 	Search *string `json:"search,omitempty"`
 
 	// SearchAfter Cursor for pagination. Pass the search_after value from the previous response.
-	SearchAfter *[]interface{} `json:"search_after,omitempty"`
+	SearchAfter *[]*interface{} `json:"search_after,omitempty"`
 
 	// Size Number of results per page.
 	Size *float32 `json:"size,omitempty"`
@@ -68058,7 +68076,8 @@ type GetAgentBuilderConversationsConversationIdAttachmentsParams struct {
 
 // PostAgentBuilderConversationsConversationIdAttachmentsJSONBody defines parameters for PostAgentBuilderConversationsConversationIdAttachments.
 type PostAgentBuilderConversationsConversationIdAttachmentsJSONBody struct {
-	Data interface{} `json:"data"`
+	// Data The attachment data/content. Required unless origin is provided.
+	Data interface{} `json:"data,omitempty"`
 
 	// Description Human-readable description of the attachment.
 	Description *string `json:"description,omitempty"`
@@ -68090,7 +68109,8 @@ type PatchAgentBuilderConversationsConversationIdAttachmentsAttachmentIdJSONBody
 
 // PutAgentBuilderConversationsConversationIdAttachmentsAttachmentIdJSONBody defines parameters for PutAgentBuilderConversationsConversationIdAttachmentsAttachmentId.
 type PutAgentBuilderConversationsConversationIdAttachmentsAttachmentIdJSONBody struct {
-	Data interface{} `json:"data"`
+	// Data The new attachment data/content.
+	Data interface{} `json:"data,omitempty"`
 
 	// Description Optional new description for the attachment.
 	Description *string `json:"description,omitempty"`
@@ -68116,7 +68136,7 @@ type PostAgentBuilderConverseJSONBody struct {
 	// Attachments **Technical Preview; added in 9.3.0.** Optional attachments to send with the message.
 	Attachments *[]struct {
 		// Data Payload of the attachment. Required unless `origin` is provided (content is resolved once at send time).
-		Data *map[string]interface{} `json:"data,omitempty"`
+		Data *map[string]*interface{} `json:"data,omitempty"`
 
 		// Hidden When true, the attachment will not be displayed in the UI.
 		Hidden *bool `json:"hidden,omitempty"`
@@ -68137,8 +68157,10 @@ type PostAgentBuilderConverseJSONBody struct {
 		Description string `json:"description"`
 
 		// Id Unique identifier for the browser API tool.
-		Id     string      `json:"id"`
-		Schema interface{} `json:"schema"`
+		Id string `json:"id"`
+
+		// Schema JSON Schema defining the tool parameters (JsonSchema7Type).
+		Schema interface{} `json:"schema,omitempty"`
 	} `json:"browser_api_tools,omitempty"`
 
 	// Capabilities Controls agent capabilities during conversation. Currently supports visualization rendering for tabular tool results.
@@ -68196,7 +68218,7 @@ type PostAgentBuilderConverseAsyncJSONBody struct {
 	// Attachments **Technical Preview; added in 9.3.0.** Optional attachments to send with the message.
 	Attachments *[]struct {
 		// Data Payload of the attachment. Required unless `origin` is provided (content is resolved once at send time).
-		Data *map[string]interface{} `json:"data,omitempty"`
+		Data *map[string]*interface{} `json:"data,omitempty"`
 
 		// Hidden When true, the attachment will not be displayed in the UI.
 		Hidden *bool `json:"hidden,omitempty"`
@@ -68217,8 +68239,10 @@ type PostAgentBuilderConverseAsyncJSONBody struct {
 		Description string `json:"description"`
 
 		// Id Unique identifier for the browser API tool.
-		Id     string      `json:"id"`
-		Schema interface{} `json:"schema"`
+		Id string `json:"id"`
+
+		// Schema JSON Schema defining the tool parameters (JsonSchema7Type).
+		Schema interface{} `json:"schema,omitempty"`
 	} `json:"browser_api_tools,omitempty"`
 
 	// Capabilities Controls agent capabilities during conversation. Currently supports visualization rendering for tabular tool results.
@@ -68354,7 +68378,7 @@ type PutAgentBuilderSkillsSkillidJSONBody struct {
 // PostAgentBuilderToolsJSONBody defines parameters for PostAgentBuilderTools.
 type PostAgentBuilderToolsJSONBody struct {
 	// Configuration Tool-specific configuration parameters. See examples for details.
-	Configuration map[string]interface{} `json:"configuration"`
+	Configuration map[string]*interface{} `json:"configuration"`
 
 	// Description Description of what the tool does.
 	Description *string `json:"description,omitempty"`
@@ -68381,7 +68405,7 @@ type PostAgentBuilderToolsExecuteJSONBody struct {
 	ToolId string `json:"tool_id"`
 
 	// ToolParams Parameters to pass to the tool execution. See examples for details
-	ToolParams map[string]interface{} `json:"tool_params"`
+	ToolParams map[string]*interface{} `json:"tool_params"`
 }
 
 // DeleteAgentBuilderToolsToolidParams defines parameters for DeleteAgentBuilderToolsToolid.
@@ -68393,7 +68417,7 @@ type DeleteAgentBuilderToolsToolidParams struct {
 // PutAgentBuilderToolsToolidJSONBody defines parameters for PutAgentBuilderToolsToolid.
 type PutAgentBuilderToolsToolidJSONBody struct {
 	// Configuration Updated tool-specific configuration parameters. See examples for details.
-	Configuration *map[string]interface{} `json:"configuration,omitempty"`
+	Configuration *map[string]*interface{} `json:"configuration,omitempty"`
 
 	// Description Updated description of what the tool does.
 	Description *string `json:"description,omitempty"`
@@ -68416,8 +68440,8 @@ type PutAlertingRuleIdJSONBody struct {
 						// Store A filter can be either specific to an application context or applied globally.
 						Store PutAlertingRuleIdJSONBodyActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 					} `json:"$state,omitempty"`
-					Meta  map[string]interface{}  `json:"meta"`
-					Query *map[string]interface{} `json:"query,omitempty"`
+					Meta  map[string]*interface{}  `json:"meta"`
+					Query *map[string]*interface{} `json:"query,omitempty"`
 				} `json:"filters"`
 
 				// Kql A filter written in Kibana Query Language (KQL).
@@ -68460,7 +68484,7 @@ type PutAlertingRuleIdJSONBody struct {
 		Id string `json:"id"`
 
 		// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-		Params *map[string]interface{} `json:"params,omitempty"`
+		Params *map[string]*interface{} `json:"params,omitempty"`
 
 		// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 		UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -68502,7 +68526,7 @@ type PutAlertingRuleIdJSONBody struct {
 	NotifyWhen *PutAlertingRuleIdJSONBodyNotifyWhen `json:"notify_when,omitempty"`
 
 	// Params The parameters for the rule.
-	Params   *map[string]interface{} `json:"params,omitempty"`
+	Params   *map[string]*interface{} `json:"params,omitempty"`
 	Schedule struct {
 		// Interval The interval is specified in seconds, minutes, hours, or days.
 		Interval string `json:"interval"`
@@ -71474,7 +71498,7 @@ type PostFleetAgentPoliciesJSONBody struct {
 	Namespace              string  `json:"namespace"`
 
 	// Overrides Override settings that are defined in the agent policy. Input settings cannot be overridden. The override option should be used only in unusual circumstances and not as a routine procedure.
-	Overrides        *map[string]interface{} `json:"overrides,omitempty"`
+	Overrides        *map[string]*interface{} `json:"overrides,omitempty"`
 	RequiredVersions *[]struct {
 		// Percentage Target percentage of agents to auto upgrade
 		Percentage float32 `json:"percentage"`
@@ -71622,7 +71646,7 @@ type PutFleetAgentPoliciesAgentpolicyidJSONBody struct {
 	Namespace              string  `json:"namespace"`
 
 	// Overrides Override settings that are defined in the agent policy. Input settings cannot be overridden. The override option should be used only in unusual circumstances and not as a routine procedure.
-	Overrides        *map[string]interface{} `json:"overrides,omitempty"`
+	Overrides        *map[string]*interface{} `json:"overrides,omitempty"`
 	RequiredVersions *[]struct {
 		// Percentage Target percentage of agents to auto upgrade
 		Percentage float32 `json:"percentage"`
@@ -72137,8 +72161,8 @@ type GetFleetAgentsAgentidParams struct {
 
 // PutFleetAgentsAgentidJSONBody defines parameters for PutFleetAgentsAgentid.
 type PutFleetAgentsAgentidJSONBody struct {
-	Tags                 *[]string               `json:"tags,omitempty"`
-	UserProvidedMetadata *map[string]interface{} `json:"user_provided_metadata,omitempty"`
+	Tags                 *[]string                `json:"tags,omitempty"`
+	UserProvidedMetadata *map[string]*interface{} `json:"user_provided_metadata,omitempty"`
 }
 
 // PostFleetAgentsAgentidActionsJSONBody defines parameters for PostFleetAgentsAgentidActions.
@@ -72148,8 +72172,8 @@ type PostFleetAgentsAgentidActionsJSONBody struct {
 
 // PostFleetAgentsAgentidActionsJSONBodyAction0 defines parameters for PostFleetAgentsAgentidActions.
 type PostFleetAgentsAgentidActionsJSONBodyAction0 struct {
-	AckData interface{}                                      `json:"ack_data"`
-	Data    interface{}                                      `json:"data"`
+	AckData interface{}                                      `json:"ack_data,omitempty"`
+	Data    interface{}                                      `json:"data,omitempty"`
 	Type    PostFleetAgentsAgentidActionsJSONBodyAction0Type `json:"type"`
 }
 
@@ -73347,7 +73371,10 @@ type ConfigureRiskEngineSavedObjectJSONBody struct {
 		// Filter KQL filter string
 		Filter string `json:"filter"`
 	} `json:"filters,omitempty"`
-	Range *struct {
+
+	// PageSize Number of entities to score per page. Higher values reduce total scoring time by reducing the number of alert-index scans, but cannot exceed the ES|QL result limit (10,000 by default).
+	PageSize *int `json:"page_size,omitempty"`
+	Range    *struct {
 		End   *string `json:"end,omitempty"`
 		Start *string `json:"start,omitempty"`
 	} `json:"range,omitempty"`
@@ -73359,38 +73386,68 @@ type ConfigureRiskEngineSavedObjectJSONBodyFiltersEntityTypes string
 // ScheduleRiskEngineNowJSONBody defines parameters for ScheduleRiskEngineNow.
 type ScheduleRiskEngineNowJSONBody interface{}
 
-// BulkCreateSavedObjectsJSONBody defines parameters for BulkCreateSavedObjects.
-type BulkCreateSavedObjectsJSONBody = []struct {
-	// CoreMigrationVersion The Kibana version that last migrated this document. When creating saved objects outside of Kibana, preserve this field to retain forward compatibility.
-	CoreMigrationVersion *string `json:"coreMigrationVersion,omitempty"`
-
-	// TypeMigrationVersion The type version that last migrated this document. When creating saved objects outside of Kibana, preserve this field to retain forward compatibility.
+// PostSavedObjectsBulkCreateJSONBody defines parameters for PostSavedObjectsBulkCreate.
+type PostSavedObjectsBulkCreateJSONBody = []struct {
+	Attributes           map[string]*interface{} `json:"attributes"`
+	CoreMigrationVersion *string                 `json:"coreMigrationVersion,omitempty"`
+	Id                   *string                 `json:"id,omitempty"`
+	InitialNamespaces    *[]string               `json:"initialNamespaces,omitempty"`
+	MigrationVersion     *map[string]string      `json:"migrationVersion,omitempty"`
+	References           *[]struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+		Type string `json:"type"`
+	} `json:"references,omitempty"`
+	Type                 string  `json:"type"`
 	TypeMigrationVersion *string `json:"typeMigrationVersion,omitempty"`
+	Version              *string `json:"version,omitempty"`
 }
 
-// BulkCreateSavedObjectsParams defines parameters for BulkCreateSavedObjects.
-type BulkCreateSavedObjectsParams struct {
-	// Overwrite When true, overwrites the document with the same identifier.
+// PostSavedObjectsBulkCreateParams defines parameters for PostSavedObjectsBulkCreate.
+type PostSavedObjectsBulkCreateParams struct {
+	// Overwrite Overwrite existing saved objects that match the same type and ID.
 	Overwrite *bool `form:"overwrite,omitempty" json:"overwrite,omitempty"`
 }
 
-// BulkDeleteSavedObjectsJSONBody defines parameters for BulkDeleteSavedObjects.
-type BulkDeleteSavedObjectsJSONBody = []map[string]interface{}
+// PostSavedObjectsBulkDeleteJSONBody defines parameters for PostSavedObjectsBulkDelete.
+type PostSavedObjectsBulkDeleteJSONBody = []struct {
+	Id   string `json:"id"`
+	Type string `json:"type"`
+}
 
-// BulkDeleteSavedObjectsParams defines parameters for BulkDeleteSavedObjects.
-type BulkDeleteSavedObjectsParams struct {
-	// Force When true, force delete objects that exist in multiple namespaces. Note that the option applies to the whole request. Use the delete object API to specify per-object deletion behavior. TIP: Use this if you attempted to delete objects and received an HTTP 400 error with the following message: "Unable to delete saved object that exists in multiple namespaces, use the force option to delete it anyway". WARNING: When you bulk delete objects that exist in multiple namespaces, the API also deletes legacy url aliases that reference the object. These requests are batched to minimise the impact but they can place a heavy load on Kibana. Make sure you limit the number of objects that exist in multiple namespaces in a single bulk delete operation.
+// PostSavedObjectsBulkDeleteParams defines parameters for PostSavedObjectsBulkDelete.
+type PostSavedObjectsBulkDeleteParams struct {
+	// Force When true, force deletion of multi-namespace objects from all namespaces.
 	Force *bool `form:"force,omitempty" json:"force,omitempty"`
 }
 
-// BulkGetSavedObjectsJSONBody defines parameters for BulkGetSavedObjects.
-type BulkGetSavedObjectsJSONBody = []map[string]interface{}
+// PostSavedObjectsBulkGetJSONBody defines parameters for PostSavedObjectsBulkGet.
+type PostSavedObjectsBulkGetJSONBody = []struct {
+	Fields     *[]string `json:"fields,omitempty"`
+	Id         string    `json:"id"`
+	Namespaces *[]string `json:"namespaces,omitempty"`
+	Type       string    `json:"type"`
+}
 
-// BulkResolveSavedObjectsJSONBody defines parameters for BulkResolveSavedObjects.
-type BulkResolveSavedObjectsJSONBody = []map[string]interface{}
+// PostSavedObjectsBulkResolveJSONBody defines parameters for PostSavedObjectsBulkResolve.
+type PostSavedObjectsBulkResolveJSONBody = []struct {
+	Id   string `json:"id"`
+	Type string `json:"type"`
+}
 
-// BulkUpdateSavedObjectsJSONBody defines parameters for BulkUpdateSavedObjects.
-type BulkUpdateSavedObjectsJSONBody = []map[string]interface{}
+// PutSavedObjectsBulkUpdateJSONBody defines parameters for PutSavedObjectsBulkUpdate.
+type PutSavedObjectsBulkUpdateJSONBody = []struct {
+	Attributes map[string]*interface{} `json:"attributes"`
+	Id         string                  `json:"id"`
+	Namespace  *string                 `json:"namespace,omitempty"`
+	References *[]struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+		Type string `json:"type"`
+	} `json:"references,omitempty"`
+	Type    string  `json:"type"`
+	Version *string `json:"version,omitempty"`
+}
 
 // PostSavedObjectsExportJSONBody defines parameters for PostSavedObjectsExport.
 type PostSavedObjectsExportJSONBody struct {
@@ -73442,74 +73499,90 @@ type PostSavedObjectsExportJSONBody_Type struct {
 	union json.RawMessage
 }
 
-// FindSavedObjectsParams defines parameters for FindSavedObjects.
-type FindSavedObjectsParams struct {
-	// Aggs An aggregation structure, serialized as a string. The field format is similar to filter, meaning that to use a saved object type attribute in the aggregation, the `savedObjectType.attributes.title: "myTitle"` format must be used. For root fields, the syntax is `savedObjectType.rootField`. NOTE: As objects change in Kibana, the results on each page of the response also change. Use the find API for traditional paginated results, but avoid using it to export large amounts of data.
-	Aggs *string `form:"aggs,omitempty" json:"aggs,omitempty"`
+// GetSavedObjectsFindParams defines parameters for GetSavedObjectsFind.
+type GetSavedObjectsFindParams struct {
+	// PerPage The number of items per page.
+	PerPage *float32 `form:"per_page,omitempty" json:"per_page,omitempty"`
 
-	// DefaultSearchOperator The default operator to use for the `simple_query_string`.
-	DefaultSearchOperator *string `form:"default_search_operator,omitempty" json:"default_search_operator,omitempty"`
+	// Page The page index to return.
+	Page *float32 `form:"page,omitempty" json:"page,omitempty"`
 
-	// Fields The fields to return in the attributes key of the response.
-	Fields *struct {
-		union json.RawMessage
-	} `form:"fields,omitempty" json:"fields,omitempty"`
+	// Type The saved object type or types to search for. Use multiple `type` values to search across types.
+	Type []string `form:"type" json:"type"`
 
-	// Filter The filter is a KQL string with the caveat that if you filter with an attribute from your saved object type, it should look like that: `savedObjectType.attributes.title: "myTitle"`. However, if you use a root attribute of a saved object such as `updated_at`, you will have to define your filter like that: `savedObjectType.updated_at > 2018-12-22`.
-	Filter *string `form:"filter,omitempty" json:"filter,omitempty"`
-
-	// HasNoReference Filters to objects that do not have a relationship with the type and identifier combination.
-	HasNoReference *map[string]interface{} `form:"has_no_reference,omitempty" json:"has_no_reference,omitempty"`
-
-	// HasNoReferenceOperator The operator to use for the `has_no_reference` parameter. Either `OR` or `AND`. Defaults to `OR`.
-	HasNoReferenceOperator *string `form:"has_no_reference_operator,omitempty" json:"has_no_reference_operator,omitempty"`
-
-	// HasReference Filters to objects that have a relationship with the type and ID combination.
-	HasReference *map[string]interface{} `form:"has_reference,omitempty" json:"has_reference,omitempty"`
-
-	// HasReferenceOperator The operator to use for the `has_reference` parameter. Either `OR` or `AND`. Defaults to `OR`.
-	HasReferenceOperator *string `form:"has_reference_operator,omitempty" json:"has_reference_operator,omitempty"`
-
-	// Page The page of objects to return.
-	Page *int `form:"page,omitempty" json:"page,omitempty"`
-
-	// PerPage The number of objects to return per page.
-	PerPage *int `form:"per_page,omitempty" json:"per_page,omitempty"`
-
-	// Search An Elasticsearch `simple_query_string` query that filters the objects in the response.
+	// Search A text search string.
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
 
-	// SearchFields The fields to perform the `simple_query_string` parsed query against.
-	SearchFields *struct {
-		union json.RawMessage
-	} `form:"search_fields,omitempty" json:"search_fields,omitempty"`
+	// DefaultSearchOperator The boolean operator to use when combining multiple values.
+	DefaultSearchOperator *GetSavedObjectsFindParamsDefaultSearchOperator `form:"default_search_operator,omitempty" json:"default_search_operator,omitempty"`
 
-	// SortField Sorts the response. Includes "root" and "type" fields. "root" fields exist for all saved objects, such as "updated_at". "type" fields are specific to an object type, such as fields returned in the attributes key of the response. When a single type is defined in the type parameter, the "root" and "type" fields are allowed, and validity checks are made in that order. When multiple types are defined in the type parameter, only "root" fields are allowed.
+	// SearchFields The fields to search on.
+	SearchFields *[]string `form:"search_fields,omitempty" json:"search_fields,omitempty"`
+
+	// SortField The field to sort on.
 	SortField *string `form:"sort_field,omitempty" json:"sort_field,omitempty"`
 
-	// Type The saved object types to include.
-	Type struct {
+	// HasReference Return only saved objects that have a reference to the specified saved object(s).
+	HasReference *struct {
 		union json.RawMessage
-	} `form:"type" json:"type"`
+	} `form:"has_reference,omitempty" json:"has_reference,omitempty"`
+
+	// HasReferenceOperator The boolean operator to use when combining multiple values.
+	HasReferenceOperator *GetSavedObjectsFindParamsHasReferenceOperator `form:"has_reference_operator,omitempty" json:"has_reference_operator,omitempty"`
+
+	// HasNoReference Return only saved objects that do not have a reference to the specified saved object(s).
+	HasNoReference *struct {
+		union json.RawMessage
+	} `form:"has_no_reference,omitempty" json:"has_no_reference,omitempty"`
+
+	// HasNoReferenceOperator The boolean operator to use when combining multiple values.
+	HasNoReferenceOperator *GetSavedObjectsFindParamsHasNoReferenceOperator `form:"has_no_reference_operator,omitempty" json:"has_no_reference_operator,omitempty"`
+
+	// Fields The fields to return for each saved object.
+	Fields *[]string `form:"fields,omitempty" json:"fields,omitempty"`
+
+	// Filter A KQL filter to apply to the search.
+	Filter *string `form:"filter,omitempty" json:"filter,omitempty"`
+
+	// Aggs Aggregations as a JSON string.
+	Aggs *string `form:"aggs,omitempty" json:"aggs,omitempty"`
+
+	// Namespaces The namespaces (spaces) to search in.
+	Namespaces *[]string `form:"namespaces,omitempty" json:"namespaces,omitempty"`
 }
 
-// FindSavedObjectsParamsFields0 defines parameters for FindSavedObjects.
-type FindSavedObjectsParamsFields0 = string
+// GetSavedObjectsFindParamsDefaultSearchOperator defines parameters for GetSavedObjectsFind.
+type GetSavedObjectsFindParamsDefaultSearchOperator string
 
-// FindSavedObjectsParamsFields1 defines parameters for FindSavedObjects.
-type FindSavedObjectsParamsFields1 = []interface{}
+// GetSavedObjectsFindParamsHasReference0 defines parameters for GetSavedObjectsFind.
+type GetSavedObjectsFindParamsHasReference0 struct {
+	Id   string `json:"id"`
+	Type string `json:"type"`
+}
 
-// FindSavedObjectsParamsSearchFields0 defines parameters for FindSavedObjects.
-type FindSavedObjectsParamsSearchFields0 = string
+// GetSavedObjectsFindParamsHasReference1 defines parameters for GetSavedObjectsFind.
+type GetSavedObjectsFindParamsHasReference1 = []struct {
+	Id   string `json:"id"`
+	Type string `json:"type"`
+}
 
-// FindSavedObjectsParamsSearchFields1 defines parameters for FindSavedObjects.
-type FindSavedObjectsParamsSearchFields1 = []interface{}
+// GetSavedObjectsFindParamsHasReferenceOperator defines parameters for GetSavedObjectsFind.
+type GetSavedObjectsFindParamsHasReferenceOperator string
 
-// FindSavedObjectsParamsType0 defines parameters for FindSavedObjects.
-type FindSavedObjectsParamsType0 = string
+// GetSavedObjectsFindParamsHasNoReference0 defines parameters for GetSavedObjectsFind.
+type GetSavedObjectsFindParamsHasNoReference0 struct {
+	Id   string `json:"id"`
+	Type string `json:"type"`
+}
 
-// FindSavedObjectsParamsType1 defines parameters for FindSavedObjects.
-type FindSavedObjectsParamsType1 = []interface{}
+// GetSavedObjectsFindParamsHasNoReference1 defines parameters for GetSavedObjectsFind.
+type GetSavedObjectsFindParamsHasNoReference1 = []struct {
+	Id   string `json:"id"`
+	Type string `json:"type"`
+}
+
+// GetSavedObjectsFindParamsHasNoReferenceOperator defines parameters for GetSavedObjectsFind.
+type GetSavedObjectsFindParamsHasNoReferenceOperator string
 
 // PostSavedObjectsImportMultipartBody defines parameters for PostSavedObjectsImport.
 type PostSavedObjectsImportMultipartBody struct {
@@ -73529,96 +73602,90 @@ type PostSavedObjectsImportParams struct {
 	CompatibilityMode *bool `form:"compatibilityMode,omitempty" json:"compatibilityMode,omitempty"`
 }
 
-// ResolveImportErrorsMultipartBody defines parameters for ResolveImportErrors.
-type ResolveImportErrorsMultipartBody struct {
-	// File The same file given to the import API.
-	File *openapi_types.File `json:"file,omitempty"`
-
-	// Retries The retry operations, which can specify how to resolve different types of errors.
+// PostSavedObjectsResolveImportErrorsMultipartBody defines parameters for PostSavedObjectsResolveImportErrors.
+type PostSavedObjectsResolveImportErrorsMultipartBody struct {
+	File    map[string]interface{} `json:"file"`
 	Retries []struct {
-		// DestinationId Specifies the destination ID that the imported object should have, if different from the current ID.
-		DestinationId *string `json:"destinationId,omitempty"`
-
-		// Id The saved object ID.
-		Id string `json:"id"`
-
-		// IgnoreMissingReferences When set to `true`, ignores missing reference errors. When set to `false`, does nothing.
-		IgnoreMissingReferences *bool `json:"ignoreMissingReferences,omitempty"`
-
-		// Overwrite When set to `true`, the source object overwrites the conflicting destination object. When set to `false`, does nothing.
-		Overwrite *bool `json:"overwrite,omitempty"`
-
-		// ReplaceReferences A list of `type`, `from`, and `to` used to change the object references.
-		ReplaceReferences *[]struct {
-			From *string `json:"from,omitempty"`
-			To   *string `json:"to,omitempty"`
-			Type *string `json:"type,omitempty"`
+		CreateNewCopy           *bool   `json:"createNewCopy,omitempty"`
+		DestinationId           *string `json:"destinationId,omitempty"`
+		Id                      string  `json:"id"`
+		IgnoreMissingReferences *bool   `json:"ignoreMissingReferences,omitempty"`
+		Overwrite               *bool   `json:"overwrite,omitempty"`
+		ReplaceReferences       *[]struct {
+			From string `json:"from"`
+			To   string `json:"to"`
+			Type string `json:"type"`
 		} `json:"replaceReferences,omitempty"`
-
-		// Type The saved object type.
 		Type string `json:"type"`
 	} `json:"retries"`
 }
 
-// ResolveImportErrorsParams defines parameters for ResolveImportErrors.
-type ResolveImportErrorsParams struct {
-	// CompatibilityMode Applies various adjustments to the saved objects that are being imported to maintain compatibility between different Kibana versions. When enabled during the initial import, also enable when resolving import errors. This option cannot be used with the `createNewCopies` option.
-	CompatibilityMode *bool `form:"compatibilityMode,omitempty" json:"compatibilityMode,omitempty"`
-
-	// CreateNewCopies Creates copies of the saved objects, regenerates each object ID, and resets the origin. When enabled during the initial import, also enable when resolving import errors.
+// PostSavedObjectsResolveImportErrorsParams defines parameters for PostSavedObjectsResolveImportErrors.
+type PostSavedObjectsResolveImportErrorsParams struct {
+	// CreateNewCopies Creates copies of saved objects, regenerates each object ID, and resets the origin.
 	CreateNewCopies *bool `form:"createNewCopies,omitempty" json:"createNewCopies,omitempty"`
+
+	// CompatibilityMode Applies adjustments to maintain compatibility between different Kibana versions.
+	CompatibilityMode *bool `form:"compatibilityMode,omitempty" json:"compatibilityMode,omitempty"`
 }
 
-// CreateSavedObjectJSONBody defines parameters for CreateSavedObject.
-type CreateSavedObjectJSONBody struct {
-	// Attributes The data that you want to create. WARNING: Attributes may be validated depending on the saved object type. Supplying malformed data can cause errors or break Kibana. When creating or persisting raw saved objects outside of Kibana, preserve `coreMigrationVersion` and `typeMigrationVersion` (and related migration metadata) to retain forward compatibility across Kibana versions.
-	Attributes SavedObjectsAttributes `json:"attributes"`
-
-	// CoreMigrationVersion The Kibana version that last migrated this document. When creating saved objects outside of Kibana, preserve this field to retain forward compatibility.
-	CoreMigrationVersion *string `json:"coreMigrationVersion,omitempty"`
-
-	// InitialNamespaces Identifiers for the spaces in which this object is created. If this is provided, the object is created only in the explicitly defined spaces. If this is not provided, the object is created in the current space (default behavior). For shareable object types (registered with `namespaceType: 'multiple'`), this option can be used to specify one or more spaces, including the "All spaces" identifier ('*'). For isolated object types (registered with `namespaceType: 'single'` or `namespaceType: 'multiple-isolated'`), this option can only be used to specify a single space, and the "All spaces" identifier ('*') is not allowed. For global object types (`registered with `namespaceType: agnostic`), this option cannot be used.
-	InitialNamespaces *SavedObjectsInitialNamespaces `json:"initialNamespaces,omitempty"`
-
-	// References Objects with `name`, `id`, and `type` properties that describe the other saved objects that this object references. Use `name` in attributes to refer to the other saved object, but never the `id`, which can update automatically during migrations or import and export.
-	References *SavedObjectsReferences `json:"references,omitempty"`
-
-	// TypeMigrationVersion The type version that last migrated this document. When creating saved objects outside of Kibana, preserve this field to retain forward compatibility.
+// PostSavedObjectsTypeJSONBody defines parameters for PostSavedObjectsType.
+type PostSavedObjectsTypeJSONBody struct {
+	Attributes           map[string]*interface{} `json:"attributes"`
+	CoreMigrationVersion *string                 `json:"coreMigrationVersion,omitempty"`
+	InitialNamespaces    *[]string               `json:"initialNamespaces,omitempty"`
+	MigrationVersion     *map[string]string      `json:"migrationVersion,omitempty"`
+	References           *[]struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+		Type string `json:"type"`
+	} `json:"references,omitempty"`
 	TypeMigrationVersion *string `json:"typeMigrationVersion,omitempty"`
 }
 
-// CreateSavedObjectParams defines parameters for CreateSavedObject.
-type CreateSavedObjectParams struct {
-	// Overwrite If true, overwrites the document with the same identifier.
+// PostSavedObjectsTypeParams defines parameters for PostSavedObjectsType.
+type PostSavedObjectsTypeParams struct {
+	// Overwrite Overwrite an existing saved object.
 	Overwrite *bool `form:"overwrite,omitempty" json:"overwrite,omitempty"`
 }
 
-// CreateSavedObjectIdJSONBody defines parameters for CreateSavedObjectId.
-type CreateSavedObjectIdJSONBody struct {
-	// Attributes The data that you want to create. WARNING: Attributes may be validated depending on the saved object type. Supplying malformed data can cause errors or break Kibana. When creating or persisting raw saved objects outside of Kibana, preserve `coreMigrationVersion` and `typeMigrationVersion` (and related migration metadata) to retain forward compatibility across Kibana versions.
-	Attributes SavedObjectsAttributes `json:"attributes"`
+// DeleteSavedObjectsTypeIdParams defines parameters for DeleteSavedObjectsTypeId.
+type DeleteSavedObjectsTypeIdParams struct {
+	// Force When true, force deletion of multi-namespace objects from all namespaces.
+	Force *bool `form:"force,omitempty" json:"force,omitempty"`
+}
 
-	// CoreMigrationVersion The Kibana version that last migrated this document. When creating saved objects outside of Kibana, preserve this field to retain forward compatibility.
-	CoreMigrationVersion *string `json:"coreMigrationVersion,omitempty"`
-
-	// InitialNamespaces Identifiers for the spaces in which this object is created. If this is provided, the object is created only in the explicitly defined spaces. If this is not provided, the object is created in the current space (default behavior). For shareable object types (registered with `namespaceType: 'multiple'`), this option can be used to specify one or more spaces, including the "All spaces" identifier ('*'). For isolated object types (registered with `namespaceType: 'single'` or `namespaceType: 'multiple-isolated'`), this option can only be used to specify a single space, and the "All spaces" identifier ('*') is not allowed. For global object types (`registered with `namespaceType: agnostic`), this option cannot be used.
-	InitialNamespaces *SavedObjectsInitialNamespaces `json:"initialNamespaces,omitempty"`
-
-	// References Objects with `name`, `id`, and `type` properties that describe the other saved objects that this object references. Use `name` in attributes to refer to the other saved object, but never the `id`, which can update automatically during migrations or import and export.
-	References *SavedObjectsReferences `json:"references,omitempty"`
-
-	// TypeMigrationVersion The type version that last migrated this document. When creating saved objects outside of Kibana, preserve this field to retain forward compatibility.
+// PostSavedObjectsTypeIdJSONBody defines parameters for PostSavedObjectsTypeId.
+type PostSavedObjectsTypeIdJSONBody struct {
+	Attributes           map[string]*interface{} `json:"attributes"`
+	CoreMigrationVersion *string                 `json:"coreMigrationVersion,omitempty"`
+	InitialNamespaces    *[]string               `json:"initialNamespaces,omitempty"`
+	MigrationVersion     *map[string]string      `json:"migrationVersion,omitempty"`
+	References           *[]struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+		Type string `json:"type"`
+	} `json:"references,omitempty"`
 	TypeMigrationVersion *string `json:"typeMigrationVersion,omitempty"`
 }
 
-// CreateSavedObjectIdParams defines parameters for CreateSavedObjectId.
-type CreateSavedObjectIdParams struct {
-	// Overwrite If true, overwrites the document with the same identifier.
+// PostSavedObjectsTypeIdParams defines parameters for PostSavedObjectsTypeId.
+type PostSavedObjectsTypeIdParams struct {
+	// Overwrite Overwrite an existing saved object.
 	Overwrite *bool `form:"overwrite,omitempty" json:"overwrite,omitempty"`
 }
 
-// UpdateSavedObjectJSONBody defines parameters for UpdateSavedObject.
-type UpdateSavedObjectJSONBody = map[string]interface{}
+// PutSavedObjectsTypeIdJSONBody defines parameters for PutSavedObjectsTypeId.
+type PutSavedObjectsTypeIdJSONBody struct {
+	Attributes map[string]*interface{} `json:"attributes"`
+	References *[]struct {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+		Type string `json:"type"`
+	} `json:"references,omitempty"`
+	Upsert  *map[string]*interface{} `json:"upsert,omitempty"`
+	Version *string                  `json:"version,omitempty"`
+}
 
 // PutSecurityEntityStoreJSONBody defines parameters for PutSecurityEntityStore.
 type PutSecurityEntityStoreJSONBody struct {
@@ -76460,7 +76527,7 @@ type PutSecurityRoleNameJSONBody struct {
 		Feature *map[string][]string                     `json:"feature,omitempty"`
 		Spaces  *[]string                                `json:"spaces,omitempty"`
 	} `json:"kibana,omitempty"`
-	Metadata *map[string]interface{} `json:"metadata,omitempty"`
+	Metadata *map[string]*interface{} `json:"metadata,omitempty"`
 }
 
 // PutSecurityRoleNameParams defines parameters for PutSecurityRoleName.
@@ -76519,7 +76586,7 @@ type PostSecurityRolesJSONBody struct {
 			Feature *map[string][]string                         `json:"feature,omitempty"`
 			Spaces  *[]string                                    `json:"spaces,omitempty"`
 		} `json:"kibana,omitempty"`
-		Metadata *map[string]interface{} `json:"metadata,omitempty"`
+		Metadata *map[string]*interface{} `json:"metadata,omitempty"`
 	} `json:"roles"`
 }
 
@@ -77583,7 +77650,7 @@ type DeleteTimelinesJSONBody struct {
 
 // GetTimelineParams defines parameters for GetTimeline.
 type GetTimelineParams struct {
-	// TemplateTimelineId The `savedObjectId` of the template timeline to retrieve
+	// TemplateTimelineId The `savedObjectId` of the Timeline template to retrieve.
 	TemplateTimelineId *string `form:"template_timeline_id,omitempty" json:"template_timeline_id,omitempty"`
 
 	// Id The `savedObjectId` of the Timeline to retrieve.
@@ -77623,12 +77690,15 @@ type CreateTimelinesJSONBody struct {
 
 // CopyTimelineJSONBody defines parameters for CopyTimeline.
 type CopyTimelineJSONBody struct {
-	Timeline         SecurityTimelineAPISavedTimeline `json:"timeline"`
-	TimelineIdToCopy string                           `json:"timelineIdToCopy"`
+	Timeline SecurityTimelineAPISavedTimeline `json:"timeline"`
+
+	// TimelineIdToCopy The `savedObjectId` of the timeline or template to duplicate.
+	TimelineIdToCopy string `json:"timelineIdToCopy"`
 }
 
 // GetDraftTimelinesParams defines parameters for GetDraftTimelines.
 type GetDraftTimelinesParams struct {
+	// TimelineType Which draft to load (`default` investigation timeline or `template` timeline template).
 	TimelineType SecurityTimelineAPITimelineType `form:"timelineType" json:"timelineType"`
 }
 
@@ -77688,10 +77758,14 @@ type ResolveTimelineParams struct {
 
 // GetTimelinesParams defines parameters for GetTimelines.
 type GetTimelinesParams struct {
-	// OnlyUserFavorite If true, only timelines that are marked as favorites by the user are returned.
-	OnlyUserFavorite *GetTimelinesParamsOnlyUserFavorite   `form:"only_user_favorite,omitempty" json:"only_user_favorite,omitempty"`
-	TimelineType     *SecurityTimelineAPITimelineType      `form:"timeline_type,omitempty" json:"timeline_type,omitempty"`
-	SortField        *SecurityTimelineAPISortFieldTimeline `form:"sort_field,omitempty" json:"sort_field,omitempty"`
+	// OnlyUserFavorite If `true`, only Timelines that the current user has marked as favorite are returned.
+	OnlyUserFavorite *GetTimelinesParamsOnlyUserFavorite `form:"only_user_favorite,omitempty" json:"only_user_favorite,omitempty"`
+
+	// TimelineType Restrict results to `default` investigation timelines or `template` timeline templates.
+	TimelineType *SecurityTimelineAPITimelineType `form:"timeline_type,omitempty" json:"timeline_type,omitempty"`
+
+	// SortField Field used to sort the list (`title`, `description`, `updated`, or `created`).
+	SortField *SecurityTimelineAPISortFieldTimeline `form:"sort_field,omitempty" json:"sort_field,omitempty"`
 
 	// SortOrder Whether to sort the results `ascending` or `descending`
 	SortOrder *GetTimelinesParamsSortOrder `form:"sort_order,omitempty" json:"sort_order,omitempty"`
@@ -77703,7 +77777,9 @@ type GetTimelinesParams struct {
 	PageIndex *string `form:"page_index,omitempty" json:"page_index,omitempty"`
 
 	// Search Allows to search for timelines by their title
-	Search *string                            `form:"search,omitempty" json:"search,omitempty"`
+	Search *string `form:"search,omitempty" json:"search,omitempty"`
+
+	// Status Filter by timeline lifecycle state (`active`, `draft`, or `immutable`).
 	Status *SecurityTimelineAPITimelineStatus `form:"status,omitempty" json:"status,omitempty"`
 }
 
@@ -77821,7 +77897,7 @@ type GetWorkflowsExecutionsExecutionidLogsParamsSortOrder string
 // PostWorkflowsExecutionsExecutionidResumeJSONBody defines parameters for PostWorkflowsExecutionsExecutionidResume.
 type PostWorkflowsExecutionsExecutionidResumeJSONBody struct {
 	// Input Input data to resume the execution with.
-	Input map[string]interface{} `json:"input"`
+	Input map[string]*interface{} `json:"input"`
 }
 
 // PostWorkflowsExportJSONBody defines parameters for PostWorkflowsExport.
@@ -77848,10 +77924,10 @@ type GetWorkflowsSchemaParams struct {
 // PostWorkflowsStepTestJSONBody defines parameters for PostWorkflowsStepTest.
 type PostWorkflowsStepTestJSONBody struct {
 	// ContextOverride Context overrides for the step execution.
-	ContextOverride map[string]interface{} `json:"contextOverride"`
+	ContextOverride map[string]*interface{} `json:"contextOverride"`
 
 	// ExecutionContext Execution context for the step execution.
-	ExecutionContext *map[string]interface{} `json:"executionContext,omitempty"`
+	ExecutionContext *map[string]*interface{} `json:"executionContext,omitempty"`
 
 	// StepId ID of the step to test.
 	StepId string `json:"stepId"`
@@ -77866,7 +77942,7 @@ type PostWorkflowsStepTestJSONBody struct {
 // PostWorkflowsTestJSONBody defines parameters for PostWorkflowsTest.
 type PostWorkflowsTestJSONBody struct {
 	// Inputs Key-value inputs for the test execution.
-	Inputs map[string]interface{} `json:"inputs"`
+	Inputs map[string]*interface{} `json:"inputs"`
 
 	// WorkflowId ID of an existing workflow to test.
 	WorkflowId *string `json:"workflowId,omitempty"`
@@ -77899,10 +77975,10 @@ type PutWorkflowsWorkflowIdJSONBody struct {
 // PostWorkflowsWorkflowIdRunJSONBody defines parameters for PostWorkflowsWorkflowIdRun.
 type PostWorkflowsWorkflowIdRunJSONBody struct {
 	// Inputs Key-value inputs for the workflow execution.
-	Inputs map[string]interface{} `json:"inputs"`
+	Inputs map[string]*interface{} `json:"inputs"`
 
 	// Metadata Optional metadata for the execution.
-	Metadata *map[string]interface{} `json:"metadata,omitempty"`
+	Metadata *map[string]*interface{} `json:"metadata,omitempty"`
 }
 
 // GetWorkflowsWorkflowWorkflowidExecutionsParams defines parameters for GetWorkflowsWorkflowWorkflowidExecutions.
@@ -78970,20 +79046,20 @@ type ConfigureRiskEngineSavedObjectJSONRequestBody ConfigureRiskEngineSavedObjec
 // ScheduleRiskEngineNowJSONRequestBody defines body for ScheduleRiskEngineNow for application/json ContentType.
 type ScheduleRiskEngineNowJSONRequestBody ScheduleRiskEngineNowJSONBody
 
-// BulkCreateSavedObjectsJSONRequestBody defines body for BulkCreateSavedObjects for application/json ContentType.
-type BulkCreateSavedObjectsJSONRequestBody = BulkCreateSavedObjectsJSONBody
+// PostSavedObjectsBulkCreateJSONRequestBody defines body for PostSavedObjectsBulkCreate for application/json ContentType.
+type PostSavedObjectsBulkCreateJSONRequestBody = PostSavedObjectsBulkCreateJSONBody
 
-// BulkDeleteSavedObjectsJSONRequestBody defines body for BulkDeleteSavedObjects for application/json ContentType.
-type BulkDeleteSavedObjectsJSONRequestBody = BulkDeleteSavedObjectsJSONBody
+// PostSavedObjectsBulkDeleteJSONRequestBody defines body for PostSavedObjectsBulkDelete for application/json ContentType.
+type PostSavedObjectsBulkDeleteJSONRequestBody = PostSavedObjectsBulkDeleteJSONBody
 
-// BulkGetSavedObjectsJSONRequestBody defines body for BulkGetSavedObjects for application/json ContentType.
-type BulkGetSavedObjectsJSONRequestBody = BulkGetSavedObjectsJSONBody
+// PostSavedObjectsBulkGetJSONRequestBody defines body for PostSavedObjectsBulkGet for application/json ContentType.
+type PostSavedObjectsBulkGetJSONRequestBody = PostSavedObjectsBulkGetJSONBody
 
-// BulkResolveSavedObjectsJSONRequestBody defines body for BulkResolveSavedObjects for application/json ContentType.
-type BulkResolveSavedObjectsJSONRequestBody = BulkResolveSavedObjectsJSONBody
+// PostSavedObjectsBulkResolveJSONRequestBody defines body for PostSavedObjectsBulkResolve for application/json ContentType.
+type PostSavedObjectsBulkResolveJSONRequestBody = PostSavedObjectsBulkResolveJSONBody
 
-// BulkUpdateSavedObjectsJSONRequestBody defines body for BulkUpdateSavedObjects for application/json ContentType.
-type BulkUpdateSavedObjectsJSONRequestBody = BulkUpdateSavedObjectsJSONBody
+// PutSavedObjectsBulkUpdateJSONRequestBody defines body for PutSavedObjectsBulkUpdate for application/json ContentType.
+type PutSavedObjectsBulkUpdateJSONRequestBody = PutSavedObjectsBulkUpdateJSONBody
 
 // PostSavedObjectsExportJSONRequestBody defines body for PostSavedObjectsExport for application/json ContentType.
 type PostSavedObjectsExportJSONRequestBody PostSavedObjectsExportJSONBody
@@ -78991,17 +79067,17 @@ type PostSavedObjectsExportJSONRequestBody PostSavedObjectsExportJSONBody
 // PostSavedObjectsImportMultipartRequestBody defines body for PostSavedObjectsImport for multipart/form-data ContentType.
 type PostSavedObjectsImportMultipartRequestBody PostSavedObjectsImportMultipartBody
 
-// ResolveImportErrorsMultipartRequestBody defines body for ResolveImportErrors for multipart/form-data ContentType.
-type ResolveImportErrorsMultipartRequestBody ResolveImportErrorsMultipartBody
+// PostSavedObjectsResolveImportErrorsMultipartRequestBody defines body for PostSavedObjectsResolveImportErrors for multipart/form-data ContentType.
+type PostSavedObjectsResolveImportErrorsMultipartRequestBody PostSavedObjectsResolveImportErrorsMultipartBody
 
-// CreateSavedObjectJSONRequestBody defines body for CreateSavedObject for application/json ContentType.
-type CreateSavedObjectJSONRequestBody CreateSavedObjectJSONBody
+// PostSavedObjectsTypeJSONRequestBody defines body for PostSavedObjectsType for application/json ContentType.
+type PostSavedObjectsTypeJSONRequestBody PostSavedObjectsTypeJSONBody
 
-// CreateSavedObjectIdJSONRequestBody defines body for CreateSavedObjectId for application/json ContentType.
-type CreateSavedObjectIdJSONRequestBody CreateSavedObjectIdJSONBody
+// PostSavedObjectsTypeIdJSONRequestBody defines body for PostSavedObjectsTypeId for application/json ContentType.
+type PostSavedObjectsTypeIdJSONRequestBody PostSavedObjectsTypeIdJSONBody
 
-// UpdateSavedObjectJSONRequestBody defines body for UpdateSavedObject for application/json ContentType.
-type UpdateSavedObjectJSONRequestBody = UpdateSavedObjectJSONBody
+// PutSavedObjectsTypeIdJSONRequestBody defines body for PutSavedObjectsTypeId for application/json ContentType.
+type PutSavedObjectsTypeIdJSONRequestBody PutSavedObjectsTypeIdJSONBody
 
 // PutSecurityEntityStoreJSONRequestBody defines body for PutSecurityEntityStore for application/json ContentType.
 type PutSecurityEntityStoreJSONRequestBody PutSecurityEntityStoreJSONBody
@@ -94791,34 +94867,6 @@ func (t *CasesCaseResponseGetCase_CustomFields_Value) UnmarshalJSON(b []byte) er
 	return err
 }
 
-// AsCasesActionsCommentResponseProperties returns the union data inside the CasesCaseResponseProperties_Comments_Item as a CasesActionsCommentResponseProperties
-func (t CasesCaseResponseProperties_Comments_Item) AsCasesActionsCommentResponseProperties() (CasesActionsCommentResponseProperties, error) {
-	var body CasesActionsCommentResponseProperties
-	err := json.Unmarshal(t.union, &body)
-	return body, err
-}
-
-// FromCasesActionsCommentResponseProperties overwrites any union data inside the CasesCaseResponseProperties_Comments_Item as the provided CasesActionsCommentResponseProperties
-func (t *CasesCaseResponseProperties_Comments_Item) FromCasesActionsCommentResponseProperties(v CasesActionsCommentResponseProperties) error {
-	v.Type = "actions"
-	b, err := json.Marshal(v)
-	t.union = b
-	return err
-}
-
-// MergeCasesActionsCommentResponseProperties performs a merge with any union data inside the CasesCaseResponseProperties_Comments_Item, using the provided CasesActionsCommentResponseProperties
-func (t *CasesCaseResponseProperties_Comments_Item) MergeCasesActionsCommentResponseProperties(v CasesActionsCommentResponseProperties) error {
-	v.Type = "actions"
-	b, err := json.Marshal(v)
-	if err != nil {
-		return err
-	}
-
-	merged, err := runtime.JSONMerge(t.union, b)
-	t.union = merged
-	return err
-}
-
 // AsCasesAlertCommentResponseProperties returns the union data inside the CasesCaseResponseProperties_Comments_Item as a CasesAlertCommentResponseProperties
 func (t CasesCaseResponseProperties_Comments_Item) AsCasesAlertCommentResponseProperties() (CasesAlertCommentResponseProperties, error) {
 	var body CasesAlertCommentResponseProperties
@@ -94917,8 +94965,6 @@ func (t CasesCaseResponseProperties_Comments_Item) ValueByDiscriminator() (inter
 		return nil, err
 	}
 	switch discriminator {
-	case "actions":
-		return t.AsCasesActionsCommentResponseProperties()
 	case "alert":
 		return t.AsCasesAlertCommentResponseProperties()
 	case "event":
@@ -139646,65 +139692,68 @@ type ClientInterface interface {
 
 	ScheduleRiskEngineNow(ctx context.Context, body ScheduleRiskEngineNowJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// BulkCreateSavedObjectsWithBody request with any body
-	BulkCreateSavedObjectsWithBody(ctx context.Context, params *BulkCreateSavedObjectsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// PostSavedObjectsBulkCreateWithBody request with any body
+	PostSavedObjectsBulkCreateWithBody(ctx context.Context, params *PostSavedObjectsBulkCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	BulkCreateSavedObjects(ctx context.Context, params *BulkCreateSavedObjectsParams, body BulkCreateSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostSavedObjectsBulkCreate(ctx context.Context, params *PostSavedObjectsBulkCreateParams, body PostSavedObjectsBulkCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// BulkDeleteSavedObjectsWithBody request with any body
-	BulkDeleteSavedObjectsWithBody(ctx context.Context, params *BulkDeleteSavedObjectsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// PostSavedObjectsBulkDeleteWithBody request with any body
+	PostSavedObjectsBulkDeleteWithBody(ctx context.Context, params *PostSavedObjectsBulkDeleteParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	BulkDeleteSavedObjects(ctx context.Context, params *BulkDeleteSavedObjectsParams, body BulkDeleteSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostSavedObjectsBulkDelete(ctx context.Context, params *PostSavedObjectsBulkDeleteParams, body PostSavedObjectsBulkDeleteJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// BulkGetSavedObjectsWithBody request with any body
-	BulkGetSavedObjectsWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// PostSavedObjectsBulkGetWithBody request with any body
+	PostSavedObjectsBulkGetWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	BulkGetSavedObjects(ctx context.Context, body BulkGetSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostSavedObjectsBulkGet(ctx context.Context, body PostSavedObjectsBulkGetJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// BulkResolveSavedObjectsWithBody request with any body
-	BulkResolveSavedObjectsWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// PostSavedObjectsBulkResolveWithBody request with any body
+	PostSavedObjectsBulkResolveWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	BulkResolveSavedObjects(ctx context.Context, body BulkResolveSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostSavedObjectsBulkResolve(ctx context.Context, body PostSavedObjectsBulkResolveJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// BulkUpdateSavedObjectsWithBody request with any body
-	BulkUpdateSavedObjectsWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// PutSavedObjectsBulkUpdateWithBody request with any body
+	PutSavedObjectsBulkUpdateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	BulkUpdateSavedObjects(ctx context.Context, body BulkUpdateSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PutSavedObjectsBulkUpdate(ctx context.Context, body PutSavedObjectsBulkUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostSavedObjectsExportWithBody request with any body
 	PostSavedObjectsExportWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	PostSavedObjectsExport(ctx context.Context, body PostSavedObjectsExportJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// FindSavedObjects request
-	FindSavedObjects(ctx context.Context, params *FindSavedObjectsParams, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// GetSavedObjectsFind request
+	GetSavedObjectsFind(ctx context.Context, params *GetSavedObjectsFindParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PostSavedObjectsImportWithBody request with any body
 	PostSavedObjectsImportWithBody(ctx context.Context, params *PostSavedObjectsImportParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// ResolveImportErrorsWithBody request with any body
-	ResolveImportErrorsWithBody(ctx context.Context, params *ResolveImportErrorsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// PostSavedObjectsResolveImportErrorsWithBody request with any body
+	PostSavedObjectsResolveImportErrorsWithBody(ctx context.Context, params *PostSavedObjectsResolveImportErrorsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// ResolveSavedObject request
-	ResolveSavedObject(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// GetSavedObjectsResolveTypeId request
+	GetSavedObjectsResolveTypeId(ctx context.Context, pType string, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// CreateSavedObjectWithBody request with any body
-	CreateSavedObjectWithBody(ctx context.Context, pType SavedObjectsSavedObjectType, params *CreateSavedObjectParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// PostSavedObjectsTypeWithBody request with any body
+	PostSavedObjectsTypeWithBody(ctx context.Context, pType string, params *PostSavedObjectsTypeParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	CreateSavedObject(ctx context.Context, pType SavedObjectsSavedObjectType, params *CreateSavedObjectParams, body CreateSavedObjectJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostSavedObjectsType(ctx context.Context, pType string, params *PostSavedObjectsTypeParams, body PostSavedObjectsTypeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// GetSavedObject request
-	GetSavedObject(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// DeleteSavedObjectsTypeId request
+	DeleteSavedObjectsTypeId(ctx context.Context, pType string, id string, params *DeleteSavedObjectsTypeIdParams, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// CreateSavedObjectIdWithBody request with any body
-	CreateSavedObjectIdWithBody(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, params *CreateSavedObjectIdParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// GetSavedObjectsTypeId request
+	GetSavedObjectsTypeId(ctx context.Context, pType string, id string, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	CreateSavedObjectId(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, params *CreateSavedObjectIdParams, body CreateSavedObjectIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// PostSavedObjectsTypeIdWithBody request with any body
+	PostSavedObjectsTypeIdWithBody(ctx context.Context, pType string, id string, params *PostSavedObjectsTypeIdParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	// UpdateSavedObjectWithBody request with any body
-	UpdateSavedObjectWithBody(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+	PostSavedObjectsTypeId(ctx context.Context, pType string, id string, params *PostSavedObjectsTypeIdParams, body PostSavedObjectsTypeIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
-	UpdateSavedObject(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, body UpdateSavedObjectJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+	// PutSavedObjectsTypeIdWithBody request with any body
+	PutSavedObjectsTypeIdWithBody(ctx context.Context, pType string, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	PutSavedObjectsTypeId(ctx context.Context, pType string, id string, body PutSavedObjectsTypeIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// PutSecurityEntityStoreWithBody request with any body
 	PutSecurityEntityStoreWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -147304,8 +147353,8 @@ func (c *Client) ScheduleRiskEngineNow(ctx context.Context, body ScheduleRiskEng
 	return c.Client.Do(req)
 }
 
-func (c *Client) BulkCreateSavedObjectsWithBody(ctx context.Context, params *BulkCreateSavedObjectsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBulkCreateSavedObjectsRequestWithBody(c.Server, params, contentType, body)
+func (c *Client) PostSavedObjectsBulkCreateWithBody(ctx context.Context, params *PostSavedObjectsBulkCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostSavedObjectsBulkCreateRequestWithBody(c.Server, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -147316,8 +147365,8 @@ func (c *Client) BulkCreateSavedObjectsWithBody(ctx context.Context, params *Bul
 	return c.Client.Do(req)
 }
 
-func (c *Client) BulkCreateSavedObjects(ctx context.Context, params *BulkCreateSavedObjectsParams, body BulkCreateSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBulkCreateSavedObjectsRequest(c.Server, params, body)
+func (c *Client) PostSavedObjectsBulkCreate(ctx context.Context, params *PostSavedObjectsBulkCreateParams, body PostSavedObjectsBulkCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostSavedObjectsBulkCreateRequest(c.Server, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -147328,8 +147377,8 @@ func (c *Client) BulkCreateSavedObjects(ctx context.Context, params *BulkCreateS
 	return c.Client.Do(req)
 }
 
-func (c *Client) BulkDeleteSavedObjectsWithBody(ctx context.Context, params *BulkDeleteSavedObjectsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBulkDeleteSavedObjectsRequestWithBody(c.Server, params, contentType, body)
+func (c *Client) PostSavedObjectsBulkDeleteWithBody(ctx context.Context, params *PostSavedObjectsBulkDeleteParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostSavedObjectsBulkDeleteRequestWithBody(c.Server, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -147340,8 +147389,8 @@ func (c *Client) BulkDeleteSavedObjectsWithBody(ctx context.Context, params *Bul
 	return c.Client.Do(req)
 }
 
-func (c *Client) BulkDeleteSavedObjects(ctx context.Context, params *BulkDeleteSavedObjectsParams, body BulkDeleteSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBulkDeleteSavedObjectsRequest(c.Server, params, body)
+func (c *Client) PostSavedObjectsBulkDelete(ctx context.Context, params *PostSavedObjectsBulkDeleteParams, body PostSavedObjectsBulkDeleteJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostSavedObjectsBulkDeleteRequest(c.Server, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -147352,8 +147401,8 @@ func (c *Client) BulkDeleteSavedObjects(ctx context.Context, params *BulkDeleteS
 	return c.Client.Do(req)
 }
 
-func (c *Client) BulkGetSavedObjectsWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBulkGetSavedObjectsRequestWithBody(c.Server, contentType, body)
+func (c *Client) PostSavedObjectsBulkGetWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostSavedObjectsBulkGetRequestWithBody(c.Server, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -147364,8 +147413,8 @@ func (c *Client) BulkGetSavedObjectsWithBody(ctx context.Context, contentType st
 	return c.Client.Do(req)
 }
 
-func (c *Client) BulkGetSavedObjects(ctx context.Context, body BulkGetSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBulkGetSavedObjectsRequest(c.Server, body)
+func (c *Client) PostSavedObjectsBulkGet(ctx context.Context, body PostSavedObjectsBulkGetJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostSavedObjectsBulkGetRequest(c.Server, body)
 	if err != nil {
 		return nil, err
 	}
@@ -147376,8 +147425,8 @@ func (c *Client) BulkGetSavedObjects(ctx context.Context, body BulkGetSavedObjec
 	return c.Client.Do(req)
 }
 
-func (c *Client) BulkResolveSavedObjectsWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBulkResolveSavedObjectsRequestWithBody(c.Server, contentType, body)
+func (c *Client) PostSavedObjectsBulkResolveWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostSavedObjectsBulkResolveRequestWithBody(c.Server, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -147388,8 +147437,8 @@ func (c *Client) BulkResolveSavedObjectsWithBody(ctx context.Context, contentTyp
 	return c.Client.Do(req)
 }
 
-func (c *Client) BulkResolveSavedObjects(ctx context.Context, body BulkResolveSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBulkResolveSavedObjectsRequest(c.Server, body)
+func (c *Client) PostSavedObjectsBulkResolve(ctx context.Context, body PostSavedObjectsBulkResolveJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostSavedObjectsBulkResolveRequest(c.Server, body)
 	if err != nil {
 		return nil, err
 	}
@@ -147400,8 +147449,8 @@ func (c *Client) BulkResolveSavedObjects(ctx context.Context, body BulkResolveSa
 	return c.Client.Do(req)
 }
 
-func (c *Client) BulkUpdateSavedObjectsWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBulkUpdateSavedObjectsRequestWithBody(c.Server, contentType, body)
+func (c *Client) PutSavedObjectsBulkUpdateWithBody(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutSavedObjectsBulkUpdateRequestWithBody(c.Server, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -147412,8 +147461,8 @@ func (c *Client) BulkUpdateSavedObjectsWithBody(ctx context.Context, contentType
 	return c.Client.Do(req)
 }
 
-func (c *Client) BulkUpdateSavedObjects(ctx context.Context, body BulkUpdateSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewBulkUpdateSavedObjectsRequest(c.Server, body)
+func (c *Client) PutSavedObjectsBulkUpdate(ctx context.Context, body PutSavedObjectsBulkUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutSavedObjectsBulkUpdateRequest(c.Server, body)
 	if err != nil {
 		return nil, err
 	}
@@ -147448,8 +147497,8 @@ func (c *Client) PostSavedObjectsExport(ctx context.Context, body PostSavedObjec
 	return c.Client.Do(req)
 }
 
-func (c *Client) FindSavedObjects(ctx context.Context, params *FindSavedObjectsParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewFindSavedObjectsRequest(c.Server, params)
+func (c *Client) GetSavedObjectsFind(ctx context.Context, params *GetSavedObjectsFindParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetSavedObjectsFindRequest(c.Server, params)
 	if err != nil {
 		return nil, err
 	}
@@ -147472,8 +147521,8 @@ func (c *Client) PostSavedObjectsImportWithBody(ctx context.Context, params *Pos
 	return c.Client.Do(req)
 }
 
-func (c *Client) ResolveImportErrorsWithBody(ctx context.Context, params *ResolveImportErrorsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewResolveImportErrorsRequestWithBody(c.Server, params, contentType, body)
+func (c *Client) PostSavedObjectsResolveImportErrorsWithBody(ctx context.Context, params *PostSavedObjectsResolveImportErrorsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostSavedObjectsResolveImportErrorsRequestWithBody(c.Server, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -147484,8 +147533,8 @@ func (c *Client) ResolveImportErrorsWithBody(ctx context.Context, params *Resolv
 	return c.Client.Do(req)
 }
 
-func (c *Client) ResolveSavedObject(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewResolveSavedObjectRequest(c.Server, pType, id)
+func (c *Client) GetSavedObjectsResolveTypeId(ctx context.Context, pType string, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetSavedObjectsResolveTypeIdRequest(c.Server, pType, id)
 	if err != nil {
 		return nil, err
 	}
@@ -147496,8 +147545,8 @@ func (c *Client) ResolveSavedObject(ctx context.Context, pType SavedObjectsSaved
 	return c.Client.Do(req)
 }
 
-func (c *Client) CreateSavedObjectWithBody(ctx context.Context, pType SavedObjectsSavedObjectType, params *CreateSavedObjectParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateSavedObjectRequestWithBody(c.Server, pType, params, contentType, body)
+func (c *Client) PostSavedObjectsTypeWithBody(ctx context.Context, pType string, params *PostSavedObjectsTypeParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostSavedObjectsTypeRequestWithBody(c.Server, pType, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -147508,8 +147557,8 @@ func (c *Client) CreateSavedObjectWithBody(ctx context.Context, pType SavedObjec
 	return c.Client.Do(req)
 }
 
-func (c *Client) CreateSavedObject(ctx context.Context, pType SavedObjectsSavedObjectType, params *CreateSavedObjectParams, body CreateSavedObjectJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateSavedObjectRequest(c.Server, pType, params, body)
+func (c *Client) PostSavedObjectsType(ctx context.Context, pType string, params *PostSavedObjectsTypeParams, body PostSavedObjectsTypeJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostSavedObjectsTypeRequest(c.Server, pType, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -147520,8 +147569,8 @@ func (c *Client) CreateSavedObject(ctx context.Context, pType SavedObjectsSavedO
 	return c.Client.Do(req)
 }
 
-func (c *Client) GetSavedObject(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewGetSavedObjectRequest(c.Server, pType, id)
+func (c *Client) DeleteSavedObjectsTypeId(ctx context.Context, pType string, id string, params *DeleteSavedObjectsTypeIdParams, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewDeleteSavedObjectsTypeIdRequest(c.Server, pType, id, params)
 	if err != nil {
 		return nil, err
 	}
@@ -147532,8 +147581,8 @@ func (c *Client) GetSavedObject(ctx context.Context, pType SavedObjectsSavedObje
 	return c.Client.Do(req)
 }
 
-func (c *Client) CreateSavedObjectIdWithBody(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, params *CreateSavedObjectIdParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateSavedObjectIdRequestWithBody(c.Server, pType, id, params, contentType, body)
+func (c *Client) GetSavedObjectsTypeId(ctx context.Context, pType string, id string, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewGetSavedObjectsTypeIdRequest(c.Server, pType, id)
 	if err != nil {
 		return nil, err
 	}
@@ -147544,8 +147593,8 @@ func (c *Client) CreateSavedObjectIdWithBody(ctx context.Context, pType SavedObj
 	return c.Client.Do(req)
 }
 
-func (c *Client) CreateSavedObjectId(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, params *CreateSavedObjectIdParams, body CreateSavedObjectIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewCreateSavedObjectIdRequest(c.Server, pType, id, params, body)
+func (c *Client) PostSavedObjectsTypeIdWithBody(ctx context.Context, pType string, id string, params *PostSavedObjectsTypeIdParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostSavedObjectsTypeIdRequestWithBody(c.Server, pType, id, params, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -147556,8 +147605,8 @@ func (c *Client) CreateSavedObjectId(ctx context.Context, pType SavedObjectsSave
 	return c.Client.Do(req)
 }
 
-func (c *Client) UpdateSavedObjectWithBody(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateSavedObjectRequestWithBody(c.Server, pType, id, contentType, body)
+func (c *Client) PostSavedObjectsTypeId(ctx context.Context, pType string, id string, params *PostSavedObjectsTypeIdParams, body PostSavedObjectsTypeIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPostSavedObjectsTypeIdRequest(c.Server, pType, id, params, body)
 	if err != nil {
 		return nil, err
 	}
@@ -147568,8 +147617,20 @@ func (c *Client) UpdateSavedObjectWithBody(ctx context.Context, pType SavedObjec
 	return c.Client.Do(req)
 }
 
-func (c *Client) UpdateSavedObject(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, body UpdateSavedObjectJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
-	req, err := NewUpdateSavedObjectRequest(c.Server, pType, id, body)
+func (c *Client) PutSavedObjectsTypeIdWithBody(ctx context.Context, pType string, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutSavedObjectsTypeIdRequestWithBody(c.Server, pType, id, contentType, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) PutSavedObjectsTypeId(ctx context.Context, pType string, id string, body PutSavedObjectsTypeIdJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewPutSavedObjectsTypeIdRequest(c.Server, pType, id, body)
 	if err != nil {
 		return nil, err
 	}
@@ -173055,19 +173116,19 @@ func NewScheduleRiskEngineNowRequestWithBody(server string, contentType string, 
 	return req, nil
 }
 
-// NewBulkCreateSavedObjectsRequest calls the generic BulkCreateSavedObjects builder with application/json body
-func NewBulkCreateSavedObjectsRequest(server string, params *BulkCreateSavedObjectsParams, body BulkCreateSavedObjectsJSONRequestBody) (*http.Request, error) {
+// NewPostSavedObjectsBulkCreateRequest calls the generic PostSavedObjectsBulkCreate builder with application/json body
+func NewPostSavedObjectsBulkCreateRequest(server string, params *PostSavedObjectsBulkCreateParams, body PostSavedObjectsBulkCreateJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewBulkCreateSavedObjectsRequestWithBody(server, params, "application/json", bodyReader)
+	return NewPostSavedObjectsBulkCreateRequestWithBody(server, params, "application/json", bodyReader)
 }
 
-// NewBulkCreateSavedObjectsRequestWithBody generates requests for BulkCreateSavedObjects with any type of body
-func NewBulkCreateSavedObjectsRequestWithBody(server string, params *BulkCreateSavedObjectsParams, contentType string, body io.Reader) (*http.Request, error) {
+// NewPostSavedObjectsBulkCreateRequestWithBody generates requests for PostSavedObjectsBulkCreate with any type of body
+func NewPostSavedObjectsBulkCreateRequestWithBody(server string, params *PostSavedObjectsBulkCreateParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -173117,19 +173178,19 @@ func NewBulkCreateSavedObjectsRequestWithBody(server string, params *BulkCreateS
 	return req, nil
 }
 
-// NewBulkDeleteSavedObjectsRequest calls the generic BulkDeleteSavedObjects builder with application/json body
-func NewBulkDeleteSavedObjectsRequest(server string, params *BulkDeleteSavedObjectsParams, body BulkDeleteSavedObjectsJSONRequestBody) (*http.Request, error) {
+// NewPostSavedObjectsBulkDeleteRequest calls the generic PostSavedObjectsBulkDelete builder with application/json body
+func NewPostSavedObjectsBulkDeleteRequest(server string, params *PostSavedObjectsBulkDeleteParams, body PostSavedObjectsBulkDeleteJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewBulkDeleteSavedObjectsRequestWithBody(server, params, "application/json", bodyReader)
+	return NewPostSavedObjectsBulkDeleteRequestWithBody(server, params, "application/json", bodyReader)
 }
 
-// NewBulkDeleteSavedObjectsRequestWithBody generates requests for BulkDeleteSavedObjects with any type of body
-func NewBulkDeleteSavedObjectsRequestWithBody(server string, params *BulkDeleteSavedObjectsParams, contentType string, body io.Reader) (*http.Request, error) {
+// NewPostSavedObjectsBulkDeleteRequestWithBody generates requests for PostSavedObjectsBulkDelete with any type of body
+func NewPostSavedObjectsBulkDeleteRequestWithBody(server string, params *PostSavedObjectsBulkDeleteParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -173179,19 +173240,19 @@ func NewBulkDeleteSavedObjectsRequestWithBody(server string, params *BulkDeleteS
 	return req, nil
 }
 
-// NewBulkGetSavedObjectsRequest calls the generic BulkGetSavedObjects builder with application/json body
-func NewBulkGetSavedObjectsRequest(server string, body BulkGetSavedObjectsJSONRequestBody) (*http.Request, error) {
+// NewPostSavedObjectsBulkGetRequest calls the generic PostSavedObjectsBulkGet builder with application/json body
+func NewPostSavedObjectsBulkGetRequest(server string, body PostSavedObjectsBulkGetJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewBulkGetSavedObjectsRequestWithBody(server, "application/json", bodyReader)
+	return NewPostSavedObjectsBulkGetRequestWithBody(server, "application/json", bodyReader)
 }
 
-// NewBulkGetSavedObjectsRequestWithBody generates requests for BulkGetSavedObjects with any type of body
-func NewBulkGetSavedObjectsRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+// NewPostSavedObjectsBulkGetRequestWithBody generates requests for PostSavedObjectsBulkGet with any type of body
+func NewPostSavedObjectsBulkGetRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -173219,19 +173280,19 @@ func NewBulkGetSavedObjectsRequestWithBody(server string, contentType string, bo
 	return req, nil
 }
 
-// NewBulkResolveSavedObjectsRequest calls the generic BulkResolveSavedObjects builder with application/json body
-func NewBulkResolveSavedObjectsRequest(server string, body BulkResolveSavedObjectsJSONRequestBody) (*http.Request, error) {
+// NewPostSavedObjectsBulkResolveRequest calls the generic PostSavedObjectsBulkResolve builder with application/json body
+func NewPostSavedObjectsBulkResolveRequest(server string, body PostSavedObjectsBulkResolveJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewBulkResolveSavedObjectsRequestWithBody(server, "application/json", bodyReader)
+	return NewPostSavedObjectsBulkResolveRequestWithBody(server, "application/json", bodyReader)
 }
 
-// NewBulkResolveSavedObjectsRequestWithBody generates requests for BulkResolveSavedObjects with any type of body
-func NewBulkResolveSavedObjectsRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+// NewPostSavedObjectsBulkResolveRequestWithBody generates requests for PostSavedObjectsBulkResolve with any type of body
+func NewPostSavedObjectsBulkResolveRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -173259,19 +173320,19 @@ func NewBulkResolveSavedObjectsRequestWithBody(server string, contentType string
 	return req, nil
 }
 
-// NewBulkUpdateSavedObjectsRequest calls the generic BulkUpdateSavedObjects builder with application/json body
-func NewBulkUpdateSavedObjectsRequest(server string, body BulkUpdateSavedObjectsJSONRequestBody) (*http.Request, error) {
+// NewPutSavedObjectsBulkUpdateRequest calls the generic PutSavedObjectsBulkUpdate builder with application/json body
+func NewPutSavedObjectsBulkUpdateRequest(server string, body PutSavedObjectsBulkUpdateJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewBulkUpdateSavedObjectsRequestWithBody(server, "application/json", bodyReader)
+	return NewPutSavedObjectsBulkUpdateRequestWithBody(server, "application/json", bodyReader)
 }
 
-// NewBulkUpdateSavedObjectsRequestWithBody generates requests for BulkUpdateSavedObjects with any type of body
-func NewBulkUpdateSavedObjectsRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
+// NewPutSavedObjectsBulkUpdateRequestWithBody generates requests for PutSavedObjectsBulkUpdate with any type of body
+func NewPutSavedObjectsBulkUpdateRequestWithBody(server string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -173289,7 +173350,7 @@ func NewBulkUpdateSavedObjectsRequestWithBody(server string, contentType string,
 		return nil, err
 	}
 
-	req, err := http.NewRequest("POST", queryURL.String(), body)
+	req, err := http.NewRequest("PUT", queryURL.String(), body)
 	if err != nil {
 		return nil, err
 	}
@@ -173339,8 +173400,8 @@ func NewPostSavedObjectsExportRequestWithBody(server string, contentType string,
 	return req, nil
 }
 
-// NewFindSavedObjectsRequest generates requests for FindSavedObjects
-func NewFindSavedObjectsRequest(server string, params *FindSavedObjectsParams) (*http.Request, error) {
+// NewGetSavedObjectsFindRequest generates requests for GetSavedObjectsFind
+func NewGetSavedObjectsFindRequest(server string, params *GetSavedObjectsFindParams) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -173361,121 +173422,9 @@ func NewFindSavedObjectsRequest(server string, params *FindSavedObjectsParams) (
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.Aggs != nil {
+		if params.PerPage != nil {
 
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "aggs", *params.Aggs, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.DefaultSearchOperator != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "default_search_operator", *params.DefaultSearchOperator, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.Fields != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "fields", *params.Fields, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "", Format: ""}); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.Filter != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "filter", *params.Filter, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.HasNoReference != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "has_no_reference", *params.HasNoReference, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "object", Format: ""}); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.HasNoReferenceOperator != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "has_no_reference_operator", *params.HasNoReferenceOperator, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.HasReference != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "has_reference", *params.HasReference, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "object", Format: ""}); err != nil {
-				return nil, err
-			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-				return nil, err
-			} else {
-				for k, v := range parsed {
-					for _, v2 := range v {
-						queryValues.Add(k, v2)
-					}
-				}
-			}
-
-		}
-
-		if params.HasReferenceOperator != nil {
-
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "has_reference_operator", *params.HasReferenceOperator, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "per_page", *params.PerPage, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "number", Format: ""}); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -173491,7 +173440,7 @@ func NewFindSavedObjectsRequest(server string, params *FindSavedObjectsParams) (
 
 		if params.Page != nil {
 
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "page", *params.Page, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "page", *params.Page, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "number", Format: ""}); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -173505,9 +173454,9 @@ func NewFindSavedObjectsRequest(server string, params *FindSavedObjectsParams) (
 
 		}
 
-		if params.PerPage != nil {
+		if params.Type != nil {
 
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "per_page", *params.PerPage, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "integer", Format: ""}); err != nil {
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "type", params.Type, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "array", Format: ""}); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -173537,9 +173486,25 @@ func NewFindSavedObjectsRequest(server string, params *FindSavedObjectsParams) (
 
 		}
 
+		if params.DefaultSearchOperator != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "default_search_operator", *params.DefaultSearchOperator, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
 		if params.SearchFields != nil {
 
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "search_fields", *params.SearchFields, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "", Format: ""}); err != nil {
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "search_fields", *params.SearchFields, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "array", Format: ""}); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -173569,16 +173534,132 @@ func NewFindSavedObjectsRequest(server string, params *FindSavedObjectsParams) (
 
 		}
 
-		if queryFrag, err := runtime.StyleParamWithOptions("form", true, "type", params.Type, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "", Format: ""}); err != nil {
-			return nil, err
-		} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
-			return nil, err
-		} else {
-			for k, v := range parsed {
-				for _, v2 := range v {
-					queryValues.Add(k, v2)
+		if params.HasReference != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "has_reference", *params.HasReference, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "", Format: ""}); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
 				}
 			}
+
+		}
+
+		if params.HasReferenceOperator != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "has_reference_operator", *params.HasReferenceOperator, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.HasNoReference != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "has_no_reference", *params.HasNoReference, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "", Format: ""}); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.HasNoReferenceOperator != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "has_no_reference_operator", *params.HasNoReferenceOperator, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Fields != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "fields", *params.Fields, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "array", Format: ""}); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Filter != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "filter", *params.Filter, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Aggs != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "aggs", *params.Aggs, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "string", Format: ""}); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		if params.Namespaces != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "namespaces", *params.Namespaces, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "array", Format: ""}); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
 		}
 
 		queryURL.RawQuery = queryValues.Encode()
@@ -173675,8 +173756,8 @@ func NewPostSavedObjectsImportRequestWithBody(server string, params *PostSavedOb
 	return req, nil
 }
 
-// NewResolveImportErrorsRequestWithBody generates requests for ResolveImportErrors with any type of body
-func NewResolveImportErrorsRequestWithBody(server string, params *ResolveImportErrorsParams, contentType string, body io.Reader) (*http.Request, error) {
+// NewPostSavedObjectsResolveImportErrorsRequestWithBody generates requests for PostSavedObjectsResolveImportErrors with any type of body
+func NewPostSavedObjectsResolveImportErrorsRequestWithBody(server string, params *PostSavedObjectsResolveImportErrorsParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	serverURL, err := url.Parse(server)
@@ -173697,9 +173778,9 @@ func NewResolveImportErrorsRequestWithBody(server string, params *ResolveImportE
 	if params != nil {
 		queryValues := queryURL.Query()
 
-		if params.CompatibilityMode != nil {
+		if params.CreateNewCopies != nil {
 
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "compatibilityMode", *params.CompatibilityMode, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "createNewCopies", *params.CreateNewCopies, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -173713,9 +173794,9 @@ func NewResolveImportErrorsRequestWithBody(server string, params *ResolveImportE
 
 		}
 
-		if params.CreateNewCopies != nil {
+		if params.CompatibilityMode != nil {
 
-			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "createNewCopies", *params.CreateNewCopies, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "compatibilityMode", *params.CompatibilityMode, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -173742,8 +173823,8 @@ func NewResolveImportErrorsRequestWithBody(server string, params *ResolveImportE
 	return req, nil
 }
 
-// NewResolveSavedObjectRequest generates requests for ResolveSavedObject
-func NewResolveSavedObjectRequest(server string, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId) (*http.Request, error) {
+// NewGetSavedObjectsResolveTypeIdRequest generates requests for GetSavedObjectsResolveTypeId
+func NewGetSavedObjectsResolveTypeIdRequest(server string, pType string, id string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -173783,19 +173864,19 @@ func NewResolveSavedObjectRequest(server string, pType SavedObjectsSavedObjectTy
 	return req, nil
 }
 
-// NewCreateSavedObjectRequest calls the generic CreateSavedObject builder with application/json body
-func NewCreateSavedObjectRequest(server string, pType SavedObjectsSavedObjectType, params *CreateSavedObjectParams, body CreateSavedObjectJSONRequestBody) (*http.Request, error) {
+// NewPostSavedObjectsTypeRequest calls the generic PostSavedObjectsType builder with application/json body
+func NewPostSavedObjectsTypeRequest(server string, pType string, params *PostSavedObjectsTypeParams, body PostSavedObjectsTypeJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCreateSavedObjectRequestWithBody(server, pType, params, "application/json", bodyReader)
+	return NewPostSavedObjectsTypeRequestWithBody(server, pType, params, "application/json", bodyReader)
 }
 
-// NewCreateSavedObjectRequestWithBody generates requests for CreateSavedObject with any type of body
-func NewCreateSavedObjectRequestWithBody(server string, pType SavedObjectsSavedObjectType, params *CreateSavedObjectParams, contentType string, body io.Reader) (*http.Request, error) {
+// NewPostSavedObjectsTypeRequestWithBody generates requests for PostSavedObjectsType with any type of body
+func NewPostSavedObjectsTypeRequestWithBody(server string, pType string, params *PostSavedObjectsTypeParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -173852,8 +173933,71 @@ func NewCreateSavedObjectRequestWithBody(server string, pType SavedObjectsSavedO
 	return req, nil
 }
 
-// NewGetSavedObjectRequest generates requests for GetSavedObject
-func NewGetSavedObjectRequest(server string, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId) (*http.Request, error) {
+// NewDeleteSavedObjectsTypeIdRequest generates requests for DeleteSavedObjectsTypeId
+func NewDeleteSavedObjectsTypeIdRequest(server string, pType string, id string, params *DeleteSavedObjectsTypeIdParams) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithOptions("simple", false, "type", pType, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	var pathParam1 string
+
+	pathParam1, err = runtime.StyleParamWithOptions("simple", false, "id", id, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationPath, Type: "string", Format: ""})
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/api/saved_objects/%s/%s", pathParam0, pathParam1)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	if params != nil {
+		queryValues := queryURL.Query()
+
+		if params.Force != nil {
+
+			if queryFrag, err := runtime.StyleParamWithOptions("form", true, "force", *params.Force, runtime.StyleParamOptions{ParamLocation: runtime.ParamLocationQuery, Type: "boolean", Format: ""}); err != nil {
+				return nil, err
+			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
+				return nil, err
+			} else {
+				for k, v := range parsed {
+					for _, v2 := range v {
+						queryValues.Add(k, v2)
+					}
+				}
+			}
+
+		}
+
+		queryURL.RawQuery = queryValues.Encode()
+	}
+
+	req, err := http.NewRequest("DELETE", queryURL.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	return req, nil
+}
+
+// NewGetSavedObjectsTypeIdRequest generates requests for GetSavedObjectsTypeId
+func NewGetSavedObjectsTypeIdRequest(server string, pType string, id string) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -173893,19 +174037,19 @@ func NewGetSavedObjectRequest(server string, pType SavedObjectsSavedObjectType, 
 	return req, nil
 }
 
-// NewCreateSavedObjectIdRequest calls the generic CreateSavedObjectId builder with application/json body
-func NewCreateSavedObjectIdRequest(server string, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, params *CreateSavedObjectIdParams, body CreateSavedObjectIdJSONRequestBody) (*http.Request, error) {
+// NewPostSavedObjectsTypeIdRequest calls the generic PostSavedObjectsTypeId builder with application/json body
+func NewPostSavedObjectsTypeIdRequest(server string, pType string, id string, params *PostSavedObjectsTypeIdParams, body PostSavedObjectsTypeIdJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewCreateSavedObjectIdRequestWithBody(server, pType, id, params, "application/json", bodyReader)
+	return NewPostSavedObjectsTypeIdRequestWithBody(server, pType, id, params, "application/json", bodyReader)
 }
 
-// NewCreateSavedObjectIdRequestWithBody generates requests for CreateSavedObjectId with any type of body
-func NewCreateSavedObjectIdRequestWithBody(server string, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, params *CreateSavedObjectIdParams, contentType string, body io.Reader) (*http.Request, error) {
+// NewPostSavedObjectsTypeIdRequestWithBody generates requests for PostSavedObjectsTypeId with any type of body
+func NewPostSavedObjectsTypeIdRequestWithBody(server string, pType string, id string, params *PostSavedObjectsTypeIdParams, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -173969,19 +174113,19 @@ func NewCreateSavedObjectIdRequestWithBody(server string, pType SavedObjectsSave
 	return req, nil
 }
 
-// NewUpdateSavedObjectRequest calls the generic UpdateSavedObject builder with application/json body
-func NewUpdateSavedObjectRequest(server string, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, body UpdateSavedObjectJSONRequestBody) (*http.Request, error) {
+// NewPutSavedObjectsTypeIdRequest calls the generic PutSavedObjectsTypeId builder with application/json body
+func NewPutSavedObjectsTypeIdRequest(server string, pType string, id string, body PutSavedObjectsTypeIdJSONRequestBody) (*http.Request, error) {
 	var bodyReader io.Reader
 	buf, err := json.Marshal(body)
 	if err != nil {
 		return nil, err
 	}
 	bodyReader = bytes.NewReader(buf)
-	return NewUpdateSavedObjectRequestWithBody(server, pType, id, "application/json", bodyReader)
+	return NewPutSavedObjectsTypeIdRequestWithBody(server, pType, id, "application/json", bodyReader)
 }
 
-// NewUpdateSavedObjectRequestWithBody generates requests for UpdateSavedObject with any type of body
-func NewUpdateSavedObjectRequestWithBody(server string, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, contentType string, body io.Reader) (*http.Request, error) {
+// NewPutSavedObjectsTypeIdRequestWithBody generates requests for PutSavedObjectsTypeId with any type of body
+func NewPutSavedObjectsTypeIdRequestWithBody(server string, pType string, id string, contentType string, body io.Reader) (*http.Request, error) {
 	var err error
 
 	var pathParam0 string
@@ -179623,7 +179767,7 @@ func NewCopyTimelineRequestWithBody(server string, contentType string, body io.R
 		return nil, err
 	}
 
-	req, err := http.NewRequest("GET", queryURL.String(), body)
+	req, err := http.NewRequest("POST", queryURL.String(), body)
 	if err != nil {
 		return nil, err
 	}
@@ -186305,65 +186449,68 @@ type ClientWithResponsesInterface interface {
 
 	ScheduleRiskEngineNowWithResponse(ctx context.Context, body ScheduleRiskEngineNowJSONRequestBody, reqEditors ...RequestEditorFn) (*ScheduleRiskEngineNowResponse, error)
 
-	// BulkCreateSavedObjectsWithBodyWithResponse request with any body
-	BulkCreateSavedObjectsWithBodyWithResponse(ctx context.Context, params *BulkCreateSavedObjectsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BulkCreateSavedObjectsResponse, error)
+	// PostSavedObjectsBulkCreateWithBodyWithResponse request with any body
+	PostSavedObjectsBulkCreateWithBodyWithResponse(ctx context.Context, params *PostSavedObjectsBulkCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkCreateResponse, error)
 
-	BulkCreateSavedObjectsWithResponse(ctx context.Context, params *BulkCreateSavedObjectsParams, body BulkCreateSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*BulkCreateSavedObjectsResponse, error)
+	PostSavedObjectsBulkCreateWithResponse(ctx context.Context, params *PostSavedObjectsBulkCreateParams, body PostSavedObjectsBulkCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkCreateResponse, error)
 
-	// BulkDeleteSavedObjectsWithBodyWithResponse request with any body
-	BulkDeleteSavedObjectsWithBodyWithResponse(ctx context.Context, params *BulkDeleteSavedObjectsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BulkDeleteSavedObjectsResponse, error)
+	// PostSavedObjectsBulkDeleteWithBodyWithResponse request with any body
+	PostSavedObjectsBulkDeleteWithBodyWithResponse(ctx context.Context, params *PostSavedObjectsBulkDeleteParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkDeleteResponse, error)
 
-	BulkDeleteSavedObjectsWithResponse(ctx context.Context, params *BulkDeleteSavedObjectsParams, body BulkDeleteSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*BulkDeleteSavedObjectsResponse, error)
+	PostSavedObjectsBulkDeleteWithResponse(ctx context.Context, params *PostSavedObjectsBulkDeleteParams, body PostSavedObjectsBulkDeleteJSONRequestBody, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkDeleteResponse, error)
 
-	// BulkGetSavedObjectsWithBodyWithResponse request with any body
-	BulkGetSavedObjectsWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BulkGetSavedObjectsResponse, error)
+	// PostSavedObjectsBulkGetWithBodyWithResponse request with any body
+	PostSavedObjectsBulkGetWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkGetResponse, error)
 
-	BulkGetSavedObjectsWithResponse(ctx context.Context, body BulkGetSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*BulkGetSavedObjectsResponse, error)
+	PostSavedObjectsBulkGetWithResponse(ctx context.Context, body PostSavedObjectsBulkGetJSONRequestBody, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkGetResponse, error)
 
-	// BulkResolveSavedObjectsWithBodyWithResponse request with any body
-	BulkResolveSavedObjectsWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BulkResolveSavedObjectsResponse, error)
+	// PostSavedObjectsBulkResolveWithBodyWithResponse request with any body
+	PostSavedObjectsBulkResolveWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkResolveResponse, error)
 
-	BulkResolveSavedObjectsWithResponse(ctx context.Context, body BulkResolveSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*BulkResolveSavedObjectsResponse, error)
+	PostSavedObjectsBulkResolveWithResponse(ctx context.Context, body PostSavedObjectsBulkResolveJSONRequestBody, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkResolveResponse, error)
 
-	// BulkUpdateSavedObjectsWithBodyWithResponse request with any body
-	BulkUpdateSavedObjectsWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BulkUpdateSavedObjectsResponse, error)
+	// PutSavedObjectsBulkUpdateWithBodyWithResponse request with any body
+	PutSavedObjectsBulkUpdateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutSavedObjectsBulkUpdateResponse, error)
 
-	BulkUpdateSavedObjectsWithResponse(ctx context.Context, body BulkUpdateSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*BulkUpdateSavedObjectsResponse, error)
+	PutSavedObjectsBulkUpdateWithResponse(ctx context.Context, body PutSavedObjectsBulkUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*PutSavedObjectsBulkUpdateResponse, error)
 
 	// PostSavedObjectsExportWithBodyWithResponse request with any body
 	PostSavedObjectsExportWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsExportResponse, error)
 
 	PostSavedObjectsExportWithResponse(ctx context.Context, body PostSavedObjectsExportJSONRequestBody, reqEditors ...RequestEditorFn) (*PostSavedObjectsExportResponse, error)
 
-	// FindSavedObjectsWithResponse request
-	FindSavedObjectsWithResponse(ctx context.Context, params *FindSavedObjectsParams, reqEditors ...RequestEditorFn) (*FindSavedObjectsResponse, error)
+	// GetSavedObjectsFindWithResponse request
+	GetSavedObjectsFindWithResponse(ctx context.Context, params *GetSavedObjectsFindParams, reqEditors ...RequestEditorFn) (*GetSavedObjectsFindResponse, error)
 
 	// PostSavedObjectsImportWithBodyWithResponse request with any body
 	PostSavedObjectsImportWithBodyWithResponse(ctx context.Context, params *PostSavedObjectsImportParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsImportResponse, error)
 
-	// ResolveImportErrorsWithBodyWithResponse request with any body
-	ResolveImportErrorsWithBodyWithResponse(ctx context.Context, params *ResolveImportErrorsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ResolveImportErrorsResponse, error)
+	// PostSavedObjectsResolveImportErrorsWithBodyWithResponse request with any body
+	PostSavedObjectsResolveImportErrorsWithBodyWithResponse(ctx context.Context, params *PostSavedObjectsResolveImportErrorsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsResolveImportErrorsResponse, error)
 
-	// ResolveSavedObjectWithResponse request
-	ResolveSavedObjectWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, reqEditors ...RequestEditorFn) (*ResolveSavedObjectResponse, error)
+	// GetSavedObjectsResolveTypeIdWithResponse request
+	GetSavedObjectsResolveTypeIdWithResponse(ctx context.Context, pType string, id string, reqEditors ...RequestEditorFn) (*GetSavedObjectsResolveTypeIdResponse, error)
 
-	// CreateSavedObjectWithBodyWithResponse request with any body
-	CreateSavedObjectWithBodyWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, params *CreateSavedObjectParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateSavedObjectResponse, error)
+	// PostSavedObjectsTypeWithBodyWithResponse request with any body
+	PostSavedObjectsTypeWithBodyWithResponse(ctx context.Context, pType string, params *PostSavedObjectsTypeParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsTypeResponse, error)
 
-	CreateSavedObjectWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, params *CreateSavedObjectParams, body CreateSavedObjectJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateSavedObjectResponse, error)
+	PostSavedObjectsTypeWithResponse(ctx context.Context, pType string, params *PostSavedObjectsTypeParams, body PostSavedObjectsTypeJSONRequestBody, reqEditors ...RequestEditorFn) (*PostSavedObjectsTypeResponse, error)
 
-	// GetSavedObjectWithResponse request
-	GetSavedObjectWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, reqEditors ...RequestEditorFn) (*GetSavedObjectResponse, error)
+	// DeleteSavedObjectsTypeIdWithResponse request
+	DeleteSavedObjectsTypeIdWithResponse(ctx context.Context, pType string, id string, params *DeleteSavedObjectsTypeIdParams, reqEditors ...RequestEditorFn) (*DeleteSavedObjectsTypeIdResponse, error)
 
-	// CreateSavedObjectIdWithBodyWithResponse request with any body
-	CreateSavedObjectIdWithBodyWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, params *CreateSavedObjectIdParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateSavedObjectIdResponse, error)
+	// GetSavedObjectsTypeIdWithResponse request
+	GetSavedObjectsTypeIdWithResponse(ctx context.Context, pType string, id string, reqEditors ...RequestEditorFn) (*GetSavedObjectsTypeIdResponse, error)
 
-	CreateSavedObjectIdWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, params *CreateSavedObjectIdParams, body CreateSavedObjectIdJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateSavedObjectIdResponse, error)
+	// PostSavedObjectsTypeIdWithBodyWithResponse request with any body
+	PostSavedObjectsTypeIdWithBodyWithResponse(ctx context.Context, pType string, id string, params *PostSavedObjectsTypeIdParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsTypeIdResponse, error)
 
-	// UpdateSavedObjectWithBodyWithResponse request with any body
-	UpdateSavedObjectWithBodyWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateSavedObjectResponse, error)
+	PostSavedObjectsTypeIdWithResponse(ctx context.Context, pType string, id string, params *PostSavedObjectsTypeIdParams, body PostSavedObjectsTypeIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PostSavedObjectsTypeIdResponse, error)
 
-	UpdateSavedObjectWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, body UpdateSavedObjectJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateSavedObjectResponse, error)
+	// PutSavedObjectsTypeIdWithBodyWithResponse request with any body
+	PutSavedObjectsTypeIdWithBodyWithResponse(ctx context.Context, pType string, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutSavedObjectsTypeIdResponse, error)
+
+	PutSavedObjectsTypeIdWithResponse(ctx context.Context, pType string, id string, body PutSavedObjectsTypeIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PutSavedObjectsTypeIdResponse, error)
 
 	// PutSecurityEntityStoreWithBodyWithResponse request with any body
 	PutSecurityEntityStoreWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutSecurityEntityStoreResponse, error)
@@ -187231,7 +187378,7 @@ type PostActionsConnectorIdExecuteResponse struct {
 	JSON200      *struct {
 		// AuthMode The authentication mode used for the connector.
 		AuthMode *PostActionsConnectorIdExecute200AuthMode `json:"auth_mode,omitempty"`
-		Config   *map[string]interface{}                   `json:"config,omitempty"`
+		Config   *map[string]*interface{}                  `json:"config,omitempty"`
 
 		// ConnectorTypeId The connector type identifier.
 		ConnectorTypeId string `json:"connector_type_id"`
@@ -188205,8 +188352,8 @@ type GetAlertingRuleIdResponse struct {
 							// Store A filter can be either specific to an application context or applied globally.
 							Store GetAlertingRuleId200ActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 						} `json:"$state,omitempty"`
-						Meta  map[string]interface{}  `json:"meta"`
-						Query *map[string]interface{} `json:"query,omitempty"`
+						Meta  map[string]*interface{}  `json:"meta"`
+						Query *map[string]*interface{} `json:"query,omitempty"`
 					} `json:"filters"`
 
 					// Kql A filter written in Kibana Query Language (KQL).
@@ -188248,7 +188395,7 @@ type GetAlertingRuleIdResponse struct {
 			Id string `json:"id"`
 
 			// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-			Params map[string]interface{} `json:"params"`
+			Params map[string]*interface{} `json:"params"`
 
 			// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 			UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -188358,7 +188505,7 @@ type GetAlertingRuleIdResponse struct {
 			// Warning Warning of last rule execution.
 			Warning *GetAlertingRuleId200LastRunWarning `json:"warning,omitempty"`
 		} `json:"last_run,omitempty"`
-		MappedParams *map[string]interface{} `json:"mapped_params,omitempty"`
+		MappedParams *map[string]*interface{} `json:"mapped_params,omitempty"`
 
 		// Monitoring Monitoring details of the rule.
 		Monitoring *struct {
@@ -188434,7 +188581,7 @@ type GetAlertingRuleIdResponse struct {
 		NotifyWhen *GetAlertingRuleId200NotifyWhen `json:"notify_when,omitempty"`
 
 		// Params The parameters for the rule.
-		Params map[string]interface{} `json:"params"`
+		Params map[string]*interface{} `json:"params"`
 
 		// Revision The rule revision number.
 		Revision float32 `json:"revision"`
@@ -188558,8 +188705,8 @@ type PostAlertingRuleIdResponse struct {
 							// Store A filter can be either specific to an application context or applied globally.
 							Store PostAlertingRuleId200ActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 						} `json:"$state,omitempty"`
-						Meta  map[string]interface{}  `json:"meta"`
-						Query *map[string]interface{} `json:"query,omitempty"`
+						Meta  map[string]*interface{}  `json:"meta"`
+						Query *map[string]*interface{} `json:"query,omitempty"`
 					} `json:"filters"`
 
 					// Kql A filter written in Kibana Query Language (KQL).
@@ -188601,7 +188748,7 @@ type PostAlertingRuleIdResponse struct {
 			Id string `json:"id"`
 
 			// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-			Params map[string]interface{} `json:"params"`
+			Params map[string]*interface{} `json:"params"`
 
 			// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 			UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -188711,7 +188858,7 @@ type PostAlertingRuleIdResponse struct {
 			// Warning Warning of last rule execution.
 			Warning *PostAlertingRuleId200LastRunWarning `json:"warning,omitempty"`
 		} `json:"last_run,omitempty"`
-		MappedParams *map[string]interface{} `json:"mapped_params,omitempty"`
+		MappedParams *map[string]*interface{} `json:"mapped_params,omitempty"`
 
 		// Monitoring Monitoring details of the rule.
 		Monitoring *struct {
@@ -188787,7 +188934,7 @@ type PostAlertingRuleIdResponse struct {
 		NotifyWhen *PostAlertingRuleId200NotifyWhen `json:"notify_when,omitempty"`
 
 		// Params The parameters for the rule.
-		Params map[string]interface{} `json:"params"`
+		Params map[string]*interface{} `json:"params"`
 
 		// Revision The rule revision number.
 		Revision float32 `json:"revision"`
@@ -188911,8 +189058,8 @@ type PutAlertingRuleIdResponse struct {
 							// Store A filter can be either specific to an application context or applied globally.
 							Store PutAlertingRuleId200ActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 						} `json:"$state,omitempty"`
-						Meta  map[string]interface{}  `json:"meta"`
-						Query *map[string]interface{} `json:"query,omitempty"`
+						Meta  map[string]*interface{}  `json:"meta"`
+						Query *map[string]*interface{} `json:"query,omitempty"`
 					} `json:"filters"`
 
 					// Kql A filter written in Kibana Query Language (KQL).
@@ -188954,7 +189101,7 @@ type PutAlertingRuleIdResponse struct {
 			Id string `json:"id"`
 
 			// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-			Params map[string]interface{} `json:"params"`
+			Params map[string]*interface{} `json:"params"`
 
 			// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 			UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -189064,7 +189211,7 @@ type PutAlertingRuleIdResponse struct {
 			// Warning Warning of last rule execution.
 			Warning *PutAlertingRuleId200LastRunWarning `json:"warning,omitempty"`
 		} `json:"last_run,omitempty"`
-		MappedParams *map[string]interface{} `json:"mapped_params,omitempty"`
+		MappedParams *map[string]*interface{} `json:"mapped_params,omitempty"`
 
 		// Monitoring Monitoring details of the rule.
 		Monitoring *struct {
@@ -189140,7 +189287,7 @@ type PutAlertingRuleIdResponse struct {
 		NotifyWhen *PutAlertingRuleId200NotifyWhen `json:"notify_when,omitempty"`
 
 		// Params The parameters for the rule.
-		Params map[string]interface{} `json:"params"`
+		Params map[string]*interface{} `json:"params"`
 
 		// Revision The rule revision number.
 		Revision float32 `json:"revision"`
@@ -189654,8 +189801,8 @@ type GetAlertingRulesFindResponse struct {
 							// Store A filter can be either specific to an application context or applied globally.
 							Store GetAlertingRulesFind200ActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 						} `json:"$state,omitempty"`
-						Meta  map[string]interface{}  `json:"meta"`
-						Query *map[string]interface{} `json:"query,omitempty"`
+						Meta  map[string]*interface{}  `json:"meta"`
+						Query *map[string]*interface{} `json:"query,omitempty"`
 					} `json:"filters"`
 
 					// Kql A filter written in Kibana Query Language (KQL).
@@ -189697,7 +189844,7 @@ type GetAlertingRulesFindResponse struct {
 			Id string `json:"id"`
 
 			// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-			Params map[string]interface{} `json:"params"`
+			Params map[string]*interface{} `json:"params"`
 
 			// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 			UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -189807,7 +189954,7 @@ type GetAlertingRulesFindResponse struct {
 			// Warning Warning of last rule execution.
 			Warning *GetAlertingRulesFind200LastRunWarning `json:"warning,omitempty"`
 		} `json:"last_run,omitempty"`
-		MappedParams *map[string]interface{} `json:"mapped_params,omitempty"`
+		MappedParams *map[string]*interface{} `json:"mapped_params,omitempty"`
 
 		// Monitoring Monitoring details of the rule.
 		Monitoring *struct {
@@ -189883,7 +190030,7 @@ type GetAlertingRulesFindResponse struct {
 		NotifyWhen *GetAlertingRulesFind200NotifyWhen `json:"notify_when,omitempty"`
 
 		// Params The parameters for the rule.
-		Params map[string]interface{} `json:"params"`
+		Params map[string]*interface{} `json:"params"`
 
 		// Revision The rule revision number.
 		Revision float32 `json:"revision"`
@@ -190013,9 +190160,9 @@ type PostAlertingRulesBackfillFindResponse struct {
 				Name                string  `json:"name"`
 
 				// Params The parameters for the rule.
-				Params     map[string]interface{} `json:"params"`
-				Revision   float32                `json:"revision"`
-				RuleTypeId string                 `json:"rule_type_id"`
+				Params     map[string]*interface{} `json:"params"`
+				Revision   float32                 `json:"revision"`
+				RuleTypeId string                  `json:"rule_type_id"`
 				Schedule   struct {
 					Interval string `json:"interval"`
 				} `json:"schedule"`
@@ -190081,9 +190228,9 @@ type PostAlertingRulesBackfillSchedule2000 struct {
 		Name                string  `json:"name"`
 
 		// Params The parameters for the rule.
-		Params     map[string]interface{} `json:"params"`
-		Revision   float32                `json:"revision"`
-		RuleTypeId string                 `json:"rule_type_id"`
+		Params     map[string]*interface{} `json:"params"`
+		Revision   float32                 `json:"revision"`
+		RuleTypeId string                  `json:"rule_type_id"`
 		Schedule   struct {
 			Interval string `json:"interval"`
 		} `json:"schedule"`
@@ -190176,9 +190323,9 @@ type GetAlertingRulesBackfillIdResponse struct {
 			Name                string  `json:"name"`
 
 			// Params The parameters for the rule.
-			Params     map[string]interface{} `json:"params"`
-			Revision   float32                `json:"revision"`
-			RuleTypeId string                 `json:"rule_type_id"`
+			Params     map[string]*interface{} `json:"params"`
+			Revision   float32                 `json:"revision"`
+			RuleTypeId string                  `json:"rule_type_id"`
 			Schedule   struct {
 				Interval string `json:"interval"`
 			} `json:"schedule"`
@@ -191326,6 +191473,15 @@ type GetCaseConfigurationDefaultSpaceResponse struct {
 			Target     *string `json:"target,omitempty"`
 		} `json:"mappings,omitempty"`
 
+		// ObservableTypes Custom observable type configuration details.
+		ObservableTypes *[]struct {
+			// Key The observable type key.
+			Key *string `json:"key,omitempty"`
+
+			// Label The observable type label.
+			Label *string `json:"label,omitempty"`
+		} `json:"observableTypes,omitempty"`
+
 		// Owner The application that owns the cases: Stack Management, Observability, or Elastic Security.
 		Owner     *CasesOwner     `json:"owner,omitempty"`
 		Templates *CasesTemplates `json:"templates,omitempty"`
@@ -191414,6 +191570,15 @@ type SetCaseConfigurationDefaultSpaceResponse struct {
 			Source     *string `json:"source,omitempty"`
 			Target     *string `json:"target,omitempty"`
 		} `json:"mappings,omitempty"`
+
+		// ObservableTypes Custom observable type configuration details.
+		ObservableTypes *[]struct {
+			// Key The observable type key.
+			Key *string `json:"key,omitempty"`
+
+			// Label The observable type label.
+			Label *string `json:"label,omitempty"`
+		} `json:"observableTypes,omitempty"`
 
 		// Owner The application that owns the cases: Stack Management, Observability, or Elastic Security.
 		Owner     *CasesOwner     `json:"owner,omitempty"`
@@ -191541,6 +191706,15 @@ type UpdateCaseConfigurationDefaultSpaceResponse struct {
 			Source     *string `json:"source,omitempty"`
 			Target     *string `json:"target,omitempty"`
 		} `json:"mappings,omitempty"`
+
+		// ObservableTypes Custom observable type configuration details.
+		ObservableTypes *[]struct {
+			// Key The observable type key.
+			Key *string `json:"key,omitempty"`
+
+			// Label The observable type label.
+			Label *string `json:"label,omitempty"`
+		} `json:"observableTypes,omitempty"`
 
 		// Owner The application that owns the cases: Stack Management, Observability, or Elastic Security.
 		Owner     *CasesOwner     `json:"owner,omitempty"`
@@ -195351,7 +195525,7 @@ type PostFleetAgentPoliciesBulkGetResponse struct {
 			Namespace              string  `json:"namespace"`
 
 			// Overrides Override settings that are defined in the agent policy. Input settings cannot be overridden. The override option should be used only in unusual circumstances and not as a routine procedure.
-			Overrides                     *map[string]interface{} `json:"overrides,omitempty"`
+			Overrides                     *map[string]*interface{} `json:"overrides,omitempty"`
 			PackageAgentVersionConditions *[]struct {
 				Name             string `json:"name"`
 				Title            string `json:"title"`
@@ -195429,7 +195603,7 @@ type PostFleetAgentPoliciesBulkGet200ItemsPackagePolicies1 = []struct {
 
 	// Overrides Override settings that are defined in the package policy. The override option should be used only in unusual circumstances and not as a routine procedure.
 	Overrides *struct {
-		Inputs *map[string]interface{} `json:"inputs,omitempty"`
+		Inputs *map[string]*interface{} `json:"inputs,omitempty"`
 	} `json:"overrides,omitempty"`
 	Package *struct {
 		ExperimentalDataStreamFeatures *[]struct {
@@ -195955,7 +196129,7 @@ type PostFleetAgentPoliciesAgentpolicyidCopyResponse struct {
 			Namespace              string  `json:"namespace"`
 
 			// Overrides Override settings that are defined in the agent policy. Input settings cannot be overridden. The override option should be used only in unusual circumstances and not as a routine procedure.
-			Overrides                     *map[string]interface{} `json:"overrides,omitempty"`
+			Overrides                     *map[string]*interface{} `json:"overrides,omitempty"`
 			PackageAgentVersionConditions *[]struct {
 				Name             string `json:"name"`
 				Title            string `json:"title"`
@@ -196033,7 +196207,7 @@ type PostFleetAgentPoliciesAgentpolicyidCopy200ItemPackagePolicies1 = []struct {
 
 	// Overrides Override settings that are defined in the package policy. The override option should be used only in unusual circumstances and not as a routine procedure.
 	Overrides *struct {
-		Inputs *map[string]interface{} `json:"inputs,omitempty"`
+		Inputs *map[string]*interface{} `json:"inputs,omitempty"`
 	} `json:"overrides,omitempty"`
 	Package *struct {
 		ExperimentalDataStreamFeatures *[]struct {
@@ -196399,17 +196573,17 @@ type GetFleetAgentPoliciesAgentpolicyidFull200Item1 struct {
 			UninstallTokenHash string `json:"uninstall_token_hash"`
 		} `json:"protection,omitempty"`
 	} `json:"agent,omitempty"`
-	Connectors        *map[string]interface{}                                                                   `json:"connectors,omitempty"`
-	Exporters         *map[string]interface{}                                                                   `json:"exporters,omitempty"`
-	Extensions        *map[string]interface{}                                                                   `json:"extensions,omitempty"`
+	Connectors        *map[string]*interface{}                                                                  `json:"connectors,omitempty"`
+	Exporters         *map[string]*interface{}                                                                  `json:"exporters,omitempty"`
+	Extensions        *map[string]*interface{}                                                                  `json:"extensions,omitempty"`
 	Fleet             *GetFleetAgentPoliciesAgentpolicyidFull_200_Item_1_Fleet                                  `json:"fleet,omitempty"`
 	Id                string                                                                                    `json:"id"`
 	Inputs            []GetFleetAgentPoliciesAgentpolicyidFull_200_Item_1_Inputs_Item                           `json:"inputs"`
 	Namespaces        *[]string                                                                                 `json:"namespaces,omitempty"`
-	OutputPermissions *map[string]map[string]interface{}                                                        `json:"output_permissions,omitempty"`
+	OutputPermissions *map[string]map[string]*interface{}                                                       `json:"output_permissions,omitempty"`
 	Outputs           map[string]GetFleetAgentPoliciesAgentpolicyidFull_200_Item_1_Outputs_AdditionalProperties `json:"outputs"`
-	Processors        *map[string]interface{}                                                                   `json:"processors,omitempty"`
-	Receivers         *map[string]interface{}                                                                   `json:"receivers,omitempty"`
+	Processors        *map[string]*interface{}                                                                  `json:"processors,omitempty"`
+	Receivers         *map[string]*interface{}                                                                  `json:"receivers,omitempty"`
 	Revision          *float32                                                                                  `json:"revision,omitempty"`
 	SecretReferences  *[]struct {
 		Id string `json:"id"`
@@ -196669,7 +196843,7 @@ type GetFleetAgentStatusDataResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *struct {
-		DataPreview []interface{} `json:"dataPreview"`
+		DataPreview []*interface{} `json:"dataPreview"`
 		Items       []map[string]struct {
 			Data bool `json:"data"`
 		} `json:"items"`
@@ -196738,7 +196912,7 @@ type PostFleetAgentlessPoliciesResponse struct {
 
 			// Overrides Override settings that are defined in the package policy. The override option should be used only in unusual circumstances and not as a routine procedure.
 			Overrides *struct {
-				Inputs *map[string]interface{} `json:"inputs,omitempty"`
+				Inputs *map[string]*interface{} `json:"inputs,omitempty"`
 			} `json:"overrides,omitempty"`
 			Package *struct {
 				ExperimentalDataStreamFeatures *[]struct {
@@ -197043,7 +197217,7 @@ type GetFleetAgentsResponse struct {
 				Units   *[]struct {
 					Id      string                                      `json:"id"`
 					Message string                                      `json:"message"`
-					Payload *map[string]interface{}                     `json:"payload,omitempty"`
+					Payload *map[string]*interface{}                    `json:"payload,omitempty"`
 					Status  GetFleetAgents200ItemsComponentsUnitsStatus `json:"status"`
 					Type    GetFleetAgents200ItemsComponentsUnitsType   `json:"type"`
 				} `json:"units,omitempty"`
@@ -197056,14 +197230,14 @@ type GetFleetAgentsResponse struct {
 			DefaultApiKeyId       *string                                  `json:"default_api_key_id,omitempty"`
 			EffectiveConfig       interface{}                              `json:"effective_config"`
 			EnrolledAt            string                                   `json:"enrolled_at"`
-			Health                *map[string]interface{}                  `json:"health,omitempty"`
+			Health                *map[string]*interface{}                 `json:"health,omitempty"`
 			Id                    string                                   `json:"id"`
 			IdentifyingAttributes *map[string]string                       `json:"identifying_attributes,omitempty"`
 			LastCheckin           *string                                  `json:"last_checkin,omitempty"`
 			LastCheckinMessage    *string                                  `json:"last_checkin_message,omitempty"`
 			LastCheckinStatus     *GetFleetAgents200ItemsLastCheckinStatus `json:"last_checkin_status,omitempty"`
 			LastKnownStatus       *GetFleetAgents200ItemsLastKnownStatus   `json:"last_known_status,omitempty"`
-			LocalMetadata         map[string]interface{}                   `json:"local_metadata"`
+			LocalMetadata         map[string]*interface{}                  `json:"local_metadata"`
 			Metrics               *struct {
 				CpuAvg            *float32 `json:"cpu_avg,omitempty"`
 				MemorySizeByteAvg *float32 `json:"memory_size_byte_avg,omitempty"`
@@ -197082,7 +197256,7 @@ type GetFleetAgentsResponse struct {
 			PolicyId              *string                                  `json:"policy_id,omitempty"`
 			PolicyRevision        *float32                                 `json:"policy_revision,omitempty"`
 			SequenceNum           *float32                                 `json:"sequence_num,omitempty"`
-			Sort                  *[]interface{}                           `json:"sort,omitempty"`
+			Sort                  *[]*interface{}                          `json:"sort,omitempty"`
 			Status                *GetFleetAgents200ItemsStatus            `json:"status,omitempty"`
 			Tags                  *[]string                                `json:"tags,omitempty"`
 			Type                  GetFleetAgents200ItemsType               `json:"type"`
@@ -197111,9 +197285,9 @@ type GetFleetAgentsResponse struct {
 				State         GetFleetAgents200ItemsUpgradeDetailsState `json:"state"`
 				TargetVersion string                                    `json:"target_version"`
 			} `json:"upgrade_details,omitempty"`
-			UpgradeStartedAt     *string                 `json:"upgrade_started_at,omitempty"`
-			UpgradedAt           *string                 `json:"upgraded_at,omitempty"`
-			UserProvidedMetadata *map[string]interface{} `json:"user_provided_metadata,omitempty"`
+			UpgradeStartedAt     *string                  `json:"upgrade_started_at,omitempty"`
+			UpgradedAt           *string                  `json:"upgraded_at,omitempty"`
+			UserProvidedMetadata *map[string]*interface{} `json:"user_provided_metadata,omitempty"`
 		} `json:"items"`
 		NextSearchAfter *string             `json:"nextSearchAfter,omitempty"`
 		Page            float32             `json:"page"`
@@ -197815,7 +197989,7 @@ type GetFleetAgentsAgentidResponse struct {
 				Units   *[]struct {
 					Id      string                                            `json:"id"`
 					Message string                                            `json:"message"`
-					Payload *map[string]interface{}                           `json:"payload,omitempty"`
+					Payload *map[string]*interface{}                          `json:"payload,omitempty"`
 					Status  GetFleetAgentsAgentid200ItemComponentsUnitsStatus `json:"status"`
 					Type    GetFleetAgentsAgentid200ItemComponentsUnitsType   `json:"type"`
 				} `json:"units,omitempty"`
@@ -197828,14 +198002,14 @@ type GetFleetAgentsAgentidResponse struct {
 			DefaultApiKeyId       *string                                        `json:"default_api_key_id,omitempty"`
 			EffectiveConfig       interface{}                                    `json:"effective_config"`
 			EnrolledAt            string                                         `json:"enrolled_at"`
-			Health                *map[string]interface{}                        `json:"health,omitempty"`
+			Health                *map[string]*interface{}                       `json:"health,omitempty"`
 			Id                    string                                         `json:"id"`
 			IdentifyingAttributes *map[string]string                             `json:"identifying_attributes,omitempty"`
 			LastCheckin           *string                                        `json:"last_checkin,omitempty"`
 			LastCheckinMessage    *string                                        `json:"last_checkin_message,omitempty"`
 			LastCheckinStatus     *GetFleetAgentsAgentid200ItemLastCheckinStatus `json:"last_checkin_status,omitempty"`
 			LastKnownStatus       *GetFleetAgentsAgentid200ItemLastKnownStatus   `json:"last_known_status,omitempty"`
-			LocalMetadata         map[string]interface{}                         `json:"local_metadata"`
+			LocalMetadata         map[string]*interface{}                        `json:"local_metadata"`
 			Metrics               *struct {
 				CpuAvg            *float32 `json:"cpu_avg,omitempty"`
 				MemorySizeByteAvg *float32 `json:"memory_size_byte_avg,omitempty"`
@@ -197854,7 +198028,7 @@ type GetFleetAgentsAgentidResponse struct {
 			PolicyId              *string                                        `json:"policy_id,omitempty"`
 			PolicyRevision        *float32                                       `json:"policy_revision,omitempty"`
 			SequenceNum           *float32                                       `json:"sequence_num,omitempty"`
-			Sort                  *[]interface{}                                 `json:"sort,omitempty"`
+			Sort                  *[]*interface{}                                `json:"sort,omitempty"`
 			Status                *GetFleetAgentsAgentid200ItemStatus            `json:"status,omitempty"`
 			Tags                  *[]string                                      `json:"tags,omitempty"`
 			Type                  GetFleetAgentsAgentid200ItemType               `json:"type"`
@@ -197883,9 +198057,9 @@ type GetFleetAgentsAgentidResponse struct {
 				State         GetFleetAgentsAgentid200ItemUpgradeDetailsState `json:"state"`
 				TargetVersion string                                          `json:"target_version"`
 			} `json:"upgrade_details,omitempty"`
-			UpgradeStartedAt     *string                 `json:"upgrade_started_at,omitempty"`
-			UpgradedAt           *string                 `json:"upgraded_at,omitempty"`
-			UserProvidedMetadata *map[string]interface{} `json:"user_provided_metadata,omitempty"`
+			UpgradeStartedAt     *string                  `json:"upgrade_started_at,omitempty"`
+			UpgradedAt           *string                  `json:"upgraded_at,omitempty"`
+			UserProvidedMetadata *map[string]*interface{} `json:"user_provided_metadata,omitempty"`
 		} `json:"item"`
 	}
 	JSON400 *struct {
@@ -197948,7 +198122,7 @@ type PutFleetAgentsAgentidResponse struct {
 				Units   *[]struct {
 					Id      string                                            `json:"id"`
 					Message string                                            `json:"message"`
-					Payload *map[string]interface{}                           `json:"payload,omitempty"`
+					Payload *map[string]*interface{}                          `json:"payload,omitempty"`
 					Status  PutFleetAgentsAgentid200ItemComponentsUnitsStatus `json:"status"`
 					Type    PutFleetAgentsAgentid200ItemComponentsUnitsType   `json:"type"`
 				} `json:"units,omitempty"`
@@ -197961,14 +198135,14 @@ type PutFleetAgentsAgentidResponse struct {
 			DefaultApiKeyId       *string                                        `json:"default_api_key_id,omitempty"`
 			EffectiveConfig       interface{}                                    `json:"effective_config"`
 			EnrolledAt            string                                         `json:"enrolled_at"`
-			Health                *map[string]interface{}                        `json:"health,omitempty"`
+			Health                *map[string]*interface{}                       `json:"health,omitempty"`
 			Id                    string                                         `json:"id"`
 			IdentifyingAttributes *map[string]string                             `json:"identifying_attributes,omitempty"`
 			LastCheckin           *string                                        `json:"last_checkin,omitempty"`
 			LastCheckinMessage    *string                                        `json:"last_checkin_message,omitempty"`
 			LastCheckinStatus     *PutFleetAgentsAgentid200ItemLastCheckinStatus `json:"last_checkin_status,omitempty"`
 			LastKnownStatus       *PutFleetAgentsAgentid200ItemLastKnownStatus   `json:"last_known_status,omitempty"`
-			LocalMetadata         map[string]interface{}                         `json:"local_metadata"`
+			LocalMetadata         map[string]*interface{}                        `json:"local_metadata"`
 			Metrics               *struct {
 				CpuAvg            *float32 `json:"cpu_avg,omitempty"`
 				MemorySizeByteAvg *float32 `json:"memory_size_byte_avg,omitempty"`
@@ -197987,7 +198161,7 @@ type PutFleetAgentsAgentidResponse struct {
 			PolicyId              *string                                        `json:"policy_id,omitempty"`
 			PolicyRevision        *float32                                       `json:"policy_revision,omitempty"`
 			SequenceNum           *float32                                       `json:"sequence_num,omitempty"`
-			Sort                  *[]interface{}                                 `json:"sort,omitempty"`
+			Sort                  *[]*interface{}                                `json:"sort,omitempty"`
 			Status                *PutFleetAgentsAgentid200ItemStatus            `json:"status,omitempty"`
 			Tags                  *[]string                                      `json:"tags,omitempty"`
 			Type                  PutFleetAgentsAgentid200ItemType               `json:"type"`
@@ -198016,9 +198190,9 @@ type PutFleetAgentsAgentidResponse struct {
 				State         PutFleetAgentsAgentid200ItemUpgradeDetailsState `json:"state"`
 				TargetVersion string                                          `json:"target_version"`
 			} `json:"upgrade_details,omitempty"`
-			UpgradeStartedAt     *string                 `json:"upgrade_started_at,omitempty"`
-			UpgradedAt           *string                 `json:"upgraded_at,omitempty"`
-			UserProvidedMetadata *map[string]interface{} `json:"user_provided_metadata,omitempty"`
+			UpgradeStartedAt     *string                  `json:"upgrade_started_at,omitempty"`
+			UpgradedAt           *string                  `json:"upgraded_at,omitempty"`
+			UserProvidedMetadata *map[string]*interface{} `json:"user_provided_metadata,omitempty"`
 		} `json:"item"`
 	}
 	JSON400 *struct {
@@ -198432,18 +198606,18 @@ type GetFleetCloudConnectorsResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		Items []struct {
-			AccountType           *string                `json:"accountType,omitempty"`
-			CloudProvider         string                 `json:"cloudProvider"`
-			CreatedAt             string                 `json:"created_at"`
-			Id                    string                 `json:"id"`
-			Name                  string                 `json:"name"`
-			Namespace             *string                `json:"namespace,omitempty"`
-			PackagePolicyCount    float32                `json:"packagePolicyCount"`
-			UpdatedAt             string                 `json:"updated_at"`
-			Vars                  map[string]interface{} `json:"vars"`
-			VerificationFailedAt  *string                `json:"verification_failed_at,omitempty"`
-			VerificationStartedAt *string                `json:"verification_started_at,omitempty"`
-			VerificationStatus    *string                `json:"verification_status,omitempty"`
+			AccountType           *string                 `json:"accountType,omitempty"`
+			CloudProvider         string                  `json:"cloudProvider"`
+			CreatedAt             string                  `json:"created_at"`
+			Id                    string                  `json:"id"`
+			Name                  string                  `json:"name"`
+			Namespace             *string                 `json:"namespace,omitempty"`
+			PackagePolicyCount    float32                 `json:"packagePolicyCount"`
+			UpdatedAt             string                  `json:"updated_at"`
+			Vars                  map[string]*interface{} `json:"vars"`
+			VerificationFailedAt  *string                 `json:"verification_failed_at,omitempty"`
+			VerificationStartedAt *string                 `json:"verification_started_at,omitempty"`
+			VerificationStatus    *string                 `json:"verification_status,omitempty"`
 		} `json:"items"`
 	}
 	JSON400 *struct {
@@ -198476,18 +198650,18 @@ type PostFleetCloudConnectorsResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		Item struct {
-			AccountType           *string                `json:"accountType,omitempty"`
-			CloudProvider         string                 `json:"cloudProvider"`
-			CreatedAt             string                 `json:"created_at"`
-			Id                    string                 `json:"id"`
-			Name                  string                 `json:"name"`
-			Namespace             *string                `json:"namespace,omitempty"`
-			PackagePolicyCount    float32                `json:"packagePolicyCount"`
-			UpdatedAt             string                 `json:"updated_at"`
-			Vars                  map[string]interface{} `json:"vars"`
-			VerificationFailedAt  *string                `json:"verification_failed_at,omitempty"`
-			VerificationStartedAt *string                `json:"verification_started_at,omitempty"`
-			VerificationStatus    *string                `json:"verification_status,omitempty"`
+			AccountType           *string                 `json:"accountType,omitempty"`
+			CloudProvider         string                  `json:"cloudProvider"`
+			CreatedAt             string                  `json:"created_at"`
+			Id                    string                  `json:"id"`
+			Name                  string                  `json:"name"`
+			Namespace             *string                 `json:"namespace,omitempty"`
+			PackagePolicyCount    float32                 `json:"packagePolicyCount"`
+			UpdatedAt             string                  `json:"updated_at"`
+			Vars                  map[string]*interface{} `json:"vars"`
+			VerificationFailedAt  *string                 `json:"verification_failed_at,omitempty"`
+			VerificationStartedAt *string                 `json:"verification_started_at,omitempty"`
+			VerificationStatus    *string                 `json:"verification_status,omitempty"`
 		} `json:"item"`
 	}
 	JSON400 *struct {
@@ -198551,18 +198725,18 @@ type GetFleetCloudConnectorsCloudconnectoridResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		Item struct {
-			AccountType           *string                `json:"accountType,omitempty"`
-			CloudProvider         string                 `json:"cloudProvider"`
-			CreatedAt             string                 `json:"created_at"`
-			Id                    string                 `json:"id"`
-			Name                  string                 `json:"name"`
-			Namespace             *string                `json:"namespace,omitempty"`
-			PackagePolicyCount    float32                `json:"packagePolicyCount"`
-			UpdatedAt             string                 `json:"updated_at"`
-			Vars                  map[string]interface{} `json:"vars"`
-			VerificationFailedAt  *string                `json:"verification_failed_at,omitempty"`
-			VerificationStartedAt *string                `json:"verification_started_at,omitempty"`
-			VerificationStatus    *string                `json:"verification_status,omitempty"`
+			AccountType           *string                 `json:"accountType,omitempty"`
+			CloudProvider         string                  `json:"cloudProvider"`
+			CreatedAt             string                  `json:"created_at"`
+			Id                    string                  `json:"id"`
+			Name                  string                  `json:"name"`
+			Namespace             *string                 `json:"namespace,omitempty"`
+			PackagePolicyCount    float32                 `json:"packagePolicyCount"`
+			UpdatedAt             string                  `json:"updated_at"`
+			Vars                  map[string]*interface{} `json:"vars"`
+			VerificationFailedAt  *string                 `json:"verification_failed_at,omitempty"`
+			VerificationStartedAt *string                 `json:"verification_started_at,omitempty"`
+			VerificationStatus    *string                 `json:"verification_status,omitempty"`
 		} `json:"item"`
 	}
 	JSON400 *struct {
@@ -198595,18 +198769,18 @@ type PutFleetCloudConnectorsCloudconnectoridResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *struct {
 		Item struct {
-			AccountType           *string                `json:"accountType,omitempty"`
-			CloudProvider         string                 `json:"cloudProvider"`
-			CreatedAt             string                 `json:"created_at"`
-			Id                    string                 `json:"id"`
-			Name                  string                 `json:"name"`
-			Namespace             *string                `json:"namespace,omitempty"`
-			PackagePolicyCount    float32                `json:"packagePolicyCount"`
-			UpdatedAt             string                 `json:"updated_at"`
-			Vars                  map[string]interface{} `json:"vars"`
-			VerificationFailedAt  *string                `json:"verification_failed_at,omitempty"`
-			VerificationStartedAt *string                `json:"verification_started_at,omitempty"`
-			VerificationStatus    *string                `json:"verification_status,omitempty"`
+			AccountType           *string                 `json:"accountType,omitempty"`
+			CloudProvider         string                  `json:"cloudProvider"`
+			CreatedAt             string                  `json:"created_at"`
+			Id                    string                  `json:"id"`
+			Name                  string                  `json:"name"`
+			Namespace             *string                 `json:"namespace,omitempty"`
+			PackagePolicyCount    float32                 `json:"packagePolicyCount"`
+			UpdatedAt             string                  `json:"updated_at"`
+			Vars                  map[string]*interface{} `json:"vars"`
+			VerificationFailedAt  *string                 `json:"verification_failed_at,omitempty"`
+			VerificationStartedAt *string                 `json:"verification_started_at,omitempty"`
+			VerificationStatus    *string                 `json:"verification_status,omitempty"`
 		} `json:"item"`
 	}
 	JSON400 *struct {
@@ -199214,9 +199388,9 @@ type PostFleetEpmPackagesBulk_200_Items_0_Result_Assets_Item struct {
 }
 type PostFleetEpmPackagesBulk200Items0ResultStatus string
 type PostFleetEpmPackagesBulk200Items1 struct {
-	Error      PostFleetEpmPackagesBulk_200_Items_1_Error `json:"error"`
-	Name       string                                     `json:"name"`
-	StatusCode float32                                    `json:"statusCode"`
+	Error      *PostFleetEpmPackagesBulk_200_Items_1_Error `json:"error,omitempty"`
+	Name       string                                      `json:"name"`
+	StatusCode float32                                     `json:"statusCode"`
 }
 type PostFleetEpmPackagesBulk200Items1Error0 = string
 type PostFleetEpmPackagesBulk200Items1Error1 = interface{}
@@ -199801,15 +199975,15 @@ type GetFleetEpmPackagesPkgname_200_Item struct {
 		AssetTypes *[]string `json:"asset_types,omitempty"`
 		Text       string    `json:"text"`
 	} `json:"asset_tags,omitempty"`
-	Assets               map[string]interface{}                                `json:"assets"`
+	Assets               map[string]*interface{}                               `json:"assets"`
 	Categories           *[]string                                             `json:"categories,omitempty"`
 	Conditions           *GetFleetEpmPackagesPkgname_200_Item_Conditions       `json:"conditions,omitempty"`
-	DataStreams          *[]map[string]interface{}                             `json:"data_streams,omitempty"`
+	DataStreams          *[]map[string]*interface{}                            `json:"data_streams,omitempty"`
 	Deprecated           *GetFleetEpmPackagesPkgname_200_Item_Deprecated       `json:"deprecated,omitempty"`
 	Description          *string                                               `json:"description,omitempty"`
 	Discovery            *GetFleetEpmPackagesPkgname_200_Item_Discovery        `json:"discovery,omitempty"`
 	Download             *string                                               `json:"download,omitempty"`
-	Elasticsearch        *map[string]interface{}                               `json:"elasticsearch,omitempty"`
+	Elasticsearch        *map[string]*interface{}                              `json:"elasticsearch,omitempty"`
 	FormatVersion        *string                                               `json:"format_version,omitempty"`
 	Icons                *[]GetFleetEpmPackagesPkgname_200_Item_Icons_Item     `json:"icons,omitempty"`
 	InstallationInfo     *GetFleetEpmPackagesPkgname_200_Item_InstallationInfo `json:"installationInfo,omitempty"`
@@ -199822,7 +199996,7 @@ type GetFleetEpmPackagesPkgname_200_Item struct {
 	Notice               *string                                               `json:"notice,omitempty"`
 	Owner                *GetFleetEpmPackagesPkgname_200_Item_Owner            `json:"owner,omitempty"`
 	Path                 *string                                               `json:"path,omitempty"`
-	PolicyTemplates      *[]map[string]interface{}                             `json:"policy_templates,omitempty"`
+	PolicyTemplates      *[]map[string]*interface{}                            `json:"policy_templates,omitempty"`
 	Readme               *string                                               `json:"readme,omitempty"`
 	Release              *GetFleetEpmPackagesPkgname200ItemRelease             `json:"release,omitempty"`
 	Screenshots          *[]struct {
@@ -199839,7 +200013,7 @@ type GetFleetEpmPackagesPkgname_200_Item struct {
 	Title                string                                                `json:"title"`
 	Type                 *GetFleetEpmPackagesPkgname_200_Item_Type             `json:"type,omitempty"`
 	VarGroups            *[]GetFleetEpmPackagesPkgname_200_Item_VarGroups_Item `json:"var_groups,omitempty"`
-	Vars                 *[]map[string]interface{}                             `json:"vars,omitempty"`
+	Vars                 *[]map[string]*interface{}                            `json:"vars,omitempty"`
 	Version              string                                                `json:"version"`
 	AdditionalProperties map[string]interface{}                                `json:"-"`
 }
@@ -200114,15 +200288,15 @@ type PutFleetEpmPackagesPkgname_200_Item struct {
 		AssetTypes *[]string `json:"asset_types,omitempty"`
 		Text       string    `json:"text"`
 	} `json:"asset_tags,omitempty"`
-	Assets               map[string]interface{}                                `json:"assets"`
+	Assets               map[string]*interface{}                               `json:"assets"`
 	Categories           *[]string                                             `json:"categories,omitempty"`
 	Conditions           *PutFleetEpmPackagesPkgname_200_Item_Conditions       `json:"conditions,omitempty"`
-	DataStreams          *[]map[string]interface{}                             `json:"data_streams,omitempty"`
+	DataStreams          *[]map[string]*interface{}                            `json:"data_streams,omitempty"`
 	Deprecated           *PutFleetEpmPackagesPkgname_200_Item_Deprecated       `json:"deprecated,omitempty"`
 	Description          *string                                               `json:"description,omitempty"`
 	Discovery            *PutFleetEpmPackagesPkgname_200_Item_Discovery        `json:"discovery,omitempty"`
 	Download             *string                                               `json:"download,omitempty"`
-	Elasticsearch        *map[string]interface{}                               `json:"elasticsearch,omitempty"`
+	Elasticsearch        *map[string]*interface{}                              `json:"elasticsearch,omitempty"`
 	FormatVersion        *string                                               `json:"format_version,omitempty"`
 	Icons                *[]PutFleetEpmPackagesPkgname_200_Item_Icons_Item     `json:"icons,omitempty"`
 	InstallationInfo     *PutFleetEpmPackagesPkgname_200_Item_InstallationInfo `json:"installationInfo,omitempty"`
@@ -200135,7 +200309,7 @@ type PutFleetEpmPackagesPkgname_200_Item struct {
 	Notice               *string                                               `json:"notice,omitempty"`
 	Owner                *PutFleetEpmPackagesPkgname_200_Item_Owner            `json:"owner,omitempty"`
 	Path                 *string                                               `json:"path,omitempty"`
-	PolicyTemplates      *[]map[string]interface{}                             `json:"policy_templates,omitempty"`
+	PolicyTemplates      *[]map[string]*interface{}                            `json:"policy_templates,omitempty"`
 	Readme               *string                                               `json:"readme,omitempty"`
 	Release              *PutFleetEpmPackagesPkgname200ItemRelease             `json:"release,omitempty"`
 	Screenshots          *[]struct {
@@ -200152,7 +200326,7 @@ type PutFleetEpmPackagesPkgname_200_Item struct {
 	Title                string                                                `json:"title"`
 	Type                 *PutFleetEpmPackagesPkgname_200_Item_Type             `json:"type,omitempty"`
 	VarGroups            *[]PutFleetEpmPackagesPkgname_200_Item_VarGroups_Item `json:"var_groups,omitempty"`
-	Vars                 *[]map[string]interface{}                             `json:"vars,omitempty"`
+	Vars                 *[]map[string]*interface{}                            `json:"vars,omitempty"`
 	Version              string                                                `json:"version"`
 	AdditionalProperties map[string]interface{}                                `json:"-"`
 }
@@ -200610,15 +200784,15 @@ type PutFleetEpmPackagesPkgnamePkgversion_200_Item struct {
 		AssetTypes *[]string `json:"asset_types,omitempty"`
 		Text       string    `json:"text"`
 	} `json:"asset_tags,omitempty"`
-	Assets               map[string]interface{}                                          `json:"assets"`
+	Assets               map[string]*interface{}                                         `json:"assets"`
 	Categories           *[]string                                                       `json:"categories,omitempty"`
 	Conditions           *PutFleetEpmPackagesPkgnamePkgversion_200_Item_Conditions       `json:"conditions,omitempty"`
-	DataStreams          *[]map[string]interface{}                                       `json:"data_streams,omitempty"`
+	DataStreams          *[]map[string]*interface{}                                      `json:"data_streams,omitempty"`
 	Deprecated           *PutFleetEpmPackagesPkgnamePkgversion_200_Item_Deprecated       `json:"deprecated,omitempty"`
 	Description          *string                                                         `json:"description,omitempty"`
 	Discovery            *PutFleetEpmPackagesPkgnamePkgversion_200_Item_Discovery        `json:"discovery,omitempty"`
 	Download             *string                                                         `json:"download,omitempty"`
-	Elasticsearch        *map[string]interface{}                                         `json:"elasticsearch,omitempty"`
+	Elasticsearch        *map[string]*interface{}                                        `json:"elasticsearch,omitempty"`
 	FormatVersion        *string                                                         `json:"format_version,omitempty"`
 	Icons                *[]PutFleetEpmPackagesPkgnamePkgversion_200_Item_Icons_Item     `json:"icons,omitempty"`
 	InstallationInfo     *PutFleetEpmPackagesPkgnamePkgversion_200_Item_InstallationInfo `json:"installationInfo,omitempty"`
@@ -200631,7 +200805,7 @@ type PutFleetEpmPackagesPkgnamePkgversion_200_Item struct {
 	Notice               *string                                                         `json:"notice,omitempty"`
 	Owner                *PutFleetEpmPackagesPkgnamePkgversion_200_Item_Owner            `json:"owner,omitempty"`
 	Path                 *string                                                         `json:"path,omitempty"`
-	PolicyTemplates      *[]map[string]interface{}                                       `json:"policy_templates,omitempty"`
+	PolicyTemplates      *[]map[string]*interface{}                                      `json:"policy_templates,omitempty"`
 	Readme               *string                                                         `json:"readme,omitempty"`
 	Release              *PutFleetEpmPackagesPkgnamePkgversion200ItemRelease             `json:"release,omitempty"`
 	Screenshots          *[]struct {
@@ -200648,7 +200822,7 @@ type PutFleetEpmPackagesPkgnamePkgversion_200_Item struct {
 	Title                string                                                          `json:"title"`
 	Type                 *PutFleetEpmPackagesPkgnamePkgversion_200_Item_Type             `json:"type,omitempty"`
 	VarGroups            *[]PutFleetEpmPackagesPkgnamePkgversion_200_Item_VarGroups_Item `json:"var_groups,omitempty"`
-	Vars                 *[]map[string]interface{}                                       `json:"vars,omitempty"`
+	Vars                 *[]map[string]*interface{}                                      `json:"vars,omitempty"`
 	Version              string                                                          `json:"version"`
 	AdditionalProperties map[string]interface{}                                          `json:"-"`
 }
@@ -200906,16 +201080,16 @@ type GetFleetEpmTemplatesPkgnamePkgversionInputsResponse struct {
 }
 type GetFleetEpmTemplatesPkgnamePkgversionInputs2000 = string
 type GetFleetEpmTemplatesPkgnamePkgversionInputs2001 struct {
-	Connectors *map[string]interface{} `json:"connectors,omitempty"`
-	Exporters  *map[string]interface{} `json:"exporters,omitempty"`
-	Extensions *map[string]interface{} `json:"extensions,omitempty"`
+	Connectors *map[string]*interface{} `json:"connectors,omitempty"`
+	Exporters  *map[string]*interface{} `json:"exporters,omitempty"`
+	Extensions *map[string]*interface{} `json:"extensions,omitempty"`
 	Inputs     []struct {
 		Id      string                                                                   `json:"id"`
 		Streams *[]GetFleetEpmTemplatesPkgnamePkgversionInputs_200_1_Inputs_Streams_Item `json:"streams,omitempty"`
 		Type    string                                                                   `json:"type"`
 	} `json:"inputs"`
-	Processors *map[string]interface{} `json:"processors,omitempty"`
-	Receivers  *map[string]interface{} `json:"receivers,omitempty"`
+	Processors *map[string]*interface{} `json:"processors,omitempty"`
+	Receivers  *map[string]*interface{} `json:"receivers,omitempty"`
 	Service    *struct {
 		Extensions *[]string `json:"extensions,omitempty"`
 		Pipelines  *map[string]struct {
@@ -201630,7 +201804,7 @@ type PostFleetPackagePoliciesBulkGetResponse struct {
 
 			// Overrides Override settings that are defined in the package policy. The override option should be used only in unusual circumstances and not as a routine procedure.
 			Overrides *struct {
-				Inputs *map[string]interface{} `json:"inputs,omitempty"`
+				Inputs *map[string]*interface{} `json:"inputs,omitempty"`
 			} `json:"overrides,omitempty"`
 			Package *struct {
 				ExperimentalDataStreamFeatures *[]struct {
@@ -202076,7 +202250,7 @@ type PostFleetPackagePoliciesUpgradeDryrun200Diff0 struct {
 
 	// Overrides Override settings that are defined in the package policy. The override option should be used only in unusual circumstances and not as a routine procedure.
 	Overrides *struct {
-		Inputs *map[string]interface{} `json:"inputs,omitempty"`
+		Inputs *map[string]*interface{} `json:"inputs,omitempty"`
 	} `json:"overrides,omitempty"`
 	Package *struct {
 		ExperimentalDataStreamFeatures *[]struct {
@@ -202397,7 +202571,7 @@ type PostFleetPackagePoliciesUpgradeDryrun200Diff1 struct {
 
 	// Overrides Override settings that are defined in the package policy. The override option should be used only in unusual circumstances and not as a routine procedure.
 	Overrides *struct {
-		Inputs *map[string]interface{} `json:"inputs,omitempty"`
+		Inputs *map[string]*interface{} `json:"inputs,omitempty"`
 	} `json:"overrides,omitempty"`
 	Package *struct {
 		ExperimentalDataStreamFeatures *[]struct {
@@ -204442,15 +204616,13 @@ func (r ScheduleRiskEngineNowResponse) StatusCode() int {
 	return 0
 }
 
-type BulkCreateSavedObjectsResponse struct {
+type PostSavedObjectsBulkCreateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *map[string]interface{}
-	JSON400      *SavedObjects400Response
 }
 
 // Status returns HTTPResponse.Status
-func (r BulkCreateSavedObjectsResponse) Status() string {
+func (r PostSavedObjectsBulkCreateResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -204458,22 +204630,20 @@ func (r BulkCreateSavedObjectsResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r BulkCreateSavedObjectsResponse) StatusCode() int {
+func (r PostSavedObjectsBulkCreateResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type BulkDeleteSavedObjectsResponse struct {
+type PostSavedObjectsBulkDeleteResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *map[string]interface{}
-	JSON400      *SavedObjects400Response
 }
 
 // Status returns HTTPResponse.Status
-func (r BulkDeleteSavedObjectsResponse) Status() string {
+func (r PostSavedObjectsBulkDeleteResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -204481,22 +204651,20 @@ func (r BulkDeleteSavedObjectsResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r BulkDeleteSavedObjectsResponse) StatusCode() int {
+func (r PostSavedObjectsBulkDeleteResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type BulkGetSavedObjectsResponse struct {
+type PostSavedObjectsBulkGetResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *map[string]interface{}
-	JSON400      *SavedObjects400Response
 }
 
 // Status returns HTTPResponse.Status
-func (r BulkGetSavedObjectsResponse) Status() string {
+func (r PostSavedObjectsBulkGetResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -204504,22 +204672,20 @@ func (r BulkGetSavedObjectsResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r BulkGetSavedObjectsResponse) StatusCode() int {
+func (r PostSavedObjectsBulkGetResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type BulkResolveSavedObjectsResponse struct {
+type PostSavedObjectsBulkResolveResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *map[string]interface{}
-	JSON400      *SavedObjects400Response
 }
 
 // Status returns HTTPResponse.Status
-func (r BulkResolveSavedObjectsResponse) Status() string {
+func (r PostSavedObjectsBulkResolveResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -204527,22 +204693,20 @@ func (r BulkResolveSavedObjectsResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r BulkResolveSavedObjectsResponse) StatusCode() int {
+func (r PostSavedObjectsBulkResolveResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type BulkUpdateSavedObjectsResponse struct {
+type PutSavedObjectsBulkUpdateResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *map[string]interface{}
-	JSON400      *SavedObjects400Response
 }
 
 // Status returns HTTPResponse.Status
-func (r BulkUpdateSavedObjectsResponse) Status() string {
+func (r PutSavedObjectsBulkUpdateResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -204550,7 +204714,7 @@ func (r BulkUpdateSavedObjectsResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r BulkUpdateSavedObjectsResponse) StatusCode() int {
+func (r PutSavedObjectsBulkUpdateResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -204584,15 +204748,13 @@ func (r PostSavedObjectsExportResponse) StatusCode() int {
 	return 0
 }
 
-type FindSavedObjectsResponse struct {
+type GetSavedObjectsFindResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *map[string]interface{}
-	JSON400      *SavedObjects400Response
 }
 
 // Status returns HTTPResponse.Status
-func (r FindSavedObjectsResponse) Status() string {
+func (r GetSavedObjectsFindResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -204600,7 +204762,7 @@ func (r FindSavedObjectsResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r FindSavedObjectsResponse) StatusCode() int {
+func (r GetSavedObjectsFindResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -204651,31 +204813,13 @@ func (r PostSavedObjectsImportResponse) StatusCode() int {
 	return 0
 }
 
-type ResolveImportErrorsResponse struct {
+type PostSavedObjectsResolveImportErrorsResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *struct {
-		// Errors Specifies the objects that failed to resolve.
-		//
-		// NOTE: One object can result in multiple errors, which requires separate steps to resolve. For instance, a `missing_references` error and a `conflict` error.
-		Errors *[]map[string]interface{} `json:"errors,omitempty"`
-
-		// Success Indicates a successful import. When set to `false`, some objects may not have been created. For additional information, refer to the `errors` and `successResults` properties.
-		Success *bool `json:"success,omitempty"`
-
-		// SuccessCount Indicates the number of successfully resolved records.
-		SuccessCount *float32 `json:"successCount,omitempty"`
-
-		// SuccessResults Indicates the objects that are successfully imported, with any metadata if applicable.
-		//
-		// NOTE: Objects are only created when all resolvable errors are addressed, including conflict and missing references.
-		SuccessResults *[]map[string]interface{} `json:"successResults,omitempty"`
-	}
-	JSON400 *SavedObjects400Response
 }
 
 // Status returns HTTPResponse.Status
-func (r ResolveImportErrorsResponse) Status() string {
+func (r PostSavedObjectsResolveImportErrorsResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -204683,22 +204827,20 @@ func (r ResolveImportErrorsResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r ResolveImportErrorsResponse) StatusCode() int {
+func (r PostSavedObjectsResolveImportErrorsResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type ResolveSavedObjectResponse struct {
+type GetSavedObjectsResolveTypeIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *map[string]interface{}
-	JSON400      *SavedObjects400Response
 }
 
 // Status returns HTTPResponse.Status
-func (r ResolveSavedObjectResponse) Status() string {
+func (r GetSavedObjectsResolveTypeIdResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -204706,22 +204848,20 @@ func (r ResolveSavedObjectResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r ResolveSavedObjectResponse) StatusCode() int {
+func (r GetSavedObjectsResolveTypeIdResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type CreateSavedObjectResponse struct {
+type PostSavedObjectsTypeResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *map[string]interface{}
-	JSON409      *map[string]interface{}
 }
 
 // Status returns HTTPResponse.Status
-func (r CreateSavedObjectResponse) Status() string {
+func (r PostSavedObjectsTypeResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -204729,22 +204869,20 @@ func (r CreateSavedObjectResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r CreateSavedObjectResponse) StatusCode() int {
+func (r PostSavedObjectsTypeResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type GetSavedObjectResponse struct {
+type DeleteSavedObjectsTypeIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *map[string]interface{}
-	JSON400      *SavedObjects400Response
 }
 
 // Status returns HTTPResponse.Status
-func (r GetSavedObjectResponse) Status() string {
+func (r DeleteSavedObjectsTypeIdResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -204752,22 +204890,20 @@ func (r GetSavedObjectResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r GetSavedObjectResponse) StatusCode() int {
+func (r DeleteSavedObjectsTypeIdResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type CreateSavedObjectIdResponse struct {
+type GetSavedObjectsTypeIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *map[string]interface{}
-	JSON409      *map[string]interface{}
 }
 
 // Status returns HTTPResponse.Status
-func (r CreateSavedObjectIdResponse) Status() string {
+func (r GetSavedObjectsTypeIdResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -204775,23 +204911,20 @@ func (r CreateSavedObjectIdResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r CreateSavedObjectIdResponse) StatusCode() int {
+func (r GetSavedObjectsTypeIdResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
 	return 0
 }
 
-type UpdateSavedObjectResponse struct {
+type PostSavedObjectsTypeIdResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
-	JSON200      *map[string]interface{}
-	JSON404      *map[string]interface{}
-	JSON409      *map[string]interface{}
 }
 
 // Status returns HTTPResponse.Status
-func (r UpdateSavedObjectResponse) Status() string {
+func (r PostSavedObjectsTypeIdResponse) Status() string {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.Status
 	}
@@ -204799,7 +204932,28 @@ func (r UpdateSavedObjectResponse) Status() string {
 }
 
 // StatusCode returns HTTPResponse.StatusCode
-func (r UpdateSavedObjectResponse) StatusCode() int {
+func (r PostSavedObjectsTypeIdResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type PutSavedObjectsTypeIdResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+
+// Status returns HTTPResponse.Status
+func (r PutSavedObjectsTypeIdResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r PutSavedObjectsTypeIdResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -207203,6 +207357,7 @@ func (r TaskManagerHealthResponse) StatusCode() int {
 type DeleteTimelinesResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
+	JSON200      *map[string]interface{}
 }
 
 // Status returns HTTPResponse.Status
@@ -207248,7 +207403,7 @@ type PatchTimelineResponse struct {
 	HTTPResponse *http.Response
 	JSON200      *SecurityTimelineAPITimelineResponse
 	JSON405      *struct {
-		// Body The error message
+		// Body The error message.
 		Body       *string  `json:"body,omitempty"`
 		StatusCode *float32 `json:"statusCode,omitempty"`
 	}
@@ -207493,6 +207648,8 @@ type ResolveTimelineResponse struct {
 	Body         []byte
 	HTTPResponse *http.Response
 	JSON200      *SecurityTimelineAPIResolvedTimeline
+	JSON400      *map[string]interface{}
+	JSON404      *map[string]interface{}
 }
 
 // Status returns HTTPResponse.Status
@@ -207535,7 +207692,7 @@ type GetTimelinesResponse struct {
 		TotalCount float32 `json:"totalCount"`
 	}
 	JSON400 *struct {
-		// Body The error message
+		// Body The error message.
 		Body       *string  `json:"body,omitempty"`
 		StatusCode *float32 `json:"statusCode,omitempty"`
 	}
@@ -208217,7 +208374,7 @@ type PostActionsConnectorIdResponse struct {
 	JSON200      *struct {
 		// AuthMode The authentication mode used for the connector.
 		AuthMode *PostActionsConnectorId200AuthMode `json:"auth_mode,omitempty"`
-		Config   *map[string]interface{}            `json:"config,omitempty"`
+		Config   *map[string]*interface{}           `json:"config,omitempty"`
 
 		// ConnectorTypeId The connector type identifier.
 		ConnectorTypeId string `json:"connector_type_id"`
@@ -208268,7 +208425,7 @@ type PutActionsConnectorIdResponse struct {
 	JSON200      *struct {
 		// AuthMode The authentication mode used for the connector.
 		AuthMode *PutActionsConnectorId200AuthMode `json:"auth_mode,omitempty"`
-		Config   *map[string]interface{}           `json:"config,omitempty"`
+		Config   *map[string]*interface{}          `json:"config,omitempty"`
 
 		// ConnectorTypeId The connector type identifier.
 		ConnectorTypeId string `json:"connector_type_id"`
@@ -214765,89 +214922,89 @@ func (c *ClientWithResponses) ScheduleRiskEngineNowWithResponse(ctx context.Cont
 	return ParseScheduleRiskEngineNowResponse(rsp)
 }
 
-// BulkCreateSavedObjectsWithBodyWithResponse request with arbitrary body returning *BulkCreateSavedObjectsResponse
-func (c *ClientWithResponses) BulkCreateSavedObjectsWithBodyWithResponse(ctx context.Context, params *BulkCreateSavedObjectsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BulkCreateSavedObjectsResponse, error) {
-	rsp, err := c.BulkCreateSavedObjectsWithBody(ctx, params, contentType, body, reqEditors...)
+// PostSavedObjectsBulkCreateWithBodyWithResponse request with arbitrary body returning *PostSavedObjectsBulkCreateResponse
+func (c *ClientWithResponses) PostSavedObjectsBulkCreateWithBodyWithResponse(ctx context.Context, params *PostSavedObjectsBulkCreateParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkCreateResponse, error) {
+	rsp, err := c.PostSavedObjectsBulkCreateWithBody(ctx, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseBulkCreateSavedObjectsResponse(rsp)
+	return ParsePostSavedObjectsBulkCreateResponse(rsp)
 }
 
-func (c *ClientWithResponses) BulkCreateSavedObjectsWithResponse(ctx context.Context, params *BulkCreateSavedObjectsParams, body BulkCreateSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*BulkCreateSavedObjectsResponse, error) {
-	rsp, err := c.BulkCreateSavedObjects(ctx, params, body, reqEditors...)
+func (c *ClientWithResponses) PostSavedObjectsBulkCreateWithResponse(ctx context.Context, params *PostSavedObjectsBulkCreateParams, body PostSavedObjectsBulkCreateJSONRequestBody, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkCreateResponse, error) {
+	rsp, err := c.PostSavedObjectsBulkCreate(ctx, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseBulkCreateSavedObjectsResponse(rsp)
+	return ParsePostSavedObjectsBulkCreateResponse(rsp)
 }
 
-// BulkDeleteSavedObjectsWithBodyWithResponse request with arbitrary body returning *BulkDeleteSavedObjectsResponse
-func (c *ClientWithResponses) BulkDeleteSavedObjectsWithBodyWithResponse(ctx context.Context, params *BulkDeleteSavedObjectsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BulkDeleteSavedObjectsResponse, error) {
-	rsp, err := c.BulkDeleteSavedObjectsWithBody(ctx, params, contentType, body, reqEditors...)
+// PostSavedObjectsBulkDeleteWithBodyWithResponse request with arbitrary body returning *PostSavedObjectsBulkDeleteResponse
+func (c *ClientWithResponses) PostSavedObjectsBulkDeleteWithBodyWithResponse(ctx context.Context, params *PostSavedObjectsBulkDeleteParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkDeleteResponse, error) {
+	rsp, err := c.PostSavedObjectsBulkDeleteWithBody(ctx, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseBulkDeleteSavedObjectsResponse(rsp)
+	return ParsePostSavedObjectsBulkDeleteResponse(rsp)
 }
 
-func (c *ClientWithResponses) BulkDeleteSavedObjectsWithResponse(ctx context.Context, params *BulkDeleteSavedObjectsParams, body BulkDeleteSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*BulkDeleteSavedObjectsResponse, error) {
-	rsp, err := c.BulkDeleteSavedObjects(ctx, params, body, reqEditors...)
+func (c *ClientWithResponses) PostSavedObjectsBulkDeleteWithResponse(ctx context.Context, params *PostSavedObjectsBulkDeleteParams, body PostSavedObjectsBulkDeleteJSONRequestBody, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkDeleteResponse, error) {
+	rsp, err := c.PostSavedObjectsBulkDelete(ctx, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseBulkDeleteSavedObjectsResponse(rsp)
+	return ParsePostSavedObjectsBulkDeleteResponse(rsp)
 }
 
-// BulkGetSavedObjectsWithBodyWithResponse request with arbitrary body returning *BulkGetSavedObjectsResponse
-func (c *ClientWithResponses) BulkGetSavedObjectsWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BulkGetSavedObjectsResponse, error) {
-	rsp, err := c.BulkGetSavedObjectsWithBody(ctx, contentType, body, reqEditors...)
+// PostSavedObjectsBulkGetWithBodyWithResponse request with arbitrary body returning *PostSavedObjectsBulkGetResponse
+func (c *ClientWithResponses) PostSavedObjectsBulkGetWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkGetResponse, error) {
+	rsp, err := c.PostSavedObjectsBulkGetWithBody(ctx, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseBulkGetSavedObjectsResponse(rsp)
+	return ParsePostSavedObjectsBulkGetResponse(rsp)
 }
 
-func (c *ClientWithResponses) BulkGetSavedObjectsWithResponse(ctx context.Context, body BulkGetSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*BulkGetSavedObjectsResponse, error) {
-	rsp, err := c.BulkGetSavedObjects(ctx, body, reqEditors...)
+func (c *ClientWithResponses) PostSavedObjectsBulkGetWithResponse(ctx context.Context, body PostSavedObjectsBulkGetJSONRequestBody, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkGetResponse, error) {
+	rsp, err := c.PostSavedObjectsBulkGet(ctx, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseBulkGetSavedObjectsResponse(rsp)
+	return ParsePostSavedObjectsBulkGetResponse(rsp)
 }
 
-// BulkResolveSavedObjectsWithBodyWithResponse request with arbitrary body returning *BulkResolveSavedObjectsResponse
-func (c *ClientWithResponses) BulkResolveSavedObjectsWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BulkResolveSavedObjectsResponse, error) {
-	rsp, err := c.BulkResolveSavedObjectsWithBody(ctx, contentType, body, reqEditors...)
+// PostSavedObjectsBulkResolveWithBodyWithResponse request with arbitrary body returning *PostSavedObjectsBulkResolveResponse
+func (c *ClientWithResponses) PostSavedObjectsBulkResolveWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkResolveResponse, error) {
+	rsp, err := c.PostSavedObjectsBulkResolveWithBody(ctx, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseBulkResolveSavedObjectsResponse(rsp)
+	return ParsePostSavedObjectsBulkResolveResponse(rsp)
 }
 
-func (c *ClientWithResponses) BulkResolveSavedObjectsWithResponse(ctx context.Context, body BulkResolveSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*BulkResolveSavedObjectsResponse, error) {
-	rsp, err := c.BulkResolveSavedObjects(ctx, body, reqEditors...)
+func (c *ClientWithResponses) PostSavedObjectsBulkResolveWithResponse(ctx context.Context, body PostSavedObjectsBulkResolveJSONRequestBody, reqEditors ...RequestEditorFn) (*PostSavedObjectsBulkResolveResponse, error) {
+	rsp, err := c.PostSavedObjectsBulkResolve(ctx, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseBulkResolveSavedObjectsResponse(rsp)
+	return ParsePostSavedObjectsBulkResolveResponse(rsp)
 }
 
-// BulkUpdateSavedObjectsWithBodyWithResponse request with arbitrary body returning *BulkUpdateSavedObjectsResponse
-func (c *ClientWithResponses) BulkUpdateSavedObjectsWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*BulkUpdateSavedObjectsResponse, error) {
-	rsp, err := c.BulkUpdateSavedObjectsWithBody(ctx, contentType, body, reqEditors...)
+// PutSavedObjectsBulkUpdateWithBodyWithResponse request with arbitrary body returning *PutSavedObjectsBulkUpdateResponse
+func (c *ClientWithResponses) PutSavedObjectsBulkUpdateWithBodyWithResponse(ctx context.Context, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutSavedObjectsBulkUpdateResponse, error) {
+	rsp, err := c.PutSavedObjectsBulkUpdateWithBody(ctx, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseBulkUpdateSavedObjectsResponse(rsp)
+	return ParsePutSavedObjectsBulkUpdateResponse(rsp)
 }
 
-func (c *ClientWithResponses) BulkUpdateSavedObjectsWithResponse(ctx context.Context, body BulkUpdateSavedObjectsJSONRequestBody, reqEditors ...RequestEditorFn) (*BulkUpdateSavedObjectsResponse, error) {
-	rsp, err := c.BulkUpdateSavedObjects(ctx, body, reqEditors...)
+func (c *ClientWithResponses) PutSavedObjectsBulkUpdateWithResponse(ctx context.Context, body PutSavedObjectsBulkUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*PutSavedObjectsBulkUpdateResponse, error) {
+	rsp, err := c.PutSavedObjectsBulkUpdate(ctx, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseBulkUpdateSavedObjectsResponse(rsp)
+	return ParsePutSavedObjectsBulkUpdateResponse(rsp)
 }
 
 // PostSavedObjectsExportWithBodyWithResponse request with arbitrary body returning *PostSavedObjectsExportResponse
@@ -214867,13 +215024,13 @@ func (c *ClientWithResponses) PostSavedObjectsExportWithResponse(ctx context.Con
 	return ParsePostSavedObjectsExportResponse(rsp)
 }
 
-// FindSavedObjectsWithResponse request returning *FindSavedObjectsResponse
-func (c *ClientWithResponses) FindSavedObjectsWithResponse(ctx context.Context, params *FindSavedObjectsParams, reqEditors ...RequestEditorFn) (*FindSavedObjectsResponse, error) {
-	rsp, err := c.FindSavedObjects(ctx, params, reqEditors...)
+// GetSavedObjectsFindWithResponse request returning *GetSavedObjectsFindResponse
+func (c *ClientWithResponses) GetSavedObjectsFindWithResponse(ctx context.Context, params *GetSavedObjectsFindParams, reqEditors ...RequestEditorFn) (*GetSavedObjectsFindResponse, error) {
+	rsp, err := c.GetSavedObjectsFind(ctx, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseFindSavedObjectsResponse(rsp)
+	return ParseGetSavedObjectsFindResponse(rsp)
 }
 
 // PostSavedObjectsImportWithBodyWithResponse request with arbitrary body returning *PostSavedObjectsImportResponse
@@ -214885,82 +215042,91 @@ func (c *ClientWithResponses) PostSavedObjectsImportWithBodyWithResponse(ctx con
 	return ParsePostSavedObjectsImportResponse(rsp)
 }
 
-// ResolveImportErrorsWithBodyWithResponse request with arbitrary body returning *ResolveImportErrorsResponse
-func (c *ClientWithResponses) ResolveImportErrorsWithBodyWithResponse(ctx context.Context, params *ResolveImportErrorsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*ResolveImportErrorsResponse, error) {
-	rsp, err := c.ResolveImportErrorsWithBody(ctx, params, contentType, body, reqEditors...)
+// PostSavedObjectsResolveImportErrorsWithBodyWithResponse request with arbitrary body returning *PostSavedObjectsResolveImportErrorsResponse
+func (c *ClientWithResponses) PostSavedObjectsResolveImportErrorsWithBodyWithResponse(ctx context.Context, params *PostSavedObjectsResolveImportErrorsParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsResolveImportErrorsResponse, error) {
+	rsp, err := c.PostSavedObjectsResolveImportErrorsWithBody(ctx, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseResolveImportErrorsResponse(rsp)
+	return ParsePostSavedObjectsResolveImportErrorsResponse(rsp)
 }
 
-// ResolveSavedObjectWithResponse request returning *ResolveSavedObjectResponse
-func (c *ClientWithResponses) ResolveSavedObjectWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, reqEditors ...RequestEditorFn) (*ResolveSavedObjectResponse, error) {
-	rsp, err := c.ResolveSavedObject(ctx, pType, id, reqEditors...)
+// GetSavedObjectsResolveTypeIdWithResponse request returning *GetSavedObjectsResolveTypeIdResponse
+func (c *ClientWithResponses) GetSavedObjectsResolveTypeIdWithResponse(ctx context.Context, pType string, id string, reqEditors ...RequestEditorFn) (*GetSavedObjectsResolveTypeIdResponse, error) {
+	rsp, err := c.GetSavedObjectsResolveTypeId(ctx, pType, id, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseResolveSavedObjectResponse(rsp)
+	return ParseGetSavedObjectsResolveTypeIdResponse(rsp)
 }
 
-// CreateSavedObjectWithBodyWithResponse request with arbitrary body returning *CreateSavedObjectResponse
-func (c *ClientWithResponses) CreateSavedObjectWithBodyWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, params *CreateSavedObjectParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateSavedObjectResponse, error) {
-	rsp, err := c.CreateSavedObjectWithBody(ctx, pType, params, contentType, body, reqEditors...)
+// PostSavedObjectsTypeWithBodyWithResponse request with arbitrary body returning *PostSavedObjectsTypeResponse
+func (c *ClientWithResponses) PostSavedObjectsTypeWithBodyWithResponse(ctx context.Context, pType string, params *PostSavedObjectsTypeParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsTypeResponse, error) {
+	rsp, err := c.PostSavedObjectsTypeWithBody(ctx, pType, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseCreateSavedObjectResponse(rsp)
+	return ParsePostSavedObjectsTypeResponse(rsp)
 }
 
-func (c *ClientWithResponses) CreateSavedObjectWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, params *CreateSavedObjectParams, body CreateSavedObjectJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateSavedObjectResponse, error) {
-	rsp, err := c.CreateSavedObject(ctx, pType, params, body, reqEditors...)
+func (c *ClientWithResponses) PostSavedObjectsTypeWithResponse(ctx context.Context, pType string, params *PostSavedObjectsTypeParams, body PostSavedObjectsTypeJSONRequestBody, reqEditors ...RequestEditorFn) (*PostSavedObjectsTypeResponse, error) {
+	rsp, err := c.PostSavedObjectsType(ctx, pType, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseCreateSavedObjectResponse(rsp)
+	return ParsePostSavedObjectsTypeResponse(rsp)
 }
 
-// GetSavedObjectWithResponse request returning *GetSavedObjectResponse
-func (c *ClientWithResponses) GetSavedObjectWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, reqEditors ...RequestEditorFn) (*GetSavedObjectResponse, error) {
-	rsp, err := c.GetSavedObject(ctx, pType, id, reqEditors...)
+// DeleteSavedObjectsTypeIdWithResponse request returning *DeleteSavedObjectsTypeIdResponse
+func (c *ClientWithResponses) DeleteSavedObjectsTypeIdWithResponse(ctx context.Context, pType string, id string, params *DeleteSavedObjectsTypeIdParams, reqEditors ...RequestEditorFn) (*DeleteSavedObjectsTypeIdResponse, error) {
+	rsp, err := c.DeleteSavedObjectsTypeId(ctx, pType, id, params, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseGetSavedObjectResponse(rsp)
+	return ParseDeleteSavedObjectsTypeIdResponse(rsp)
 }
 
-// CreateSavedObjectIdWithBodyWithResponse request with arbitrary body returning *CreateSavedObjectIdResponse
-func (c *ClientWithResponses) CreateSavedObjectIdWithBodyWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, params *CreateSavedObjectIdParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CreateSavedObjectIdResponse, error) {
-	rsp, err := c.CreateSavedObjectIdWithBody(ctx, pType, id, params, contentType, body, reqEditors...)
+// GetSavedObjectsTypeIdWithResponse request returning *GetSavedObjectsTypeIdResponse
+func (c *ClientWithResponses) GetSavedObjectsTypeIdWithResponse(ctx context.Context, pType string, id string, reqEditors ...RequestEditorFn) (*GetSavedObjectsTypeIdResponse, error) {
+	rsp, err := c.GetSavedObjectsTypeId(ctx, pType, id, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseCreateSavedObjectIdResponse(rsp)
+	return ParseGetSavedObjectsTypeIdResponse(rsp)
 }
 
-func (c *ClientWithResponses) CreateSavedObjectIdWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, params *CreateSavedObjectIdParams, body CreateSavedObjectIdJSONRequestBody, reqEditors ...RequestEditorFn) (*CreateSavedObjectIdResponse, error) {
-	rsp, err := c.CreateSavedObjectId(ctx, pType, id, params, body, reqEditors...)
+// PostSavedObjectsTypeIdWithBodyWithResponse request with arbitrary body returning *PostSavedObjectsTypeIdResponse
+func (c *ClientWithResponses) PostSavedObjectsTypeIdWithBodyWithResponse(ctx context.Context, pType string, id string, params *PostSavedObjectsTypeIdParams, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PostSavedObjectsTypeIdResponse, error) {
+	rsp, err := c.PostSavedObjectsTypeIdWithBody(ctx, pType, id, params, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseCreateSavedObjectIdResponse(rsp)
+	return ParsePostSavedObjectsTypeIdResponse(rsp)
 }
 
-// UpdateSavedObjectWithBodyWithResponse request with arbitrary body returning *UpdateSavedObjectResponse
-func (c *ClientWithResponses) UpdateSavedObjectWithBodyWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*UpdateSavedObjectResponse, error) {
-	rsp, err := c.UpdateSavedObjectWithBody(ctx, pType, id, contentType, body, reqEditors...)
+func (c *ClientWithResponses) PostSavedObjectsTypeIdWithResponse(ctx context.Context, pType string, id string, params *PostSavedObjectsTypeIdParams, body PostSavedObjectsTypeIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PostSavedObjectsTypeIdResponse, error) {
+	rsp, err := c.PostSavedObjectsTypeId(ctx, pType, id, params, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseUpdateSavedObjectResponse(rsp)
+	return ParsePostSavedObjectsTypeIdResponse(rsp)
 }
 
-func (c *ClientWithResponses) UpdateSavedObjectWithResponse(ctx context.Context, pType SavedObjectsSavedObjectType, id SavedObjectsSavedObjectId, body UpdateSavedObjectJSONRequestBody, reqEditors ...RequestEditorFn) (*UpdateSavedObjectResponse, error) {
-	rsp, err := c.UpdateSavedObject(ctx, pType, id, body, reqEditors...)
+// PutSavedObjectsTypeIdWithBodyWithResponse request with arbitrary body returning *PutSavedObjectsTypeIdResponse
+func (c *ClientWithResponses) PutSavedObjectsTypeIdWithBodyWithResponse(ctx context.Context, pType string, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*PutSavedObjectsTypeIdResponse, error) {
+	rsp, err := c.PutSavedObjectsTypeIdWithBody(ctx, pType, id, contentType, body, reqEditors...)
 	if err != nil {
 		return nil, err
 	}
-	return ParseUpdateSavedObjectResponse(rsp)
+	return ParsePutSavedObjectsTypeIdResponse(rsp)
+}
+
+func (c *ClientWithResponses) PutSavedObjectsTypeIdWithResponse(ctx context.Context, pType string, id string, body PutSavedObjectsTypeIdJSONRequestBody, reqEditors ...RequestEditorFn) (*PutSavedObjectsTypeIdResponse, error) {
+	rsp, err := c.PutSavedObjectsTypeId(ctx, pType, id, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParsePutSavedObjectsTypeIdResponse(rsp)
 }
 
 // PutSecurityEntityStoreWithBodyWithResponse request with arbitrary body returning *PutSecurityEntityStoreResponse
@@ -217684,7 +217850,7 @@ func ParsePostActionsConnectorIdExecuteResponse(rsp *http.Response) (*PostAction
 		var dest struct {
 			// AuthMode The authentication mode used for the connector.
 			AuthMode *PostActionsConnectorIdExecute200AuthMode `json:"auth_mode,omitempty"`
-			Config   *map[string]interface{}                   `json:"config,omitempty"`
+			Config   *map[string]*interface{}                  `json:"config,omitempty"`
 
 			// ConnectorTypeId The connector type identifier.
 			ConnectorTypeId string `json:"connector_type_id"`
@@ -218479,8 +218645,8 @@ func ParseGetAlertingRuleIdResponse(rsp *http.Response) (*GetAlertingRuleIdRespo
 								// Store A filter can be either specific to an application context or applied globally.
 								Store GetAlertingRuleId200ActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 							} `json:"$state,omitempty"`
-							Meta  map[string]interface{}  `json:"meta"`
-							Query *map[string]interface{} `json:"query,omitempty"`
+							Meta  map[string]*interface{}  `json:"meta"`
+							Query *map[string]*interface{} `json:"query,omitempty"`
 						} `json:"filters"`
 
 						// Kql A filter written in Kibana Query Language (KQL).
@@ -218522,7 +218688,7 @@ func ParseGetAlertingRuleIdResponse(rsp *http.Response) (*GetAlertingRuleIdRespo
 				Id string `json:"id"`
 
 				// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-				Params map[string]interface{} `json:"params"`
+				Params map[string]*interface{} `json:"params"`
 
 				// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 				UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -218632,7 +218798,7 @@ func ParseGetAlertingRuleIdResponse(rsp *http.Response) (*GetAlertingRuleIdRespo
 				// Warning Warning of last rule execution.
 				Warning *GetAlertingRuleId200LastRunWarning `json:"warning,omitempty"`
 			} `json:"last_run,omitempty"`
-			MappedParams *map[string]interface{} `json:"mapped_params,omitempty"`
+			MappedParams *map[string]*interface{} `json:"mapped_params,omitempty"`
 
 			// Monitoring Monitoring details of the rule.
 			Monitoring *struct {
@@ -218708,7 +218874,7 @@ func ParseGetAlertingRuleIdResponse(rsp *http.Response) (*GetAlertingRuleIdRespo
 			NotifyWhen *GetAlertingRuleId200NotifyWhen `json:"notify_when,omitempty"`
 
 			// Params The parameters for the rule.
-			Params map[string]interface{} `json:"params"`
+			Params map[string]*interface{} `json:"params"`
 
 			// Revision The rule revision number.
 			Revision float32 `json:"revision"`
@@ -218819,8 +218985,8 @@ func ParsePostAlertingRuleIdResponse(rsp *http.Response) (*PostAlertingRuleIdRes
 								// Store A filter can be either specific to an application context or applied globally.
 								Store PostAlertingRuleId200ActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 							} `json:"$state,omitempty"`
-							Meta  map[string]interface{}  `json:"meta"`
-							Query *map[string]interface{} `json:"query,omitempty"`
+							Meta  map[string]*interface{}  `json:"meta"`
+							Query *map[string]*interface{} `json:"query,omitempty"`
 						} `json:"filters"`
 
 						// Kql A filter written in Kibana Query Language (KQL).
@@ -218862,7 +219028,7 @@ func ParsePostAlertingRuleIdResponse(rsp *http.Response) (*PostAlertingRuleIdRes
 				Id string `json:"id"`
 
 				// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-				Params map[string]interface{} `json:"params"`
+				Params map[string]*interface{} `json:"params"`
 
 				// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 				UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -218972,7 +219138,7 @@ func ParsePostAlertingRuleIdResponse(rsp *http.Response) (*PostAlertingRuleIdRes
 				// Warning Warning of last rule execution.
 				Warning *PostAlertingRuleId200LastRunWarning `json:"warning,omitempty"`
 			} `json:"last_run,omitempty"`
-			MappedParams *map[string]interface{} `json:"mapped_params,omitempty"`
+			MappedParams *map[string]*interface{} `json:"mapped_params,omitempty"`
 
 			// Monitoring Monitoring details of the rule.
 			Monitoring *struct {
@@ -219048,7 +219214,7 @@ func ParsePostAlertingRuleIdResponse(rsp *http.Response) (*PostAlertingRuleIdRes
 			NotifyWhen *PostAlertingRuleId200NotifyWhen `json:"notify_when,omitempty"`
 
 			// Params The parameters for the rule.
-			Params map[string]interface{} `json:"params"`
+			Params map[string]*interface{} `json:"params"`
 
 			// Revision The rule revision number.
 			Revision float32 `json:"revision"`
@@ -219159,8 +219325,8 @@ func ParsePutAlertingRuleIdResponse(rsp *http.Response) (*PutAlertingRuleIdRespo
 								// Store A filter can be either specific to an application context or applied globally.
 								Store PutAlertingRuleId200ActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 							} `json:"$state,omitempty"`
-							Meta  map[string]interface{}  `json:"meta"`
-							Query *map[string]interface{} `json:"query,omitempty"`
+							Meta  map[string]*interface{}  `json:"meta"`
+							Query *map[string]*interface{} `json:"query,omitempty"`
 						} `json:"filters"`
 
 						// Kql A filter written in Kibana Query Language (KQL).
@@ -219202,7 +219368,7 @@ func ParsePutAlertingRuleIdResponse(rsp *http.Response) (*PutAlertingRuleIdRespo
 				Id string `json:"id"`
 
 				// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-				Params map[string]interface{} `json:"params"`
+				Params map[string]*interface{} `json:"params"`
 
 				// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 				UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -219312,7 +219478,7 @@ func ParsePutAlertingRuleIdResponse(rsp *http.Response) (*PutAlertingRuleIdRespo
 				// Warning Warning of last rule execution.
 				Warning *PutAlertingRuleId200LastRunWarning `json:"warning,omitempty"`
 			} `json:"last_run,omitempty"`
-			MappedParams *map[string]interface{} `json:"mapped_params,omitempty"`
+			MappedParams *map[string]*interface{} `json:"mapped_params,omitempty"`
 
 			// Monitoring Monitoring details of the rule.
 			Monitoring *struct {
@@ -219388,7 +219554,7 @@ func ParsePutAlertingRuleIdResponse(rsp *http.Response) (*PutAlertingRuleIdRespo
 			NotifyWhen *PutAlertingRuleId200NotifyWhen `json:"notify_when,omitempty"`
 
 			// Params The parameters for the rule.
-			Params map[string]interface{} `json:"params"`
+			Params map[string]*interface{} `json:"params"`
 
 			// Revision The rule revision number.
 			Revision float32 `json:"revision"`
@@ -219860,8 +220026,8 @@ func ParseGetAlertingRulesFindResponse(rsp *http.Response) (*GetAlertingRulesFin
 								// Store A filter can be either specific to an application context or applied globally.
 								Store GetAlertingRulesFind200ActionsAlertsFilterQueryFiltersStateStore `json:"store"`
 							} `json:"$state,omitempty"`
-							Meta  map[string]interface{}  `json:"meta"`
-							Query *map[string]interface{} `json:"query,omitempty"`
+							Meta  map[string]*interface{}  `json:"meta"`
+							Query *map[string]*interface{} `json:"query,omitempty"`
 						} `json:"filters"`
 
 						// Kql A filter written in Kibana Query Language (KQL).
@@ -219903,7 +220069,7 @@ func ParseGetAlertingRulesFindResponse(rsp *http.Response) (*GetAlertingRulesFin
 				Id string `json:"id"`
 
 				// Params The parameters for the action, which are sent to the connector. The `params` are handled as Mustache templates and passed a default set of context.
-				Params map[string]interface{} `json:"params"`
+				Params map[string]*interface{} `json:"params"`
 
 				// UseAlertDataForTemplate Indicates whether to use alert data as a template.
 				UseAlertDataForTemplate *bool `json:"use_alert_data_for_template,omitempty"`
@@ -220013,7 +220179,7 @@ func ParseGetAlertingRulesFindResponse(rsp *http.Response) (*GetAlertingRulesFin
 				// Warning Warning of last rule execution.
 				Warning *GetAlertingRulesFind200LastRunWarning `json:"warning,omitempty"`
 			} `json:"last_run,omitempty"`
-			MappedParams *map[string]interface{} `json:"mapped_params,omitempty"`
+			MappedParams *map[string]*interface{} `json:"mapped_params,omitempty"`
 
 			// Monitoring Monitoring details of the rule.
 			Monitoring *struct {
@@ -220089,7 +220255,7 @@ func ParseGetAlertingRulesFindResponse(rsp *http.Response) (*GetAlertingRulesFin
 			NotifyWhen *GetAlertingRulesFind200NotifyWhen `json:"notify_when,omitempty"`
 
 			// Params The parameters for the rule.
-			Params map[string]interface{} `json:"params"`
+			Params map[string]*interface{} `json:"params"`
 
 			// Revision The rule revision number.
 			Revision float32 `json:"revision"`
@@ -220206,9 +220372,9 @@ func ParsePostAlertingRulesBackfillFindResponse(rsp *http.Response) (*PostAlerti
 					Name                string  `json:"name"`
 
 					// Params The parameters for the rule.
-					Params     map[string]interface{} `json:"params"`
-					Revision   float32                `json:"revision"`
-					RuleTypeId string                 `json:"rule_type_id"`
+					Params     map[string]*interface{} `json:"params"`
+					Revision   float32                 `json:"revision"`
+					RuleTypeId string                  `json:"rule_type_id"`
 					Schedule   struct {
 						Interval string `json:"interval"`
 					} `json:"schedule"`
@@ -220315,9 +220481,9 @@ func ParseGetAlertingRulesBackfillIdResponse(rsp *http.Response) (*GetAlertingRu
 				Name                string  `json:"name"`
 
 				// Params The parameters for the rule.
-				Params     map[string]interface{} `json:"params"`
-				Revision   float32                `json:"revision"`
-				RuleTypeId string                 `json:"rule_type_id"`
+				Params     map[string]*interface{} `json:"params"`
+				Revision   float32                 `json:"revision"`
+				RuleTypeId string                  `json:"rule_type_id"`
 				Schedule   struct {
 					Interval string `json:"interval"`
 				} `json:"schedule"`
@@ -222027,6 +222193,15 @@ func ParseGetCaseConfigurationDefaultSpaceResponse(rsp *http.Response) (*GetCase
 				Target     *string `json:"target,omitempty"`
 			} `json:"mappings,omitempty"`
 
+			// ObservableTypes Custom observable type configuration details.
+			ObservableTypes *[]struct {
+				// Key The observable type key.
+				Key *string `json:"key,omitempty"`
+
+				// Label The observable type label.
+				Label *string `json:"label,omitempty"`
+			} `json:"observableTypes,omitempty"`
+
 			// Owner The application that owns the cases: Stack Management, Observability, or Elastic Security.
 			Owner     *CasesOwner     `json:"owner,omitempty"`
 			Templates *CasesTemplates `json:"templates,omitempty"`
@@ -222119,6 +222294,15 @@ func ParseSetCaseConfigurationDefaultSpaceResponse(rsp *http.Response) (*SetCase
 				Source     *string `json:"source,omitempty"`
 				Target     *string `json:"target,omitempty"`
 			} `json:"mappings,omitempty"`
+
+			// ObservableTypes Custom observable type configuration details.
+			ObservableTypes *[]struct {
+				// Key The observable type key.
+				Key *string `json:"key,omitempty"`
+
+				// Label The observable type label.
+				Label *string `json:"label,omitempty"`
+			} `json:"observableTypes,omitempty"`
 
 			// Owner The application that owns the cases: Stack Management, Observability, or Elastic Security.
 			Owner     *CasesOwner     `json:"owner,omitempty"`
@@ -222255,6 +222439,15 @@ func ParseUpdateCaseConfigurationDefaultSpaceResponse(rsp *http.Response) (*Upda
 				Source     *string `json:"source,omitempty"`
 				Target     *string `json:"target,omitempty"`
 			} `json:"mappings,omitempty"`
+
+			// ObservableTypes Custom observable type configuration details.
+			ObservableTypes *[]struct {
+				// Key The observable type key.
+				Key *string `json:"key,omitempty"`
+
+				// Label The observable type label.
+				Label *string `json:"label,omitempty"`
+			} `json:"observableTypes,omitempty"`
 
 			// Owner The application that owns the cases: Stack Management, Observability, or Elastic Security.
 			Owner     *CasesOwner     `json:"owner,omitempty"`
@@ -227227,7 +227420,7 @@ func ParsePostFleetAgentPoliciesBulkGetResponse(rsp *http.Response) (*PostFleetA
 				Namespace              string  `json:"namespace"`
 
 				// Overrides Override settings that are defined in the agent policy. Input settings cannot be overridden. The override option should be used only in unusual circumstances and not as a routine procedure.
-				Overrides                     *map[string]interface{} `json:"overrides,omitempty"`
+				Overrides                     *map[string]*interface{} `json:"overrides,omitempty"`
 				PackageAgentVersionConditions *[]struct {
 					Name             string `json:"name"`
 					Title            string `json:"title"`
@@ -227631,7 +227824,7 @@ func ParsePostFleetAgentPoliciesAgentpolicyidCopyResponse(rsp *http.Response) (*
 				Namespace              string  `json:"namespace"`
 
 				// Overrides Override settings that are defined in the agent policy. Input settings cannot be overridden. The override option should be used only in unusual circumstances and not as a routine procedure.
-				Overrides                     *map[string]interface{} `json:"overrides,omitempty"`
+				Overrides                     *map[string]*interface{} `json:"overrides,omitempty"`
 				PackageAgentVersionConditions *[]struct {
 					Name             string `json:"name"`
 					Title            string `json:"title"`
@@ -227906,7 +228099,7 @@ func ParseGetFleetAgentStatusDataResponse(rsp *http.Response) (*GetFleetAgentSta
 	switch {
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
-			DataPreview []interface{} `json:"dataPreview"`
+			DataPreview []*interface{} `json:"dataPreview"`
 			Items       []map[string]struct {
 				Data bool `json:"data"`
 			} `json:"items"`
@@ -227985,7 +228178,7 @@ func ParsePostFleetAgentlessPoliciesResponse(rsp *http.Response) (*PostFleetAgen
 
 				// Overrides Override settings that are defined in the package policy. The override option should be used only in unusual circumstances and not as a routine procedure.
 				Overrides *struct {
-					Inputs *map[string]interface{} `json:"inputs,omitempty"`
+					Inputs *map[string]*interface{} `json:"inputs,omitempty"`
 				} `json:"overrides,omitempty"`
 				Package *struct {
 					ExperimentalDataStreamFeatures *[]struct {
@@ -228161,7 +228354,7 @@ func ParseGetFleetAgentsResponse(rsp *http.Response) (*GetFleetAgentsResponse, e
 					Units   *[]struct {
 						Id      string                                      `json:"id"`
 						Message string                                      `json:"message"`
-						Payload *map[string]interface{}                     `json:"payload,omitempty"`
+						Payload *map[string]*interface{}                    `json:"payload,omitempty"`
 						Status  GetFleetAgents200ItemsComponentsUnitsStatus `json:"status"`
 						Type    GetFleetAgents200ItemsComponentsUnitsType   `json:"type"`
 					} `json:"units,omitempty"`
@@ -228174,14 +228367,14 @@ func ParseGetFleetAgentsResponse(rsp *http.Response) (*GetFleetAgentsResponse, e
 				DefaultApiKeyId       *string                                  `json:"default_api_key_id,omitempty"`
 				EffectiveConfig       interface{}                              `json:"effective_config"`
 				EnrolledAt            string                                   `json:"enrolled_at"`
-				Health                *map[string]interface{}                  `json:"health,omitempty"`
+				Health                *map[string]*interface{}                 `json:"health,omitempty"`
 				Id                    string                                   `json:"id"`
 				IdentifyingAttributes *map[string]string                       `json:"identifying_attributes,omitempty"`
 				LastCheckin           *string                                  `json:"last_checkin,omitempty"`
 				LastCheckinMessage    *string                                  `json:"last_checkin_message,omitempty"`
 				LastCheckinStatus     *GetFleetAgents200ItemsLastCheckinStatus `json:"last_checkin_status,omitempty"`
 				LastKnownStatus       *GetFleetAgents200ItemsLastKnownStatus   `json:"last_known_status,omitempty"`
-				LocalMetadata         map[string]interface{}                   `json:"local_metadata"`
+				LocalMetadata         map[string]*interface{}                  `json:"local_metadata"`
 				Metrics               *struct {
 					CpuAvg            *float32 `json:"cpu_avg,omitempty"`
 					MemorySizeByteAvg *float32 `json:"memory_size_byte_avg,omitempty"`
@@ -228200,7 +228393,7 @@ func ParseGetFleetAgentsResponse(rsp *http.Response) (*GetFleetAgentsResponse, e
 				PolicyId              *string                                  `json:"policy_id,omitempty"`
 				PolicyRevision        *float32                                 `json:"policy_revision,omitempty"`
 				SequenceNum           *float32                                 `json:"sequence_num,omitempty"`
-				Sort                  *[]interface{}                           `json:"sort,omitempty"`
+				Sort                  *[]*interface{}                          `json:"sort,omitempty"`
 				Status                *GetFleetAgents200ItemsStatus            `json:"status,omitempty"`
 				Tags                  *[]string                                `json:"tags,omitempty"`
 				Type                  GetFleetAgents200ItemsType               `json:"type"`
@@ -228229,9 +228422,9 @@ func ParseGetFleetAgentsResponse(rsp *http.Response) (*GetFleetAgentsResponse, e
 					State         GetFleetAgents200ItemsUpgradeDetailsState `json:"state"`
 					TargetVersion string                                    `json:"target_version"`
 				} `json:"upgrade_details,omitempty"`
-				UpgradeStartedAt     *string                 `json:"upgrade_started_at,omitempty"`
-				UpgradedAt           *string                 `json:"upgraded_at,omitempty"`
-				UserProvidedMetadata *map[string]interface{} `json:"user_provided_metadata,omitempty"`
+				UpgradeStartedAt     *string                  `json:"upgrade_started_at,omitempty"`
+				UpgradedAt           *string                  `json:"upgraded_at,omitempty"`
+				UserProvidedMetadata *map[string]*interface{} `json:"user_provided_metadata,omitempty"`
 			} `json:"items"`
 			NextSearchAfter *string             `json:"nextSearchAfter,omitempty"`
 			Page            float32             `json:"page"`
@@ -229102,7 +229295,7 @@ func ParseGetFleetAgentsAgentidResponse(rsp *http.Response) (*GetFleetAgentsAgen
 					Units   *[]struct {
 						Id      string                                            `json:"id"`
 						Message string                                            `json:"message"`
-						Payload *map[string]interface{}                           `json:"payload,omitempty"`
+						Payload *map[string]*interface{}                          `json:"payload,omitempty"`
 						Status  GetFleetAgentsAgentid200ItemComponentsUnitsStatus `json:"status"`
 						Type    GetFleetAgentsAgentid200ItemComponentsUnitsType   `json:"type"`
 					} `json:"units,omitempty"`
@@ -229115,14 +229308,14 @@ func ParseGetFleetAgentsAgentidResponse(rsp *http.Response) (*GetFleetAgentsAgen
 				DefaultApiKeyId       *string                                        `json:"default_api_key_id,omitempty"`
 				EffectiveConfig       interface{}                                    `json:"effective_config"`
 				EnrolledAt            string                                         `json:"enrolled_at"`
-				Health                *map[string]interface{}                        `json:"health,omitempty"`
+				Health                *map[string]*interface{}                       `json:"health,omitempty"`
 				Id                    string                                         `json:"id"`
 				IdentifyingAttributes *map[string]string                             `json:"identifying_attributes,omitempty"`
 				LastCheckin           *string                                        `json:"last_checkin,omitempty"`
 				LastCheckinMessage    *string                                        `json:"last_checkin_message,omitempty"`
 				LastCheckinStatus     *GetFleetAgentsAgentid200ItemLastCheckinStatus `json:"last_checkin_status,omitempty"`
 				LastKnownStatus       *GetFleetAgentsAgentid200ItemLastKnownStatus   `json:"last_known_status,omitempty"`
-				LocalMetadata         map[string]interface{}                         `json:"local_metadata"`
+				LocalMetadata         map[string]*interface{}                        `json:"local_metadata"`
 				Metrics               *struct {
 					CpuAvg            *float32 `json:"cpu_avg,omitempty"`
 					MemorySizeByteAvg *float32 `json:"memory_size_byte_avg,omitempty"`
@@ -229141,7 +229334,7 @@ func ParseGetFleetAgentsAgentidResponse(rsp *http.Response) (*GetFleetAgentsAgen
 				PolicyId              *string                                        `json:"policy_id,omitempty"`
 				PolicyRevision        *float32                                       `json:"policy_revision,omitempty"`
 				SequenceNum           *float32                                       `json:"sequence_num,omitempty"`
-				Sort                  *[]interface{}                                 `json:"sort,omitempty"`
+				Sort                  *[]*interface{}                                `json:"sort,omitempty"`
 				Status                *GetFleetAgentsAgentid200ItemStatus            `json:"status,omitempty"`
 				Tags                  *[]string                                      `json:"tags,omitempty"`
 				Type                  GetFleetAgentsAgentid200ItemType               `json:"type"`
@@ -229170,9 +229363,9 @@ func ParseGetFleetAgentsAgentidResponse(rsp *http.Response) (*GetFleetAgentsAgen
 					State         GetFleetAgentsAgentid200ItemUpgradeDetailsState `json:"state"`
 					TargetVersion string                                          `json:"target_version"`
 				} `json:"upgrade_details,omitempty"`
-				UpgradeStartedAt     *string                 `json:"upgrade_started_at,omitempty"`
-				UpgradedAt           *string                 `json:"upgraded_at,omitempty"`
-				UserProvidedMetadata *map[string]interface{} `json:"user_provided_metadata,omitempty"`
+				UpgradeStartedAt     *string                  `json:"upgrade_started_at,omitempty"`
+				UpgradedAt           *string                  `json:"upgraded_at,omitempty"`
+				UserProvidedMetadata *map[string]*interface{} `json:"user_provided_metadata,omitempty"`
 			} `json:"item"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -229229,7 +229422,7 @@ func ParsePutFleetAgentsAgentidResponse(rsp *http.Response) (*PutFleetAgentsAgen
 					Units   *[]struct {
 						Id      string                                            `json:"id"`
 						Message string                                            `json:"message"`
-						Payload *map[string]interface{}                           `json:"payload,omitempty"`
+						Payload *map[string]*interface{}                          `json:"payload,omitempty"`
 						Status  PutFleetAgentsAgentid200ItemComponentsUnitsStatus `json:"status"`
 						Type    PutFleetAgentsAgentid200ItemComponentsUnitsType   `json:"type"`
 					} `json:"units,omitempty"`
@@ -229242,14 +229435,14 @@ func ParsePutFleetAgentsAgentidResponse(rsp *http.Response) (*PutFleetAgentsAgen
 				DefaultApiKeyId       *string                                        `json:"default_api_key_id,omitempty"`
 				EffectiveConfig       interface{}                                    `json:"effective_config"`
 				EnrolledAt            string                                         `json:"enrolled_at"`
-				Health                *map[string]interface{}                        `json:"health,omitempty"`
+				Health                *map[string]*interface{}                       `json:"health,omitempty"`
 				Id                    string                                         `json:"id"`
 				IdentifyingAttributes *map[string]string                             `json:"identifying_attributes,omitempty"`
 				LastCheckin           *string                                        `json:"last_checkin,omitempty"`
 				LastCheckinMessage    *string                                        `json:"last_checkin_message,omitempty"`
 				LastCheckinStatus     *PutFleetAgentsAgentid200ItemLastCheckinStatus `json:"last_checkin_status,omitempty"`
 				LastKnownStatus       *PutFleetAgentsAgentid200ItemLastKnownStatus   `json:"last_known_status,omitempty"`
-				LocalMetadata         map[string]interface{}                         `json:"local_metadata"`
+				LocalMetadata         map[string]*interface{}                        `json:"local_metadata"`
 				Metrics               *struct {
 					CpuAvg            *float32 `json:"cpu_avg,omitempty"`
 					MemorySizeByteAvg *float32 `json:"memory_size_byte_avg,omitempty"`
@@ -229268,7 +229461,7 @@ func ParsePutFleetAgentsAgentidResponse(rsp *http.Response) (*PutFleetAgentsAgen
 				PolicyId              *string                                        `json:"policy_id,omitempty"`
 				PolicyRevision        *float32                                       `json:"policy_revision,omitempty"`
 				SequenceNum           *float32                                       `json:"sequence_num,omitempty"`
-				Sort                  *[]interface{}                                 `json:"sort,omitempty"`
+				Sort                  *[]*interface{}                                `json:"sort,omitempty"`
 				Status                *PutFleetAgentsAgentid200ItemStatus            `json:"status,omitempty"`
 				Tags                  *[]string                                      `json:"tags,omitempty"`
 				Type                  PutFleetAgentsAgentid200ItemType               `json:"type"`
@@ -229297,9 +229490,9 @@ func ParsePutFleetAgentsAgentidResponse(rsp *http.Response) (*PutFleetAgentsAgen
 					State         PutFleetAgentsAgentid200ItemUpgradeDetailsState `json:"state"`
 					TargetVersion string                                          `json:"target_version"`
 				} `json:"upgrade_details,omitempty"`
-				UpgradeStartedAt     *string                 `json:"upgrade_started_at,omitempty"`
-				UpgradedAt           *string                 `json:"upgraded_at,omitempty"`
-				UserProvidedMetadata *map[string]interface{} `json:"user_provided_metadata,omitempty"`
+				UpgradeStartedAt     *string                  `json:"upgrade_started_at,omitempty"`
+				UpgradedAt           *string                  `json:"upgraded_at,omitempty"`
+				UserProvidedMetadata *map[string]*interface{} `json:"user_provided_metadata,omitempty"`
 			} `json:"item"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -229788,18 +229981,18 @@ func ParseGetFleetCloudConnectorsResponse(rsp *http.Response) (*GetFleetCloudCon
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			Items []struct {
-				AccountType           *string                `json:"accountType,omitempty"`
-				CloudProvider         string                 `json:"cloudProvider"`
-				CreatedAt             string                 `json:"created_at"`
-				Id                    string                 `json:"id"`
-				Name                  string                 `json:"name"`
-				Namespace             *string                `json:"namespace,omitempty"`
-				PackagePolicyCount    float32                `json:"packagePolicyCount"`
-				UpdatedAt             string                 `json:"updated_at"`
-				Vars                  map[string]interface{} `json:"vars"`
-				VerificationFailedAt  *string                `json:"verification_failed_at,omitempty"`
-				VerificationStartedAt *string                `json:"verification_started_at,omitempty"`
-				VerificationStatus    *string                `json:"verification_status,omitempty"`
+				AccountType           *string                 `json:"accountType,omitempty"`
+				CloudProvider         string                  `json:"cloudProvider"`
+				CreatedAt             string                  `json:"created_at"`
+				Id                    string                  `json:"id"`
+				Name                  string                  `json:"name"`
+				Namespace             *string                 `json:"namespace,omitempty"`
+				PackagePolicyCount    float32                 `json:"packagePolicyCount"`
+				UpdatedAt             string                  `json:"updated_at"`
+				Vars                  map[string]*interface{} `json:"vars"`
+				VerificationFailedAt  *string                 `json:"verification_failed_at,omitempty"`
+				VerificationStartedAt *string                 `json:"verification_started_at,omitempty"`
+				VerificationStatus    *string                 `json:"verification_status,omitempty"`
 			} `json:"items"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -229842,18 +230035,18 @@ func ParsePostFleetCloudConnectorsResponse(rsp *http.Response) (*PostFleetCloudC
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			Item struct {
-				AccountType           *string                `json:"accountType,omitempty"`
-				CloudProvider         string                 `json:"cloudProvider"`
-				CreatedAt             string                 `json:"created_at"`
-				Id                    string                 `json:"id"`
-				Name                  string                 `json:"name"`
-				Namespace             *string                `json:"namespace,omitempty"`
-				PackagePolicyCount    float32                `json:"packagePolicyCount"`
-				UpdatedAt             string                 `json:"updated_at"`
-				Vars                  map[string]interface{} `json:"vars"`
-				VerificationFailedAt  *string                `json:"verification_failed_at,omitempty"`
-				VerificationStartedAt *string                `json:"verification_started_at,omitempty"`
-				VerificationStatus    *string                `json:"verification_status,omitempty"`
+				AccountType           *string                 `json:"accountType,omitempty"`
+				CloudProvider         string                  `json:"cloudProvider"`
+				CreatedAt             string                  `json:"created_at"`
+				Id                    string                  `json:"id"`
+				Name                  string                  `json:"name"`
+				Namespace             *string                 `json:"namespace,omitempty"`
+				PackagePolicyCount    float32                 `json:"packagePolicyCount"`
+				UpdatedAt             string                  `json:"updated_at"`
+				Vars                  map[string]*interface{} `json:"vars"`
+				VerificationFailedAt  *string                 `json:"verification_failed_at,omitempty"`
+				VerificationStartedAt *string                 `json:"verification_started_at,omitempty"`
+				VerificationStatus    *string                 `json:"verification_status,omitempty"`
 			} `json:"item"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -229937,18 +230130,18 @@ func ParseGetFleetCloudConnectorsCloudconnectoridResponse(rsp *http.Response) (*
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			Item struct {
-				AccountType           *string                `json:"accountType,omitempty"`
-				CloudProvider         string                 `json:"cloudProvider"`
-				CreatedAt             string                 `json:"created_at"`
-				Id                    string                 `json:"id"`
-				Name                  string                 `json:"name"`
-				Namespace             *string                `json:"namespace,omitempty"`
-				PackagePolicyCount    float32                `json:"packagePolicyCount"`
-				UpdatedAt             string                 `json:"updated_at"`
-				Vars                  map[string]interface{} `json:"vars"`
-				VerificationFailedAt  *string                `json:"verification_failed_at,omitempty"`
-				VerificationStartedAt *string                `json:"verification_started_at,omitempty"`
-				VerificationStatus    *string                `json:"verification_status,omitempty"`
+				AccountType           *string                 `json:"accountType,omitempty"`
+				CloudProvider         string                  `json:"cloudProvider"`
+				CreatedAt             string                  `json:"created_at"`
+				Id                    string                  `json:"id"`
+				Name                  string                  `json:"name"`
+				Namespace             *string                 `json:"namespace,omitempty"`
+				PackagePolicyCount    float32                 `json:"packagePolicyCount"`
+				UpdatedAt             string                  `json:"updated_at"`
+				Vars                  map[string]*interface{} `json:"vars"`
+				VerificationFailedAt  *string                 `json:"verification_failed_at,omitempty"`
+				VerificationStartedAt *string                 `json:"verification_started_at,omitempty"`
+				VerificationStatus    *string                 `json:"verification_status,omitempty"`
 			} `json:"item"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -229991,18 +230184,18 @@ func ParsePutFleetCloudConnectorsCloudconnectoridResponse(rsp *http.Response) (*
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
 		var dest struct {
 			Item struct {
-				AccountType           *string                `json:"accountType,omitempty"`
-				CloudProvider         string                 `json:"cloudProvider"`
-				CreatedAt             string                 `json:"created_at"`
-				Id                    string                 `json:"id"`
-				Name                  string                 `json:"name"`
-				Namespace             *string                `json:"namespace,omitempty"`
-				PackagePolicyCount    float32                `json:"packagePolicyCount"`
-				UpdatedAt             string                 `json:"updated_at"`
-				Vars                  map[string]interface{} `json:"vars"`
-				VerificationFailedAt  *string                `json:"verification_failed_at,omitempty"`
-				VerificationStartedAt *string                `json:"verification_started_at,omitempty"`
-				VerificationStatus    *string                `json:"verification_status,omitempty"`
+				AccountType           *string                 `json:"accountType,omitempty"`
+				CloudProvider         string                  `json:"cloudProvider"`
+				CreatedAt             string                  `json:"created_at"`
+				Id                    string                  `json:"id"`
+				Name                  string                  `json:"name"`
+				Namespace             *string                 `json:"namespace,omitempty"`
+				PackagePolicyCount    float32                 `json:"packagePolicyCount"`
+				UpdatedAt             string                  `json:"updated_at"`
+				Vars                  map[string]*interface{} `json:"vars"`
+				VerificationFailedAt  *string                 `json:"verification_failed_at,omitempty"`
+				VerificationStartedAt *string                 `json:"verification_started_at,omitempty"`
+				VerificationStatus    *string                 `json:"verification_status,omitempty"`
 			} `json:"item"`
 		}
 		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
@@ -232771,7 +232964,7 @@ func ParsePostFleetPackagePoliciesBulkGetResponse(rsp *http.Response) (*PostFlee
 
 				// Overrides Override settings that are defined in the package policy. The override option should be used only in unusual circumstances and not as a routine procedure.
 				Overrides *struct {
-					Inputs *map[string]interface{} `json:"inputs,omitempty"`
+					Inputs *map[string]*interface{} `json:"inputs,omitempty"`
 				} `json:"overrides,omitempty"`
 				Package *struct {
 					ExperimentalDataStreamFeatures *[]struct {
@@ -235434,166 +235627,81 @@ func ParseScheduleRiskEngineNowResponse(rsp *http.Response) (*ScheduleRiskEngine
 	return response, nil
 }
 
-// ParseBulkCreateSavedObjectsResponse parses an HTTP response from a BulkCreateSavedObjectsWithResponse call
-func ParseBulkCreateSavedObjectsResponse(rsp *http.Response) (*BulkCreateSavedObjectsResponse, error) {
+// ParsePostSavedObjectsBulkCreateResponse parses an HTTP response from a PostSavedObjectsBulkCreateWithResponse call
+func ParsePostSavedObjectsBulkCreateResponse(rsp *http.Response) (*PostSavedObjectsBulkCreateResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &BulkCreateSavedObjectsResponse{
+	response := &PostSavedObjectsBulkCreateResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest SavedObjects400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
 	}
 
 	return response, nil
 }
 
-// ParseBulkDeleteSavedObjectsResponse parses an HTTP response from a BulkDeleteSavedObjectsWithResponse call
-func ParseBulkDeleteSavedObjectsResponse(rsp *http.Response) (*BulkDeleteSavedObjectsResponse, error) {
+// ParsePostSavedObjectsBulkDeleteResponse parses an HTTP response from a PostSavedObjectsBulkDeleteWithResponse call
+func ParsePostSavedObjectsBulkDeleteResponse(rsp *http.Response) (*PostSavedObjectsBulkDeleteResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &BulkDeleteSavedObjectsResponse{
+	response := &PostSavedObjectsBulkDeleteResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest SavedObjects400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
 	}
 
 	return response, nil
 }
 
-// ParseBulkGetSavedObjectsResponse parses an HTTP response from a BulkGetSavedObjectsWithResponse call
-func ParseBulkGetSavedObjectsResponse(rsp *http.Response) (*BulkGetSavedObjectsResponse, error) {
+// ParsePostSavedObjectsBulkGetResponse parses an HTTP response from a PostSavedObjectsBulkGetWithResponse call
+func ParsePostSavedObjectsBulkGetResponse(rsp *http.Response) (*PostSavedObjectsBulkGetResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &BulkGetSavedObjectsResponse{
+	response := &PostSavedObjectsBulkGetResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest SavedObjects400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
 	}
 
 	return response, nil
 }
 
-// ParseBulkResolveSavedObjectsResponse parses an HTTP response from a BulkResolveSavedObjectsWithResponse call
-func ParseBulkResolveSavedObjectsResponse(rsp *http.Response) (*BulkResolveSavedObjectsResponse, error) {
+// ParsePostSavedObjectsBulkResolveResponse parses an HTTP response from a PostSavedObjectsBulkResolveWithResponse call
+func ParsePostSavedObjectsBulkResolveResponse(rsp *http.Response) (*PostSavedObjectsBulkResolveResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &BulkResolveSavedObjectsResponse{
+	response := &PostSavedObjectsBulkResolveResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest SavedObjects400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
 	}
 
 	return response, nil
 }
 
-// ParseBulkUpdateSavedObjectsResponse parses an HTTP response from a BulkUpdateSavedObjectsWithResponse call
-func ParseBulkUpdateSavedObjectsResponse(rsp *http.Response) (*BulkUpdateSavedObjectsResponse, error) {
+// ParsePutSavedObjectsBulkUpdateResponse parses an HTTP response from a PutSavedObjectsBulkUpdateWithResponse call
+func ParsePutSavedObjectsBulkUpdateResponse(rsp *http.Response) (*PutSavedObjectsBulkUpdateResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &BulkUpdateSavedObjectsResponse{
+	response := &PutSavedObjectsBulkUpdateResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest SavedObjects400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
 	}
 
 	return response, nil
@@ -235629,34 +235737,17 @@ func ParsePostSavedObjectsExportResponse(rsp *http.Response) (*PostSavedObjectsE
 	return response, nil
 }
 
-// ParseFindSavedObjectsResponse parses an HTTP response from a FindSavedObjectsWithResponse call
-func ParseFindSavedObjectsResponse(rsp *http.Response) (*FindSavedObjectsResponse, error) {
+// ParseGetSavedObjectsFindResponse parses an HTTP response from a GetSavedObjectsFindWithResponse call
+func ParseGetSavedObjectsFindResponse(rsp *http.Response) (*GetSavedObjectsFindResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &FindSavedObjectsResponse{
+	response := &GetSavedObjectsFindResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest SavedObjects400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
 	}
 
 	return response, nil
@@ -235715,222 +235806,113 @@ func ParsePostSavedObjectsImportResponse(rsp *http.Response) (*PostSavedObjectsI
 	return response, nil
 }
 
-// ParseResolveImportErrorsResponse parses an HTTP response from a ResolveImportErrorsWithResponse call
-func ParseResolveImportErrorsResponse(rsp *http.Response) (*ResolveImportErrorsResponse, error) {
+// ParsePostSavedObjectsResolveImportErrorsResponse parses an HTTP response from a PostSavedObjectsResolveImportErrorsWithResponse call
+func ParsePostSavedObjectsResolveImportErrorsResponse(rsp *http.Response) (*PostSavedObjectsResolveImportErrorsResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &ResolveImportErrorsResponse{
+	response := &PostSavedObjectsResolveImportErrorsResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest struct {
-			// Errors Specifies the objects that failed to resolve.
-			//
-			// NOTE: One object can result in multiple errors, which requires separate steps to resolve. For instance, a `missing_references` error and a `conflict` error.
-			Errors *[]map[string]interface{} `json:"errors,omitempty"`
-
-			// Success Indicates a successful import. When set to `false`, some objects may not have been created. For additional information, refer to the `errors` and `successResults` properties.
-			Success *bool `json:"success,omitempty"`
-
-			// SuccessCount Indicates the number of successfully resolved records.
-			SuccessCount *float32 `json:"successCount,omitempty"`
-
-			// SuccessResults Indicates the objects that are successfully imported, with any metadata if applicable.
-			//
-			// NOTE: Objects are only created when all resolvable errors are addressed, including conflict and missing references.
-			SuccessResults *[]map[string]interface{} `json:"successResults,omitempty"`
-		}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest SavedObjects400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
 	}
 
 	return response, nil
 }
 
-// ParseResolveSavedObjectResponse parses an HTTP response from a ResolveSavedObjectWithResponse call
-func ParseResolveSavedObjectResponse(rsp *http.Response) (*ResolveSavedObjectResponse, error) {
+// ParseGetSavedObjectsResolveTypeIdResponse parses an HTTP response from a GetSavedObjectsResolveTypeIdWithResponse call
+func ParseGetSavedObjectsResolveTypeIdResponse(rsp *http.Response) (*GetSavedObjectsResolveTypeIdResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &ResolveSavedObjectResponse{
+	response := &GetSavedObjectsResolveTypeIdResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest SavedObjects400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
 	}
 
 	return response, nil
 }
 
-// ParseCreateSavedObjectResponse parses an HTTP response from a CreateSavedObjectWithResponse call
-func ParseCreateSavedObjectResponse(rsp *http.Response) (*CreateSavedObjectResponse, error) {
+// ParsePostSavedObjectsTypeResponse parses an HTTP response from a PostSavedObjectsTypeWithResponse call
+func ParsePostSavedObjectsTypeResponse(rsp *http.Response) (*PostSavedObjectsTypeResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &CreateSavedObjectResponse{
+	response := &PostSavedObjectsTypeResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
-		var dest map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON409 = &dest
-
 	}
 
 	return response, nil
 }
 
-// ParseGetSavedObjectResponse parses an HTTP response from a GetSavedObjectWithResponse call
-func ParseGetSavedObjectResponse(rsp *http.Response) (*GetSavedObjectResponse, error) {
+// ParseDeleteSavedObjectsTypeIdResponse parses an HTTP response from a DeleteSavedObjectsTypeIdWithResponse call
+func ParseDeleteSavedObjectsTypeIdResponse(rsp *http.Response) (*DeleteSavedObjectsTypeIdResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &GetSavedObjectResponse{
+	response := &DeleteSavedObjectsTypeIdResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
-		var dest SavedObjects400Response
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON400 = &dest
-
 	}
 
 	return response, nil
 }
 
-// ParseCreateSavedObjectIdResponse parses an HTTP response from a CreateSavedObjectIdWithResponse call
-func ParseCreateSavedObjectIdResponse(rsp *http.Response) (*CreateSavedObjectIdResponse, error) {
+// ParseGetSavedObjectsTypeIdResponse parses an HTTP response from a GetSavedObjectsTypeIdWithResponse call
+func ParseGetSavedObjectsTypeIdResponse(rsp *http.Response) (*GetSavedObjectsTypeIdResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &CreateSavedObjectIdResponse{
+	response := &GetSavedObjectsTypeIdResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
-	}
-
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
-
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
-		var dest map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON409 = &dest
-
 	}
 
 	return response, nil
 }
 
-// ParseUpdateSavedObjectResponse parses an HTTP response from a UpdateSavedObjectWithResponse call
-func ParseUpdateSavedObjectResponse(rsp *http.Response) (*UpdateSavedObjectResponse, error) {
+// ParsePostSavedObjectsTypeIdResponse parses an HTTP response from a PostSavedObjectsTypeIdWithResponse call
+func ParsePostSavedObjectsTypeIdResponse(rsp *http.Response) (*PostSavedObjectsTypeIdResponse, error) {
 	bodyBytes, err := io.ReadAll(rsp.Body)
 	defer func() { _ = rsp.Body.Close() }()
 	if err != nil {
 		return nil, err
 	}
 
-	response := &UpdateSavedObjectResponse{
+	response := &PostSavedObjectsTypeIdResponse{
 		Body:         bodyBytes,
 		HTTPResponse: rsp,
 	}
 
-	switch {
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
-		var dest map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON200 = &dest
+	return response, nil
+}
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
-		var dest map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON404 = &dest
+// ParsePutSavedObjectsTypeIdResponse parses an HTTP response from a PutSavedObjectsTypeIdWithResponse call
+func ParsePutSavedObjectsTypeIdResponse(rsp *http.Response) (*PutSavedObjectsTypeIdResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
 
-	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 409:
-		var dest map[string]interface{}
-		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
-			return nil, err
-		}
-		response.JSON409 = &dest
-
+	response := &PutSavedObjectsTypeIdResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
 	}
 
 	return response, nil
@@ -238388,6 +238370,16 @@ func ParseDeleteTimelinesResponse(rsp *http.Response) (*DeleteTimelinesResponse,
 		HTTPResponse: rsp,
 	}
 
+	switch {
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 200:
+		var dest map[string]interface{}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON200 = &dest
+
+	}
+
 	return response, nil
 }
 
@@ -238440,7 +238432,7 @@ func ParsePatchTimelineResponse(rsp *http.Response) (*PatchTimelineResponse, err
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 405:
 		var dest struct {
-			// Body The error message
+			// Body The error message.
 			Body       *string  `json:"body,omitempty"`
 			StatusCode *float32 `json:"statusCode,omitempty"`
 		}
@@ -238777,6 +238769,20 @@ func ParseResolveTimelineResponse(rsp *http.Response) (*ResolveTimelineResponse,
 		}
 		response.JSON200 = &dest
 
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
+		var dest map[string]interface{}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON400 = &dest
+
+	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 404:
+		var dest map[string]interface{}
+		if err := json.Unmarshal(bodyBytes, &dest); err != nil {
+			return nil, err
+		}
+		response.JSON404 = &dest
+
 	}
 
 	return response, nil
@@ -238824,7 +238830,7 @@ func ParseGetTimelinesResponse(rsp *http.Response) (*GetTimelinesResponse, error
 
 	case strings.Contains(rsp.Header.Get("Content-Type"), "json") && rsp.StatusCode == 400:
 		var dest struct {
-			// Body The error message
+			// Body The error message.
 			Body       *string  `json:"body,omitempty"`
 			StatusCode *float32 `json:"statusCode,omitempty"`
 		}
@@ -239382,7 +239388,7 @@ func ParsePostActionsConnectorIdResponse(rsp *http.Response) (*PostActionsConnec
 		var dest struct {
 			// AuthMode The authentication mode used for the connector.
 			AuthMode *PostActionsConnectorId200AuthMode `json:"auth_mode,omitempty"`
-			Config   *map[string]interface{}            `json:"config,omitempty"`
+			Config   *map[string]*interface{}           `json:"config,omitempty"`
 
 			// ConnectorTypeId The connector type identifier.
 			ConnectorTypeId string `json:"connector_type_id"`
@@ -239436,7 +239442,7 @@ func ParsePutActionsConnectorIdResponse(rsp *http.Response) (*PutActionsConnecto
 		var dest struct {
 			// AuthMode The authentication mode used for the connector.
 			AuthMode *PutActionsConnectorId200AuthMode `json:"auth_mode,omitempty"`
-			Config   *map[string]interface{}           `json:"config,omitempty"`
+			Config   *map[string]*interface{}          `json:"config,omitempty"`
 
 			// ConnectorTypeId The connector type identifier.
 			ConnectorTypeId string `json:"connector_type_id"`
