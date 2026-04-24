@@ -154,6 +154,26 @@ func TestPickInstalledVersion(t *testing.T) {
 			pkg:  "pkg_a",
 			want: "3.0.0",
 		},
+		{
+			// Regression coverage for PR #2453 review comment: a pure
+			// lexicographic compare would return "9.0.0" because '9' > '1'.
+			name: "picks semver-greatest across the 9/10 boundary",
+			in: []kbapi.PackageListItem{
+				{Name: "pkg_a", Version: "9.0.0", Status: installed},
+				{Name: "pkg_a", Version: "10.0.0", Status: installed},
+			},
+			pkg:  "pkg_a",
+			want: "10.0.0",
+		},
+		{
+			name: "picks semver-greatest for two-digit minor across 9/10",
+			in: []kbapi.PackageListItem{
+				{Name: "pkg_a", Version: "1.9.0", Status: installed},
+				{Name: "pkg_a", Version: "1.10.0", Status: installed},
+			},
+			pkg:  "pkg_a",
+			want: "1.10.0",
+		},
 	}
 
 	for _, tc := range cases {

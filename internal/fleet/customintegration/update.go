@@ -101,19 +101,38 @@ func (r *customIntegrationResource) Update(ctx context.Context, req resource.Upd
 
 	// If the uploaded package reports a different name than what was in
 	// state, the prior package has been superseded. Uninstall the old
-	// name+version so it does not linger as an orphan installation. A
-	// failure here surfaces as a diagnostic but does not roll back the
-	// new upload — the user is told explicitly that they have a hybrid
-	// state and can clean it up.
+	// name+version so it does not linger as an orphan installation.
+	//
+	// The uninstall must target the cluster the old package actually lives
+	// on — which is the connection recorded in state, not the (possibly
+	// different) one in the new plan. Without this, switching
+	// kibana_connection between applies would send the uninstall to the
+	// new cluster and leave the old package orphaned on the original.
 	oldName := state.PackageName.ValueString()
 	oldVersion := state.PackageVersion.ValueString()
 	if oldName != "" && oldName != result.PackageName {
-		uninstallDiags := fleet.Uninstall(ctx, fleetClient, oldName, oldVersion, state.SpaceID.ValueString(), false)
-		if uninstallDiags.HasError() {
+		stateKibanaClient, stateDiags := r.client.GetKibanaClient(ctx, state.KibanaConnection)
+		if stateDiags.HasError() {
 			resp.Diagnostics.AddWarning(
-				fmt.Sprintf("Failed to uninstall superseded package %s/%s", oldName, oldVersion),
-				fmt.Sprintf("The new package %s/%s was uploaded successfully but the prior package could not be uninstalled. It may still be present in Fleet and require manual cleanup. Underlying diagnostics: %v", result.PackageName, version, uninstallDiags),
+				fmt.Sprintf("Failed to resolve prior Kibana connection for uninstall of %s/%s", oldName, oldVersion),
+				fmt.Sprintf("The new package %s/%s was uploaded successfully but the prior package could not be uninstalled because its Kibana connection could not be resolved. It may still be present in the original Fleet cluster and require manual cleanup. Underlying diagnostics: %v", result.PackageName, version, stateDiags),
 			)
+		} else {
+			stateFleetClient, stateFleetErr := stateKibanaClient.GetFleetClient()
+			if stateFleetErr != nil {
+				resp.Diagnostics.AddWarning(
+					fmt.Sprintf("Failed to obtain prior Fleet client for uninstall of %s/%s", oldName, oldVersion),
+					fmt.Sprintf("The new package %s/%s was uploaded successfully but the prior package could not be uninstalled: %s. It may still be present in the original Fleet cluster.", result.PackageName, version, stateFleetErr.Error()),
+				)
+			} else {
+				uninstallDiags := fleet.Uninstall(ctx, stateFleetClient, oldName, oldVersion, state.SpaceID.ValueString(), false)
+				if uninstallDiags.HasError() {
+					resp.Diagnostics.AddWarning(
+						fmt.Sprintf("Failed to uninstall superseded package %s/%s", oldName, oldVersion),
+						fmt.Sprintf("The new package %s/%s was uploaded successfully but the prior package could not be uninstalled. It may still be present in Fleet and require manual cleanup. Underlying diagnostics: %v", result.PackageName, version, uninstallDiags),
+					)
+				}
+			}
 		}
 	}
 

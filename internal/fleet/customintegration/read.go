@@ -23,6 +23,7 @@ import (
 
 	"github.com/elastic/terraform-provider-elasticstack/generated/kbapi"
 	"github.com/elastic/terraform-provider-elasticstack/internal/clients/fleet"
+	"github.com/hashicorp/go-version"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 )
 
@@ -91,23 +92,50 @@ func installed(pkg *kbapi.PackageInfo) bool {
 	return false
 }
 
-// pickInstalledVersion returns the highest version string for a named package
-// that reports `installed` status in the packages list. Used as a fallback
-// when the upload response does not carry a version.
+// pickInstalledVersion returns the highest version for a named package that
+// reports `installed` status in the packages list. Used as a fallback when
+// the upload response does not carry a version. Comparison is semver-aware
+// (parses each version via hashicorp/go-version), so "10.0.0" correctly
+// outranks "9.0.0" and "1.10.0" correctly outranks "1.9.0". Versions that
+// fail to parse are kept as candidates but compared lexicographically, so
+// the function degrades gracefully on oddball strings rather than dropping
+// them entirely.
 func pickInstalledVersion(pkgs []kbapi.PackageListItem, name string) string {
 	var best string
+	var bestParsed *version.Version
+
 	for _, p := range pkgs {
 		if p.Name != name {
 			continue
 		}
-		if p.Status != nil && !strings.EqualFold(string(*p.Status), "installed") {
+		if p.Status != nil && !strings.EqualFold(*p.Status, "installed") {
 			continue
 		}
 		if p.Version == "" {
 			continue
 		}
-		if best == "" || p.Version > best {
+		if best == "" {
 			best = p.Version
+			bestParsed, _ = version.NewVersion(p.Version)
+			continue
+		}
+
+		candidateParsed, candidateErr := version.NewVersion(p.Version)
+
+		// Both parse → semver compare.
+		if candidateErr == nil && bestParsed != nil {
+			if candidateParsed.GreaterThan(bestParsed) {
+				best = p.Version
+				bestParsed = candidateParsed
+			}
+			continue
+		}
+
+		// One side didn't parse → fall back to lexicographic compare and
+		// remember whichever we picked so subsequent iterations see it.
+		if p.Version > best {
+			best = p.Version
+			bestParsed = candidateParsed // may be nil; fine
 		}
 	}
 	return best
